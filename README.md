@@ -1,33 +1,34 @@
-Swapi Laravel
-=============
+<h1>Swapi Laravel</h1>
 
-This is a simple Laravel project to consume the [Star Wars API (Swapi)](https://swapi.dev/) and store the data in a local database. It includes routes to display the stored data in tables.
+<p>This is a simple Laravel project to <strong>consume</strong> a <a href="https://swapi.dev/">star wars API called Swapi</a> and <strong>store</strong> the data in a local database. <br/>
+It also includes routes to display the stored data in tables.</p>
 
-Installation
-------------
+<h2>Installation</h2>
 
-1.  Clone the repository: `git clone https://github.com/noa1961/swapi-laravel.git`
-2.  Install dependencies: `composer install`
-3.  Set up your database credentials in the `.env` file
-4.  Run database migrations: `php artisan migrate`
-5.  Start the server: `php artisan serve`
+<ol>
+    <li><strong>Clone the repository</strong>: <code>git clone https://github.com/noa1961/swapi-laravel.git</code></li>
+    <li><strong>Install dependencies</strong>: <code>composer install</code></li>
+    <li><strong>Set up your database credentials in the</strong> <code>.env</code> file</li>
+    <li><strong>Run database migrations</strong>: <code>php artisan migrate</code></li>
+    <li><strong>Start the server</strong>: <code>php artisan serve</code></li>
+</ol>
 
-Usage
------
+<h2>Usage</h2>
 
-### Fetching Data
+<h4>Fetching Data</h4>
 
-The `/starships/store`, `/peoples/store`, and `/films/store` routes can be used to fetch data from the Swapi API and store it in the local database.
+<p>The <code>/starships/store</code>, <code>/peoples/store</code>, and <code>/films/store</code> routes can be used to fetch data from the Swapi API and store it in the local database.</p>
 
-### Displaying Data
+<h4>Displaying Data</h4>
 
-The following routes are available to display the stored data in tables:
+<p>The following routes are available to <strong>display the stored data</strong> in tables:</p>
 
--   `/table/starship`: displays the list of starships and their details
--   `/table/people`: displays the list of people and their details
--   `/table/film`: displays the list of films and their details
+<ul>
+    <li><code>/table/starship</code>: displays a table of <code>starships</code> and their details</li>
+    <li><code>/table/people</code>: displays a table of <code>people</code> and their details</li>
+    <li><code>/table/film</code>: displays a table of <code>films</code> and their details</li>
+</ul>
 
-License
--------
+<h2>License</h2>
 
-This project is licensed under the [MIT License](https://github.com/noa1961/swapi-laravel/blob/main/LICENSE).
+<p>This project is licensed under the [MIT License](https://github.com/noa1961/swapi-laravel/blob/main/LICENSE).</p>
