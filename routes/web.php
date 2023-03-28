@@ -25,19 +25,33 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
 
+Route::get('/table', function () {
+    return view('tables');
+})->middleware(['auth', 'verified'])->name('table');
+
 Route::middleware('auth')->group(function () {
+
+    // profile related
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // starship related
+    Route::get('/starships', [StarshipsController::class, 'index'])->name('starships.index');
+    Route::get('/starships/store', [StarshipsController::class, 'store'])->name('starships.store');
+    Route::get('/table/starship',[StarshipsController::class, 'show'])->name('starships.show');
+
+    // people related
+    Route::get('/peoples', [PeoplesController::class, 'index'])->name('peoples.index');
+    Route::get('/peoples/store', [PeoplesController::class, 'store'])->name('peoples.store');
+    Route::get('/table/people',[PeoplesController::class, 'show'])->name('peoples.show');
+
+    // film  related
+    Route::get('/films', [FilmsController::class, 'index'])->name('films.index');
+    Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
+    Route::get('/table/film',[FilmsController::class, 'show'])->name('films.show');
+
 });
 
-Route::get('/starships', [StarshipsController::class, 'index'])->name('starships.index');
-Route::get('/starships/store', [StarshipsController::class, 'store'])->name('starships.store');
-
-Route::get('/peoples', [PeoplesController::class, 'index'])->name('peoples.index');
-Route::get('/peoples/store', [PeoplesController::class, 'store'])->name('peoples.store');
-
-Route::get('/films', [FilmsController::class, 'index'])->name('films.index');
-Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
 
 require __DIR__.'/auth.php';

@@ -64,6 +64,11 @@ class StarshipsController extends Controller
         return redirect('/home')->with('success', 'Starships added to the database');
     }
 
+    public function show()
+    {
+
+    }
+
     private function getAllStarshipData()
     {
         $allStarshipData = [];

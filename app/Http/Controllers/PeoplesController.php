@@ -99,4 +99,9 @@ class PeoplesController extends Controller
 
         return redirect('/home')->with('success', 'Characters added to the database');
     }
+
+    public function show()
+    {
+
+    }
 }

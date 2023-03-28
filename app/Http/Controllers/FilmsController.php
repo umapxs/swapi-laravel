@@ -56,4 +56,9 @@ class FilmsController extends Controller
         }
         return redirect('/home')->with('success', 'Films added to the database');
     }
+
+    public function show()
+    {
+
+    }
 }
