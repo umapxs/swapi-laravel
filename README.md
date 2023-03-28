@@ -3,6 +3,7 @@
 <p>This is a simple Laravel project to <strong>consume</strong> a <a href="https://swapi.dev/">star wars API called Swapi</a> and <strong>store</strong> the data in a local database. <br/>
 It also includes routes to display the stored data in tables.</p>
 
+
 <h2>Installation</h2>
 
 <ol>
@@ -12,6 +13,7 @@ It also includes routes to display the stored data in tables.</p>
     <li><strong>Run database migrations</strong>: <code>php artisan migrate</code></li>
     <li><strong>Start the server</strong>: <code>php artisan serve</code></li>
 </ol>
+
 
 <h2>Usage</h2>
 
@@ -29,6 +31,11 @@ It also includes routes to display the stored data in tables.</p>
     <li><code>/table/film</code>: displays a table of <code>films</code> and their details</li>
 </ul>
 
+
+<h2> Contributing </h2>
+<p>Contributions are welcome! Please <strong>open an issue</strong> or <strong>pull request</strong> for any changes or additions.</p>
+
+
 <h2>License</h2>
 
-<p>This project is licensed under the [MIT License](https://github.com/noa1961/swapi-laravel/blob/main/LICENSE).</p>
+<p>This project is licensed under the <a href="https://github.com/noa1961/swapi-laravel/blob/main/LICENSE">MIT License</a>.</p>
