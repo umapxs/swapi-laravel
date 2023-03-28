@@ -66,7 +66,7 @@ class StarshipsController extends Controller
 
     public function show()
     {
-
+        return view('tables.starship-table');
     }
 
     private function getAllStarshipData()

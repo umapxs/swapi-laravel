@@ -26,7 +26,7 @@ Route::get('/home', function () {
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/table', function () {
-    return view('tables');
+    return view('tables.menu');
 })->middleware(['auth', 'verified'])->name('table');
 
 Route::middleware('auth')->group(function () {

@@ -59,6 +59,6 @@ class FilmsController extends Controller
 
     public function show()
     {
-
+        return view('tables.film-table');
     }
 }

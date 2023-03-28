@@ -102,6 +102,6 @@ class PeoplesController extends Controller
 
     public function show()
     {
-
+        return view('tables.people-table');
     }
 }
