@@ -1,7 +1,6 @@
 <h1>Swapi Laravel</h1>
 
-<p>This is a simple Laravel project to <strong>learn</strong> about <strong> API consumption</strong> with a <a href="https://swapi.dev/">Star Wars API</a> called Swapi and <strong>store</strong> the data in a local database. <br/>
-It also includes routes to display the stored data in tables.</p>
+<p>This is a simple Laravel project with a focus on <strong>learning</strong> about <strong> API consumption</strong> with a <a href="https://swapi.dev/">Star Wars API</a> called Swapi.
 
 
 <h2>Installation</h2>
@@ -19,7 +18,7 @@ It also includes routes to display the stored data in tables.</p>
 
 <h4>Fetching Data</h4>
 
-<p>The <code>/starships/store</code>, <code>/peoples/store</code>, and <code>/films/store</code> routes can be used to fetch data from the Swapi API and store it in the local database.</p>
+<p>The <code>/starships/store</code>, <code>/peoples/store</code>, and <code>/films/store</code> routes can all be used to fetch data respectively from the Swapi API and to also store it locally in a database.</p>
 
 <h4>Displaying Data</h4>
 
@@ -33,7 +32,7 @@ It also includes routes to display the stored data in tables.</p>
 
 
 <h2> Contributing </h2>
-<p>Contributions are welcome! Please <strong>open an issue</strong> or <strong>pull request</strong> for any changes or additions.</p>
+<p>Contributions are welcome! Please <strong>open an issue</strong> or a <strong>pull request</strong> for any changes or additions.</p>
 
 
 <h2>License</h2>
