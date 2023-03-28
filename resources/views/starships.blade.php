@@ -18,7 +18,8 @@
 
                                 <ul class="list-none hover:list-disc">
                                     @foreach($allStarshipData as $starship)
-                                        <li class="mt-4 text-sm">
+                                        <li class="mt-4">
+                                            >
                                             {{ $starship['name'] }}
                                         </li>
                                     @endforeach

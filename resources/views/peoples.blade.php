@@ -18,7 +18,8 @@
 
                                 <ul class="list-none hover:list-disc">
                                     @foreach($allPeopleData as $people)
-                                        <li class="mt-4 text-sm">
+                                        <li class="mt-4">
+                                            >
                                             {{ $people['name'] }}
                                         </li>
                                     @endforeach

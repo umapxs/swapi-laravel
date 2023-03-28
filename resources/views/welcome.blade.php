@@ -79,7 +79,50 @@
                                                 </p>
                                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                                     <u>
-                                                        To access this feature you must be signed in.
+                                                        To access this feature click here to register.
+                                                    </u>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/register" class="px-3 py-1 text-xs font-semibold">
+                                <div class="mt-4 border border-gray-200 rounded p-6">
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <h2 class="mt-2 text-xl font-semibold dark:text-black">Film Fetch</h2>
+
+                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                                    Click here to fetch all of the Star Wars Films to the Database.
+                                                </p>
+                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                                    <u>
+                                                        To access this feature click here to register.
+                                                    </u>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/register" class="px-3 py-1 text-xs font-semibold">
+                                <div class="mt-4 border border-gray-200 rounded p-6">
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <h2 class="mt-2 text-xl font-semibold dark:text-black">Character Fetch</h2>
+
+                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                                    Click here to fetch all of the Star Wars Characters to the Database.
+                                                </p>
+                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                                    <u>
+                                                        To access this feature click here to register.
                                                     </u>
                                                 </p>
 

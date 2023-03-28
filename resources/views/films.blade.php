@@ -18,7 +18,8 @@
 
                                 <ul class="list-none hover:list-disc">
                                     @foreach($filmData['results'] as $film)
-                                        <li class="mt-4 text-sm">
+                                        <li class="mt-4">
+                                            >
                                             {{ $film['title'] }}
                                         </li>
                                     @endforeach
