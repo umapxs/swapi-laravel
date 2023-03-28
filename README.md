@@ -1,6 +1,6 @@
 <h1>Swapi Laravel</h1>
 
-<p>This is a simple Laravel project to <strong>consume</strong> a <a href="https://swapi.dev/">star wars API called Swapi</a> and <strong>store</strong> the data in a local database. <br/>
+<p>This is a simple Laravel project to <strong>learn</strong> about <strong> API consumption</strong> with a <a href="https://swapi.dev/">Star Wars API</a> called Swapi and <strong>store</strong> the data in a local database. <br/>
 It also includes routes to display the stored data in tables.</p>
 
 
