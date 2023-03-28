@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class StarshipsTable extends Component
 {
+    use WithPagination;
+
     public $perPage = 5;
     public $search = '';
     public $orderBy = 'id';
