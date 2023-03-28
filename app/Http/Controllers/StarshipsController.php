@@ -10,19 +10,9 @@ class StarshipsController extends Controller
 {
     public function index()
     {
-        $allStarshipData = [];
-
-        // fetch data from the first page
-        $starshipData = Http::get('https://swapi.dev/api/starships/')->json();
-
-        // append the result into the $allStarshipData array
-        $allStarshipData = array_merge($allStarshipData, $starshipData['results']);
-
-        // check if there is any more pages
-        while ($starshipData['next']) {
-            $starshipData = Http::get($starshipData['next'])->json();
-            $allStarshipData = array_merge($allStarshipData, $starshipData['results']);
-        }
+        $allStarshipData = cache()->remember('starships.all',now()->addDays(1), function() {
+            return $this->getAllStarshipData();
+        });
 
         return view('starships', ['allStarshipData' => $allStarshipData]);
     }
@@ -72,5 +62,24 @@ class StarshipsController extends Controller
         } while ($nextPage !== null);
 
         return redirect('/home')->with('success', 'Starships added to the database');
+    }
+
+    private function getAllStarshipData()
+    {
+        $allStarshipData = [];
+
+        // fetch data from the first page
+        $starshipData = Http::get('https://swapi.dev/api/starships/')->json();
+
+        // append the result into the $allStarshipData array
+        $allStarshipData = array_merge($allStarshipData, $starshipData['results']);
+
+        // check if there is any more pages
+        while ($starshipData['next']) {
+            $starshipData = Http::get($starshipData['next'])->json();
+            $allStarshipData = array_merge($allStarshipData, $starshipData['results']);
+        }
+
+        return $allStarshipData;
     }
 }

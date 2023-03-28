@@ -12,20 +12,29 @@ class PeoplesController extends Controller
 {
     public function index()
     {
-        $allPeopleData = [];
+        $cacheKey = 'allPeopleData';
 
-        // fetch data from the first page
-        $peopleData = Http::get('https://swapi.dev/api/people/')->json();
+        // check if the data is cached
+        if (cache()->has($cacheKey)) {
+            $allPeopleData = cache()->get($cacheKey);
+        } else {
+            $allPeopleData = [];
 
-        // append the result into the $allpeopledata array
-        $allPeopleData = array_merge($allPeopleData, $peopleData['results']);
+            // fetch data from the first page
+            $peopleData = Http::get('https://swapi.dev/api/people/')->json();
 
-        // check if there is any more pages
-        while ($peopleData['next']) {
-            $peopleData = Http::get($peopleData['next'])->json();
+            // append the result into the $allpeopledata array
             $allPeopleData = array_merge($allPeopleData, $peopleData['results']);
-        }
 
+            // check if there is any more pages
+            while ($peopleData['next']) {
+                $peopleData = Http::get($peopleData['next'])->json();
+                $allPeopleData = array_merge($allPeopleData, $peopleData['results']);
+            }
+
+            // cache the data for 1 day
+            cache()->put($cacheKey, $allPeopleData, now()->addDay(1));
+        }
         return view('peoples', ['allPeopleData' => $allPeopleData]);
     }
 

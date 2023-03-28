@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 use App\Models\Film;
 
 class FilmsController extends Controller
 {
     public function index()
     {
-        $filmData = Http::get('https://swapi.dev/api/films/')->json();
+        $filmData = Cache::remember('films', now()->addDay(1), function () {
+            return Http::get('https://swapi.dev/api/films/')->json();
+        });
 
         return view('films', ['filmData' => $filmData]);
     }
