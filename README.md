@@ -37,4 +37,4 @@
 
 <h2>License</h2>
 
-<p>This project is licensed under the <a href="https://github.com/noa1961/swapi-laravel/blob/main/LICENSE">MIT License</a>.</p>
+<p>This project is licensed under the <a href="https://github.com/noa1961/swapi-laravel/blob/main/LICENSE">Zlib License</a>.</p>
