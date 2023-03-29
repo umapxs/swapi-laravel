@@ -37,4 +37,20 @@ class People extends Model
         'edited',
         'url'
     ];
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query() : static::query()
+            ->where('id', 'like', '%'.$search.'%')
+            ->orWhere('name', 'like', '%'.$search.'%')
+            ->orWhere('height', 'like', '%'.$search.'%')
+            ->orWhere('mass', 'like', '%'.$search.'%')
+            ->orWhere('hair_color', 'like', '%'.$search.'%')
+            ->orWhere('skin_color', 'like', '%'.$search.'%')
+            ->orWhere('eye_color', 'like', '%'.$search.'%')
+            ->orWhere('birth_year', 'like', '%'.$search.'%')
+            ->orWhere('gender', 'like', '%'.$search.'%');
+            // ->orWhereRaw('lower(pilots) like ?', ['%'.strtolower($search).'%'])
+            // ->orWhereRaw('lower(films) like ?', ['%'.strtolower($search).'%']);
+    }
 }
