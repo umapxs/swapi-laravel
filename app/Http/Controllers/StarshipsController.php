@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Collection;
 use App\Models\Starship;
+use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
 {
@@ -29,9 +31,31 @@ class StarshipsController extends Controller
                 // prevent starship duplication
                 $existingStarship = Starship::where('name', $starship['name'])->first();
                 if (!$existingStarship) {
+
+                    // request pilots and films to get the names before enconding and saving on the database
+                    $pilots = collect($starship['pilots'])
+                        ->map(function ($url) {
+                            $response = Http::get($url);
+                            $data = $response->json();
+                            $name = isset($data['name']) ? $data['name'] : '';
+                            return $name;
+                        })->reject(function ($name) {
+                            return empty($name);
+                        })->implode(', ');
+
+                    $films = collect($starship['films'])
+                        ->map(function ($url) {
+                            $response = Http::get($url);
+                            $data = $response->json();
+                            $title = isset($data['title']) ? $data['title'] : '';
+                            return $title;
+                        })->reject(function ($title) {
+                            return empty($title);
+                        })->implode(', ');
+
                     // convert pilots and films arrays to JSON
-                    $pilotsJson = json_encode($starship['pilots']);
-                    $filmsJson = json_encode($starship['films']);
+                    $pilotsJson = json_encode($pilots);
+                    $filmsJson = json_encode($films);
                     // save the starship data to the database
                     $newStarship = new Starship;
                     $newStarship->name = $starship['name'];

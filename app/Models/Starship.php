@@ -42,10 +42,23 @@ class Starship extends Model
         'url'
     ];
 
+    protected $casts = [
+    'crew' => 'integer',
+    'passengers' => 'integer',
+];
+
     public static function search($search)
     {
-        return empty($search) ? static::query() : static::query()->where('id', 'like', '%'.$search.'%')
+        return empty($search) ? static::query() : static::query()
+            ->where('id', 'like', '%'.$search.'%')
             ->orWhere('name', 'like', '%'.$search.'%')
-            ->orWhere('model', 'like', '%'.$search.'%');
+            ->orWhere('model', 'like', '%'.$search.'%')
+            ->orWhere('manufacturer', 'like', '%'.$search.'%')
+            ->orWhere('max_atmosphering_speed', 'like', '%'.$search.'%')
+            ->orWhere('crew', 'like', '%'.$search.'%')
+            ->orWhere('passengers', 'like', '%'.$search.'%')
+            ->orWhere('starship_class', 'like', '%'.$search.'%')
+            ->orWhereRaw('lower(pilots) like ?', ['%'.strtolower($search).'%'])
+            ->orWhereRaw('lower(films) like ?', ['%'.strtolower($search).'%']);
     }
 }
