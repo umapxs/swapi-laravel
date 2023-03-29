@@ -10,13 +10,13 @@
             <div class="bg-white px-3 py-1 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                             <div>
-                                <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                                <h2 class="mt-2 text-xl font-semibold text-white-400">
                                     <u>
                                         Character List
                                     </u>
                                 </h2>
 
-                                <ul class="list-none hover:list-disc">
+                                <ul>
                                     @foreach($allPeopleData as $people)
                                         <li class="mt-4">
                                             >

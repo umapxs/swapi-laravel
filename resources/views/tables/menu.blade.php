@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/starship" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Starship Table
@@ -30,7 +30,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/film" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Film Table
@@ -49,7 +49,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/people" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Character Table

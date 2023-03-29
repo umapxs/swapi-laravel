@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/starships" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Starship Fetch
@@ -30,7 +30,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/films" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Film Fetch
@@ -49,7 +49,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/peoples" class="px-3 py-1 text-xs font-semibold">
                         <div>
-                            <h2 class="mt-2 text-xl font-semibold dark:text-black">
+                            <h2 class="mt-2 text-xl text-white-400">
                                 <span>></span>
                                 <u>
                                     Character Fetch
@@ -65,7 +65,7 @@
             </div>
         </div>
         <h1 class="flex justify-center font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">
-            <a href="/home" class="no-underline hover:underline">
+            <a href="/table" class="no-underline hover:underline">
                 After fetching, let's visualize the data.
             </a>
         </h1>
