@@ -43,9 +43,9 @@ class Starship extends Model
     ];
 
     protected $casts = [
-    'crew' => 'integer',
-    'passengers' => 'integer',
-];
+        'crew' => 'integer',
+        'passengers' => 'integer',
+    ];
 
     public static function search($search)
     {

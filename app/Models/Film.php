@@ -36,4 +36,15 @@ class Film extends Model
         'edited',
         'url'
     ];
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query() : static::query()
+            ->where('id', 'like', '%'.$search.'%')
+            ->orWhere('title', 'like', '%'.$search.'%')
+            ->orWhere('episode_id', 'like', '%'.$search.'%')
+            ->orWhere('director', 'like', '%'.$search.'%')
+            ->orWhere('producer', 'like', '%'.$search.'%')
+            ->orWhere('release_date', 'like', '%'.$search.'%');
+    }
 }
