@@ -66,7 +66,6 @@
         </div>
         <h1 class="flex justify-center font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">
             <a href="/table" class="no-underline hover:underline">
-                After fetching, let's visualize the data.
             </a>
         </h1>
     </div>

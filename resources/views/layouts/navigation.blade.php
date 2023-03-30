@@ -1,7 +1,7 @@
 <div class="c-wrapper c-fixed-components">
     <header class="header header-sticky mb-4">
         <div class="container-fluid">
-            <button class="header-toggler px-md-0 me-md-3"
+            <button id="hamburguer" class="header-toggler px-md-0 me-md-3"
                     type="button"
                     onclick="if (!window.__cfRLUnblockHandlers)return false;
                     coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" data-cf-modified-aa23ac249e87884f28a6bec2-="">
@@ -11,7 +11,7 @@
                 </svg>
             </button>
 
-            <a class="header-brand d-md-none" href="#">
+            <a class="header-brand d-md-none" href="/home">
                 <svg width="118" height="46" alt="CoreUI Logo">
                     <use xlink:href="assets/brand/coreui.svg#full"></use>
                 </svg>

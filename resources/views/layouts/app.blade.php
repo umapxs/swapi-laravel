@@ -26,6 +26,22 @@
                 margin-left: 250px;
             }
 
+            #hamburguer {
+                visibility: hidden;
+            }
+
+            @media screen and (max-width: 768px) {
+                #hamburguer {
+                    visibility: visible;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                header, #locationHover, .c-main, footer  {
+                    margin-left: 0px;
+                }
+            }
+
         </style>
 
         @livewireStyles
