@@ -2,7 +2,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<div class="c-wrapper c-fixed-components">
+<div class="c-wrapper c-fixed-components bg-white">
     <header class="header header-sticky mb-4">
         <div class="container-fluid">
             <button id="hamburguer" class="header-toggler px-md-0 me-md-3"
@@ -11,13 +11,13 @@
                     coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" data-cf-modified-aa23ac249e87884f28a6bec2-="">
 
                 <svg class="icon icon-lg">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
                 </svg>
             </button>
 
             <a class="header-brand d-md-none" href="/home">
                 <svg width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                    <use xlink:href="../assets/brand/coreui.svg#full"></use>
                 </svg>
             </a>
 
@@ -55,7 +55,7 @@
                         <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/10.jpg') }}" alt="Profile Bubble"></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
-                        <div class="dropdown-header bg-light py-2">
+                        <div class="dropdown-header bg-light py-2 bg-white">
                         <div class="fw-semibold">Account</div>
                     </div>
                     {{-- <svg class="icon me-2">

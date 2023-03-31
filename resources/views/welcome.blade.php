@@ -19,11 +19,6 @@
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="/">
-                            <img class="h-8 w-8" src="{{ config('app.logo', '/images/star-wars2.png') }}" alt="Imperial Logo">
-                        </a>
-                    </div>
                     <div>
                         <div class="ml-10 flex items-baseline space-x-4">
 
@@ -60,7 +55,7 @@
                 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div class="flex justify-center">
                         <div class="mt-8">
-                            <h1 class="flex justify-center text-3xl font-bold text-black">This is the {{ config('app.name', 'swapiProject') }} <br> -> sign in to learn more.</h1>
+                            <h1 class="flex justify-center text-3xl font-bold text-black">This is the {{ config('app.name', 'swapiProject') }} <br>sign in to learn more.</h1>
                             <a href="/register" class="px-3 py-1 text-xs font-semibold">
                                 <div class="mt-4 border border-gray-200 rounded p-6 shadow-xs hover:shadow">
                                     <div>

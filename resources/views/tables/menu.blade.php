@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xs hover:shadow sm:rounded-lg">
+            <div class="bg-white overflow-hidden sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-300">
                 <a href="/table/starship" class="px-3 py-1 text-xs font-semibold hover:no-underline">
                     <div class="p-6 text-gray-900">
                         <div class="pl-8">
@@ -24,7 +24,7 @@
                 </a>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-xs hover:shadow sm:rounded-lg" style="margin-top: 3rem;">
+            <div class="bg-white overflow-hidden sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-300" style="margin-top: 3rem;">
                 <a href="/table/film" class="px-3 py-1 text-xs font-semibold hover:no-underline">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="pl-8">
@@ -41,7 +41,7 @@
                 </a>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-xs hover:shadow sm:rounded-lg" style="margin-top: 3rem;">
+            <div class="bg-white overflow-hidden sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-300" style="margin-top: 3rem;">
                 <a href="/table/people" class="px-3 py-1 text-xs font-semibold hover:no-underline">
                     <div class="p-6 text-gray-900">
                         <div class="pl-8">

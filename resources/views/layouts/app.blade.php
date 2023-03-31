@@ -22,6 +22,18 @@
         <link href="vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
 
         <style>
+            main {
+                background-color: #ffffff ;
+            }
+
+            a:visited, a:link, a:active {
+                color: #121212;
+            }
+
+            a:hover {
+                color: #DC2626;
+            }
+
             header, #locationHover, .c-main, footer  {
                 margin-left: 250px;
             }
@@ -48,11 +60,11 @@
     </head>
     <body class="c-app">
         <div class="c-wrapper">
-            <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: #2b2b2b;" id="sidebar">
+            <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: #121212;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
                     <a href="/home" class="text-white">
                         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-                        <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
+                        <use xlink:href="{{ asset('nav/coreui.svg#full') }}"></use>
                         </svg>
                         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
                         <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
@@ -99,7 +111,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="bg-white outline outline-1 outline-gray-200">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" id="locationHover">
                         {{ $header }}
                     </div>
@@ -125,10 +137,11 @@
 
             </main>
         </div>
-        <footer class="footer">
-            <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io">Bootstrap Admin Template</a> © 2022 creativeLabs.</div>
+        <footer class="footer bg-white px-12">
+            <div><a href="https://coreui.io">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
             <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
         </footer>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/perfect-scrollbar.min.js" integrity="sha512-X41/A5OSxoi5uqtS6Krhqz8QyyD8E/ZbN7B4IaBSgqPLRbWVuXJXr9UwOujstj71SoVxh5vxgy7kmtd17xrJRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         @livewireScripts
     </body>

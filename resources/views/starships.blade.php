@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white px-3 py-1 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white px-3 py-1 overflow-hidden sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-300">
                 <div class="p-6 text-gray-900 mt-12 mb-12">
                             <div class="pl-8">
                                 <h2 class="mt-2 text-xl font-semibold text-white-400">
