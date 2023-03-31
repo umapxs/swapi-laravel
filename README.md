@@ -8,7 +8,7 @@
 <ol>
     <li><strong>Clone the repository</strong>: <code>git clone https://github.com/noa1961/swapi-laravel.git</code></li>
     <li><strong>Install dependencies</strong>: <code>composer install</code></li>
-    <li><strong>Set up your database credentials in the</strong> <code>.env</code> file</li>
+    <li><strong>Set up your database credentials in the</strong> <code>.env.example</code> file and change its name to <code>.env</code></li>
     <li><strong>Run database migrations</strong>: <code>php artisan migrate</code></li>
     <li><strong>Start the server</strong>: <code>php artisan serve</code></li>
 </ol>
