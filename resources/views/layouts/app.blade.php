@@ -50,12 +50,14 @@
         <div class="c-wrapper">
             <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: #2b2b2b;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
-                    <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
-                    </svg>
-                    <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
-                    </svg>
+                    <a href="/home" class="text-white">
+                        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+                        <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
+                        </svg>
+                        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+                        <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
+                        </svg>
+                    </a>
                 </div>
                 <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
                     <li class="nav-item">
@@ -70,6 +72,7 @@
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-bolt') }}"></use>
                         </svg> Fetch</a>
                     <ul class="nav-group-items">
+                        <li class="nav-item"><a class="nav-link" href="/home"><span class="nav-icon"></span> Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="/starships"><span class="nav-icon"></span> Starships</a></li>
                         <li class="nav-item"><a class="nav-link" href="/films"><span class="nav-icon"></span> Films</a></li>
                         <li class="nav-item"><a class="nav-link" href="/peoples"><span class="nav-icon"></span> Characters</a></li>
@@ -80,6 +83,7 @@
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-library') }}"></use>
                         </svg> Tables</a>
                     <ul class="nav-group-items">
+                        <li class="nav-item"><a class="nav-link" href="/table"><span class="nav-icon"></span>Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/starship"><span class="nav-icon"></span> Starships</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/film"><span class="nav-icon"></span> Films</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/people"><span class="nav-icon"></span> Characters</a></li>

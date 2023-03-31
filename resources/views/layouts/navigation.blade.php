@@ -22,7 +22,7 @@
             </a>
 
             <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/home">Fetch</a></li>
                 <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/table">Tables</a></li>
             </ul>
 
@@ -52,7 +52,7 @@
             <ul class="header-nav ms-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/10.jpg') }}" alt="user@email.com"></div>
+                        <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/10.jpg') }}" alt="Profile Bubble"></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
                         <div class="dropdown-header bg-light py-2">
@@ -73,7 +73,7 @@
                 <div class="dropdown-header bg-light py-2">
                     <div class="fw-semibold">Settings</div>
                 </div>--}}
-                <a class="dropdown-item" href="/profile">
+                <a class="dropdown-item hover:bg-red-600 hover:text-white" href="/profile">
                     <svg class="icon me-2">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                     </svg> Profile
@@ -82,7 +82,7 @@
 
                 <div class="dropdown-divider">
                 </div>
-                    <form method="POST" class="dropdown-item" action="{{ route('logout') }}">
+                    <form method="POST" class="dropdown-item hover:bg-red-600 hover:text-white" action="{{ route('logout') }}">
                         @csrf
                         <svg class="icon me-2">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}">
