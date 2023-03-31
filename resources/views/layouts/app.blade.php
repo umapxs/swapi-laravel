@@ -138,8 +138,8 @@
             </main>
         </div>
         <footer class="footer bg-white px-12">
-            <div><a href="https://coreui.io">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+            <div class="flex justify-center"><a href="https://coreui.io">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
+            <div class="flex justify-start">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
         </footer>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/perfect-scrollbar.min.js" integrity="sha512-X41/A5OSxoi5uqtS6Krhqz8QyyD8E/ZbN7B4IaBSgqPLRbWVuXJXr9UwOujstj71SoVxh5vxgy7kmtd17xrJRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
