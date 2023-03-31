@@ -10,12 +10,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/starship" class="px-3 py-1 text-xs font-semibold">
-                        <div>
-                            <h2 class="mt-2 text-xl text-white-400">
+                        <div class="pl-8">
+                            <h2 class="mt-2 text-xl text-black">
                                 <span>></span>
-                                <u>
-                                    Starship Table
-                                </u>
+                                Starship Table
                             </h2>
 
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
@@ -29,16 +27,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 3rem;">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/film" class="px-3 py-1 text-xs font-semibold">
-                        <div>
-                            <h2 class="mt-2 text-xl text-white-400">
+                        <div class="pl-8">
+                            <h2 class="mt-2 text-xl text-black">
                                 <span>></span>
-                                <u>
                                     Film Table
-                                </u>
                             </h2>
 
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Click here to view the Star Wars Starships Table.
+                                Click here to view the Star Wars Films Table.
                             </p>
                         </div>
                     </a>
@@ -48,16 +44,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" style="margin-top: 3rem;">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/table/people" class="px-3 py-1 text-xs font-semibold">
-                        <div>
-                            <h2 class="mt-2 text-xl text-white-400">
+                        <div class="pl-8">
+                            <h2 class="mt-2 text-xl text-black">
                                 <span>></span>
-                                <u>
                                     Character Table
-                                </u>
                             </h2>
 
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Click here to view the Star Wars Starships Table.
+                                Click here to view the Star Wars Characters Table.
                             </p>
                         </div>
                     </a>

@@ -125,7 +125,6 @@
                                                         To access this feature click here to register.
                                                     </u>
                                                 </p>
-
                                             </div>
                                         </div>
                                     </div>

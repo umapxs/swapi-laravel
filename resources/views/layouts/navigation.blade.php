@@ -1,3 +1,7 @@
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
 <div class="c-wrapper c-fixed-components">
     <header class="header header-sticky mb-4">
         <div class="container-fluid">
@@ -18,8 +22,8 @@
             </a>
 
             <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/table">Tables</a></li>
+                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/table">Tables</a></li>
             </ul>
 
             <ul class="header-nav ms-auto">
