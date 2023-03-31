@@ -82,7 +82,7 @@
 
                 <div class="dropdown-divider">
                 </div>
-                    <form method="POST" class="dropdown-item hover:bg-red-600 hover:text-white" action="{{ route('logout') }}">
+                    <form method="POST" class="dropdown-item hover:bg-red-600 hover:text-white cursor-pointer" action="{{ route('logout') }}">
                         @csrf
                         <svg class="icon me-2">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}">
