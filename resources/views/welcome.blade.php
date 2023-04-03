@@ -17,16 +17,16 @@
         <div class="min-h-full">
             <nav class="bg-white-800">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between">
+                <div class="flex h-16 items-center justify-center">
                     <div class="flex items-center">
                     <div>
-                        <div class="ml-10 flex items-baseline space-x-4">
+                        <div class="flex items-baseline space-x-4">
 
                             <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Welcome</a>
 
-                            <a href="/login" class="text-black dark:text-red-500 rounded-md px-3 py-2 text-sm font-medium">Log In</a>
+                            <a href="/login" class="text-black rounded-md px-3 py-2 text-sm font-medium">Log In</a>
 
-                            <a href="/register" class="text-black dark:text-red-500 rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                            <a href="/register" class="text-black rounded-md px-3 py-2 text-sm font-medium">Register</a>
                         </div>
                     </div>
                     </div>
@@ -53,43 +53,20 @@
 
             <main>
                 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                    <div class="mx-4">
+                        <img src="{{ asset('/images/wallpaper3.jpg') }}" alt="Star Wars" class="flex rounded">
+                    </div>
                     <div class="flex justify-center">
                         <div class="mt-8">
-                            <h1 class="flex justify-center text-3xl font-bold text-black">This is the {{ config('app.name', 'swapiProject') }} <br>sign in to learn more.</h1>
-                            <a href="/register" class="px-3 py-1 text-xs font-semibold">
-                                <div class="mt-4 border border-gray-200 rounded p-6 shadow-xs hover:shadow">
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <h2 class="mt-2 text-xl font-semibold dark:text-black">Data Fetch</h2>
-                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                                    <u class="font-medium">
-                                                        To access this feature click here to register.
-                                                    </u>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="/register" class="px-3 py-1 text-xs font-semibold">
-                                <div class="mt-4 border border-gray-200 rounded p-6 shadow-xs hover:shadow">
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <h2 class="mt-2 text-xl font-semibold dark:text-black">Datatables</h2>
-
-                                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                                    <u class="font-medium">
-                                                        To access this feature click here to register.
-                                                    </u>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                            <h1 class="flex justify-center text-3xl font-bold text-black">Star Wars API</h1>
+                            <div class="mx-8">
+                                <p class="mt-4">
+                                    Welcome to our {{config('APP_NAME', 'swapiProject')}}, where the force is strong! We are excited to share with you our love for all things Star Wars by providing you with the latest and greatest information from the Star Wars API.
+                                </p>
+                                <p class="mt-4 mb-4">
+                                    Our web app allows you to explore and interact with the vast universe of Star Wars, from characters and spaceships from the original and prequels trilogy. You can immerse yourself in the world of Star Wars like never before, and discover new and fascinating details that you may have missed before. May the force be with you, and enjoy your journey through our site!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
