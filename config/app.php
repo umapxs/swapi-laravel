@@ -16,8 +16,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'swapiProject'),
-    'favicon' => env('APP_FAVICON', '/images/star-wars.png'),
-    'logo' => env('APP_FAVICON', '/images/star-wars2.png'),
+    'favicon' => env('APP_FAVICON', '/images/star-wars2.png'),
+    'logo' => env('APP_LOGO', '/images/star-wars2.png'),
 
     /*
     |--------------------------------------------------------------------------
