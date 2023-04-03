@@ -12,7 +12,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <title>{{ config('app.name', 'swapiProject') }}</title>
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -62,7 +61,7 @@
     </head>
     <body class="c-app">
         <div class="c-wrapper">
-            <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: #121212;" id="sidebar">
+            <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: black;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
                     <a href="/home" class="text-white">
                         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
