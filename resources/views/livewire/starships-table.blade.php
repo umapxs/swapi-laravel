@@ -1,3 +1,12 @@
+<style>
+    .tableWrapper {
+        overflow:hidden;
+        overflow-x: scroll;
+        width: 100%;
+    }
+
+</style>
+
 <div>
     <div class="w-full flex pb-10 space-x-8 justify-center">
         <div class="w-3/6 mx-1">
@@ -33,37 +42,41 @@
         </div>
     </div>
 
-    <table class="table-auto w-full mb-6 mt-6">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">ID</th>
-                <th class="px-4 py-2">Name</th>
-                <th class="px-4 py-2">Model</th>
-                <th class="px-4 py-2">Manufacturer</th>
-                <th class="px-4 py-2">M. Speed</th>
-                <th class="px-4 py-2">Crew</th>
-                <th class="px-4 py-2">Pasengers</th>
-                <th class="px-4 py-2">Class</th>
-                <th class="px-4 py-2">Pilots</th>
-                <th class="px-4 py-2">Films</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($starships as $starship)
+    <div class="tableWrapper">
+        <table class="table-auto w-full mb-6 mt-6">
+            <thead>
                 <tr>
-                    <td class="border px-4 py-2">{{ $starship->id }}</td>
-                    <td class="border px-4 py-2">{{ $starship->name }}</td>
-                    <td class="border px-4 py-2">{{ $starship->model }}</td>
-                    <td class="border px-4 py-2">{{ $starship->manufacturer }}</td>
-                    <td class="border px-4 py-2">{{ $starship->max_atmosphering_speed }}</td>
-                    <td class="border px-4 py-2">{{ $starship->crew }}</td>
-                    <td class="border px-4 py-2">{{ $starship->passengers }}</td>
-                    <td class="border px-4 py-2">{{ $starship->starship_class }}</td>
-                    <td class="border px-4 py-2">{{ str_replace('"', '', $starship->pilots); }}</td>
-                    <td class="border px-4 py-2">{{ str_replace('"', '', $starship->films); }}</td>
+                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Model</th>
+                    <th class="px-4 py-2">Manufacturer</th>
+                    <th class="px-4 py-2">M. Speed</th>
+                    <th class="px-4 py-2">Crew</th>
+                    <th class="px-4 py-2">Pasengers</th>
+                    <th class="px-4 py-2">Class</th>
+                    <th class="px-4 py-2">Pilots</th>
+                    <th class="px-4 py-2">Films</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {!! $starships->links() !!}
+            </thead>
+            <tbody>
+                @foreach($starships as $starship)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $starship->id }}</td>
+                        <td class="border px-4 py-2">{{ $starship->name }}</td>
+                        <td class="border px-4 py-2">{{ $starship->model }}</td>
+                        <td class="border px-4 py-2">{{ $starship->manufacturer }}</td>
+                        <td class="border px-4 py-2">{{ $starship->max_atmosphering_speed }}</td>
+                        <td class="border px-4 py-2">{{ $starship->crew }}</td>
+                        <td class="border px-4 py-2">{{ $starship->passengers }}</td>
+                        <td class="border px-4 py-2">{{ $starship->starship_class }}</td>
+                        <td class="border px-4 py-2">{{ str_replace('"', '', $starship->pilots); }}</td>
+                        <td class="border px-4 py-2">{{ str_replace('"', '', $starship->films); }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-4">
+        {!! $starships->links() !!}
+    </div>
 </div>

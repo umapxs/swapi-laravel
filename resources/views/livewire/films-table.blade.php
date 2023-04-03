@@ -1,3 +1,12 @@
+<style>
+    .tableWrapper {
+        overflow:hidden;
+        overflow-x: scroll;
+        width: 100%;
+    }
+
+</style>
+
 <div>
     <div class="w-full flex pb-10 space-x-8 justify-center">
         <div class="w-3/6 mx-1">
@@ -29,29 +38,33 @@
         </div>
     </div>
 
-    <table class="table-auto w-full mb-6 mt-6">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">ID</th>
-                <th class="px-4 py-2">Title</th>
-                <th class="px-4 py-2">Episode</th>
-                <th class="px-4 py-2">Director/s</th>
-                <th class="px-4 py-2">Producer/s</th>
-                <th class="px-4 py-2">Release Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($films as $film)
+    <div class="tableWrapper">
+        <table class="table-auto w-full mb-6 mt-6">
+            <thead>
                 <tr>
-                    <td class="border px-4 py-2">{{ $film->id }}</td>
-                    <td class="border px-4 py-2">{{ $film->title }}</td>
-                    <td class="border px-4 py-2">{{ $film->episode_id }}</td>
-                    <td class="border px-4 py-2">{{ $film->director }}</td>
-                    <td class="border px-4 py-2">{{ $film->producer }}</td>
-                    <td class="border px-4 py-2">{{ $film->release_date }}</td>
+                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">Title</th>
+                    <th class="px-4 py-2">Episode</th>
+                    <th class="px-4 py-2">Director/s</th>
+                    <th class="px-4 py-2">Producer/s</th>
+                    <th class="px-4 py-2">Release Date</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {!! $films->links() !!}
+            </thead>
+            <tbody>
+                @foreach($films as $film)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $film->id }}</td>
+                        <td class="border px-4 py-2">{{ $film->title }}</td>
+                        <td class="border px-4 py-2">{{ $film->episode_id }}</td>
+                        <td class="border px-4 py-2">{{ $film->director }}</td>
+                        <td class="border px-4 py-2">{{ $film->producer }}</td>
+                        <td class="border px-4 py-2">{{ $film->release_date }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-4">
+        {!! $films->links() !!}
+    </div>
 </div>

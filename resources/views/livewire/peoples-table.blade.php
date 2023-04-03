@@ -1,3 +1,12 @@
+<style>
+    .tableWrapper {
+        overflow:hidden;
+        overflow-x: scroll;
+        width: 100%;
+    }
+
+</style>
+
 <div>
     <div class="w-full flex pb-10 space-x-8 justify-center">
         <div class="w-3/6 mx-1">
@@ -31,38 +40,41 @@
             </select>
         </div>
     </div>
-
-    <table class="table-auto w-full mb-6 mt-6">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">ID</th>
-                <th class="px-4 py-2">Name</th>
-                <th class="px-4 py-2">Height</th>
-                <th class="px-4 py-2">Mass</th>
-                <th class="px-4 py-2">Hair Color</th>
-                <th class="px-4 py-2">Skin Color</th>
-                <th class="px-4 py-2">Eye Color</th>
-                <th class="px-4 py-2">Birth</th>
-                <th class="px-4 py-2">Gender</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($peoples as $people)
+    <div class="tableWrapper">
+        <table class="table-auto w-full mb-6 mt-6">
+            <thead>
                 <tr>
-                    <td class="border px-4 py-2">{{ $people->id }}</td>
-                    <td class="border px-4 py-2">{{ $people->name }}</td>
-                    <td class="border px-4 py-2">{{ $people->height }}</td>
-                    <td class="border px-4 py-2">{{ $people->mass }}</td>
-                    <td class="border px-4 py-2">{{ $people->hair_color }}</td>
-                    <td class="border px-4 py-2">{{ $people->skin_color }}</td>
-                    <td class="border px-4 py-2">{{ $people->eye_color }}</td>
-                    <td class="border px-4 py-2">{{ $people->birth_year }}</td>
-                    <td class="border px-4 py-2">{{ $people->gender }}</td>
-                    {{-- <td class="border px-4 py-2">{{ str_replace('"', '', $people->pilots); }}</td>
-                    <td class="border px-4 py-2">{{ str_replace('"', '', $people->films); }}</td> --}}
+                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Height</th>
+                    <th class="px-4 py-2">Mass</th>
+                    <th class="px-4 py-2">Hair Color</th>
+                    <th class="px-4 py-2">Skin Color</th>
+                    <th class="px-4 py-2">Eye Color</th>
+                    <th class="px-4 py-2">Birth</th>
+                    <th class="px-4 py-2">Gender</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {!! $peoples->links() !!}
+            </thead>
+            <tbody>
+                @foreach($peoples as $people)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $people->id }}</td>
+                        <td class="border px-4 py-2">{{ $people->name }}</td>
+                        <td class="border px-4 py-2">{{ $people->height }}</td>
+                        <td class="border px-4 py-2">{{ $people->mass }}</td>
+                        <td class="border px-4 py-2">{{ $people->hair_color }}</td>
+                        <td class="border px-4 py-2">{{ $people->skin_color }}</td>
+                        <td class="border px-4 py-2">{{ $people->eye_color }}</td>
+                        <td class="border px-4 py-2">{{ $people->birth_year }}</td>
+                        <td class="border px-4 py-2">{{ $people->gender }}</td>
+                        {{-- <td class="border px-4 py-2">{{ str_replace('"', '', $people->pilots); }}</td>
+                        <td class="border px-4 py-2">{{ str_replace('"', '', $people->films); }}</td> --}}
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-4">
+        {!! $peoples->links() !!}
+    </div>
 </div>
