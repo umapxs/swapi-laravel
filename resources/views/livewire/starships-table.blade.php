@@ -1,4 +1,8 @@
 <div>
+    <head>
+
+    </head>
+        <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .tableWrapper {
             overflow:hidden;
@@ -7,11 +11,11 @@
         }
 
     </style>
-    <div class="w-full flex pb-10 space-x-8 justify-center">
-        <div class="w-3/6 mx-1">
+    <div class="w-full pb-10 justify-center block lg:flex lg:space-x-8">
+        <div class="mb-4 lg:w-3/6 lg:mx-1">
             <input wire:model="search" wire:model.debounce.300ms="search" type="search" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search starships...">
         </div>
-        <div>
+        <div class="mb-4">
             <select wire:model="orderBy" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option value="id">ID</option>
                 <option value="name">Name</option>
@@ -25,7 +29,7 @@
                 <option value="films">Films</option>
             </select>
         </div>
-        <div>
+        <div class="mb-4">
             <select wire:model="orderAsc" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                 <option value="1">Ascending</option>
                 <option value="0">Descending</option>

@@ -1,9 +1,8 @@
-<header>
-    <link href="nav/coreui-chartjs.css" rel="stylesheet">
-
-</header>
-
 <x-app-layout>
+    <header>
+        <link href="nav/coreui-chartjs.css" rel="stylesheet">
+
+    </header>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Starship Table') }}

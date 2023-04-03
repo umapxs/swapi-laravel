@@ -2,8 +2,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<div class="c-wrapper c-fixed-components bg-white">
-    <header class="header header-sticky mb-4">
+<div class="c-wrapper c-fixed-components bg-white sticky top-0 z-50">
+    <header class="header header-sticky">
         <div class="container-fluid">
             <button id="hamburguer" class="header-toggler px-md-0 me-md-3"
                     type="button"
