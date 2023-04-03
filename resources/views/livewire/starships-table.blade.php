@@ -1,13 +1,12 @@
-<style>
-    .tableWrapper {
-        overflow:hidden;
-        overflow-x: scroll;
-        width: 100%;
-    }
-
-</style>
-
 <div>
+    <style>
+        .tableWrapper {
+            overflow:hidden;
+            overflow-x: scroll;
+            width: 100%;
+        }
+
+    </style>
     <div class="w-full flex pb-10 space-x-8 justify-center">
         <div class="w-3/6 mx-1">
             <input wire:model="search" wire:model.debounce.300ms="search" type="search" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search starships...">

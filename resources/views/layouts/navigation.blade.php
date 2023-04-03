@@ -14,10 +14,6 @@
                 </svg>
             </button>
 
-            <script>
-                console.log(coreui.Sidebar)
-            </script>
-
             <a class="header-brand d-md-none" href="/home">
                 <svg width="118" height="46" alt="CoreUI Logo">
                     <use xlink:href="../assets/brand/coreui.svg#full"></use>
