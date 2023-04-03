@@ -64,12 +64,8 @@
             <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: black;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
                     <a href="/home" class="text-white">
-                        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-                        <use xlink:href="{{ asset('nav/coreui.svg#full') }}"></use>
-                        </svg>
-                        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-                        <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
-                        </svg>
+                        <h1 class="flex justify-center font-bold text-blackflex justify-center text-l font-bold text-white
+    ">Star Wars API</h1>
                     </a>
                 </div>
                 <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
