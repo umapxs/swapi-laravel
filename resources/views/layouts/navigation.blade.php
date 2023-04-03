@@ -7,13 +7,16 @@
         <div class="container-fluid">
             <button id="hamburguer" class="header-toggler px-md-0 me-md-3"
                     type="button"
-                    onclick="if (!window.__cfRLUnblockHandlers)return false;
-                    coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" data-cf-modified-aa23ac249e87884f28a6bec2-="">
+                    onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" data-cf-modified-aa23ac249e87884f28a6bec2-="">
 
                 <svg class="icon icon-lg">
                     <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
                 </svg>
             </button>
+
+            <script>
+                console.log(coreui.Sidebar)
+            </script>
 
             <a class="header-brand d-md-none" href="/home">
                 <svg width="118" height="46" alt="CoreUI Logo">
