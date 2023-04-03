@@ -8,6 +8,9 @@
         <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+        <meta property="og:image" content="http://127.0.0.1:8000/images/star-wars2.png"/>
+        <meta property="og:description" content="The swapiProject allows you to explore and interact with the vast universe of Star Wars.">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/css/perfect-scrollbar.min.css" integrity="sha512-ygIxOy3hmN2fzGeNqys7ymuBgwSCet0LVfqQbWY10AszPMn2rB9JY0eoG0m1pySicu+nvORrBmhHVSt7+GI9VA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -135,8 +138,8 @@
             </main>
         </div>
         <footer class="footer bg-white px-12">
-            <div class="flex justify-center"><a href="https://coreui.io">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
-            <div class="flex justify-start">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+            <div class="flex justify-center text-sm"><a href="https://coreui.io" class="text-sm">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
+            <div class="flex justify-start text-sm">Powered by&nbsp;<a href="https://coreui.io/docs/" class="lg;text-sm">CoreUI UI Components</a></div>
         </footer>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/perfect-scrollbar.min.js" integrity="sha512-X41/A5OSxoi5uqtS6Krhqz8QyyD8E/ZbN7B4IaBSgqPLRbWVuXJXr9UwOujstj71SoVxh5vxgy7kmtd17xrJRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

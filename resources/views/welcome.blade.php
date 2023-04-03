@@ -24,9 +24,9 @@
 
                             <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Welcome</a>
 
-                            <a href="/login" class="text-black rounded-md px-3 py-2 text-sm font-medium">Log In</a>
+                            <a href="/login" class="text-black rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 transition ease-in-out delay-150">Log In</a>
 
-                            <a href="/register" class="text-black rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                            <a href="/register" class="text-black rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 transition ease-in-out delay-150">Register</a>
                         </div>
                     </div>
                     </div>
@@ -61,7 +61,7 @@
                             <h1 class="flex justify-center text-3xl font-bold text-black">Star Wars API</h1>
                             <div class="mx-8">
                                 <p class="mt-4">
-                                    Welcome to our {{config('APP_NAME', 'swapiProject')}}, where the force is strong! We are excited to share with you our love for all things Star Wars by providing you with the latest and greatest information from the Star Wars API.
+                                    Welcome to our <code class="text-red-500 px-1 py-0.5 bg-gray-200 border border-md" style="border-radius: 6px">{{config('APP_NAME', 'swapiProject')}}</code> , where the force is strong! We are excited to share with you our love for all things Star Wars related by providing you with the latest and greatest information from the Star Wars API (swapi).
                                 </p>
                                 <p class="mt-4 mb-4">
                                     Our web app allows you to explore and interact with the vast universe of Star Wars, from characters and spaceships from the original and prequels trilogy. You can immerse yourself in the world of Star Wars like never before, and discover new and fascinating details that you may have missed before. May the force be with you, and enjoy your journey through our site!
