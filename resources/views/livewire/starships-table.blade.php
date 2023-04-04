@@ -21,9 +21,6 @@
                 <option value="name">Name</option>
                 <option value="model">Model</option>
                 <option value="manufacturer">Manufacturer</option>
-                <option value="max_atmosphering_speed">M. Speed</option>
-                <option value="crew">Crew</option>
-                <option value="passengers">Pasengers</option>
                 <option value="starship_class">Class</option>
                 <option value="pilots">Pilots</option>
                 <option value="films">Films</option>

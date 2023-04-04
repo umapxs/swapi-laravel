@@ -15,12 +15,9 @@
             <select wire:model="orderBy" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option value="id">ID</option>
                 <option value="name">Name</option>
-                <option value="height">Height</option>
-                <option value="mass">Mass</option>
                 <option value="hair_color">Hair Color</option>
                 <option value="skin_color">Skin Color</option>
                 <option value="eye_color">Eye Color</option>
-                <option value="birth_year">Birth</option>
                 <option value="gender">Gender</option>
             </select>
         </div>
