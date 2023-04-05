@@ -115,13 +115,13 @@ class StarshipsController extends Controller
         return $allStarshipData;
     }
 
-    public function export()
-    {
-        return Excel::download(new StarshipsExport(), 'starships.xlsx');
-    }
+    // public function export()
+    // {
+    //     return Excel::download(new StarshipsExport(), 'starships.xlsx');
+    // }
 
     public function export_view()
     {
-        return Excel::download(new StarhipsExportView(), 'starships.xlsx');
+        return Excel::download(new StarshipsExportView(), 'starships.xlsx');
     }
 }
