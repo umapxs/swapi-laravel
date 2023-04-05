@@ -66,20 +66,12 @@
         <div class="c-wrapper">
             <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: black;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
-                    <a href="/fetch" class="text-white">
+                    <a href="/dashboard" class="text-white">
                         <h1 class="flex justify-center font-bold text-blackflex justify-center text-l font-bold text-white
     ">Star Wars API</h1>
                     </a>
                 </div>
                 <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/fetch">
-                            <svg class="nav-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-house') }}"></use>
-                            </svg> Home
-                        </a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard">
                             <svg class="nav-icon">

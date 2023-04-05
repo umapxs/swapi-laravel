@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StarshipsController;
 use App\Http\Controllers\PeoplesController;
 use App\Http\Controllers\FilmsController;
+use App\Models\Starship;
+use App\Models\Film;
+use App\Models\People;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +33,17 @@ Route::get('/table', function () {
 })->middleware(['auth', 'verified'])->name('table');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $totalStarships = Starship::count();
+    $totalFilms = Film::count();
+    $totalPeoples = People::count();
+
+    $data = [
+        'totalStarships' => $totalStarships,
+        'totalFilms' => $totalFilms,
+        'totalPeoples' => $totalPeoples,
+    ];
+
+    return view('dashboard')->with($data);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

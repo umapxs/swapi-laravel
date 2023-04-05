@@ -14,7 +14,7 @@
                 </svg>
             </button>
 
-            <a class="header-brand d-md-none" href="/fetch">
+            <a class="header-brand d-md-none" href="/dashboard">
                 <h1 class="flex justify-center font-bold text-blackflex justify-center font-bold text-black
     ">Star Wars API</h1>
             </a>
