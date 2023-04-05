@@ -38,15 +38,14 @@
     </div>
 
     <div>
-        <!-- Change href -->
-        <a href="{{ route('starships.export_view') }}" class="appearance-none bg-red-500 text-white rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 lg:mr-16 float-right hover:no-underline hover:scale-105 transition ease-in-out delay-100 mb-4">Export Excel</a>
+        <a href="{{ route('films.export') }}" class="appearance-none bg-red-500 text-white rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 lg:mr-16 float-right hover:no-underline hover:scale-105 transition ease-in-out delay-100 mb-4">Export Excel</a>
     </div>
 
     <div class="tableWrapper">
         <table class="table-auto w-full mb-6 mt-6">
             <thead>
                 <tr>
-                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">#</th>
                     <th class="px-4 py-2">Title</th>
                     <th class="px-4 py-2">Episode</th>
                     <th class="px-4 py-2">Director/s</th>

@@ -3,15 +3,48 @@
 namespace App\Exports;
 
 use App\Models\Starship;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class StarshipsExport implements FromCollection
+class StarshipsExport implements FromQuery, WithHeadings, WithMapping
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function query()
     {
-        return Starship::all();
+        return Starship::query();
+    }
+
+    public function headings(): array
+    {
+        return [
+            '#',
+            'Name',
+            'Model',
+            'Manufacturer',
+            'M. Speed',
+            'Crew',
+            'Passengers',
+            'Class',
+            'Pilots',
+            'Films',
+        ];
+    }
+
+    public function map($starship): array
+    {
+        return [
+            $starship->id,
+            $starship->name,
+            $starship->model,
+            $starship->manufacturer,
+            $starship->max_atmosphering_speed,
+            $starship->crew,
+            $starship->passengers,
+            $starship->starship_class,
+            str_replace('"', '', $starship->pilots),
+            str_replace('"', '', $starship->films),
+        ];
     }
 }

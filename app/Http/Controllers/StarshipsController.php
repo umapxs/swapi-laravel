@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 use App\Models\Starship;
 use App\Exports\StarshipsExport;
-use App\Exports\StarshipsExportView;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
@@ -115,13 +114,8 @@ class StarshipsController extends Controller
         return $allStarshipData;
     }
 
-    // public function export()
-    // {
-    //     return Excel::download(new StarshipsExport(), 'starships.xlsx');
-    // }
-
-    public function export_view()
+    public function export()
     {
-        return Excel::download(new StarshipsExportView(), 'starships.xlsx');
+        return Excel::download(new StarshipsExport, 'starships.xlsx');
     }
 }

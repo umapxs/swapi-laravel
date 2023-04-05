@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Film;
+use App\Exports\FilmsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FilmsController extends Controller
 {
@@ -60,5 +62,10 @@ class FilmsController extends Controller
     public function show()
     {
         return view('tables.film-table');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FilmsExport, 'films.xlsx');
     }
 }

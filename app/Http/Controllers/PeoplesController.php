@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use App\Models\People;
 use App\Models\Film;
 use App\Models\Starship;
+use App\Exports\PeoplesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeoplesController extends Controller
 {
@@ -103,5 +105,10 @@ class PeoplesController extends Controller
     public function show()
     {
         return view('tables.people-table');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PeoplesExport, 'characters.xlsx');
     }
 }

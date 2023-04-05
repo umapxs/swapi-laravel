@@ -58,7 +58,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Excel Routes
-// Route::get('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
-Route::get('starships/export_view', [StarshipsController::class, 'export_view'])->name('starships.export_view');
+Route::get('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
+Route::get('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
+Route::get('films/export', [FilmsController::class, 'export'])->name('films.export');
 
 require __DIR__.'/auth.php';
