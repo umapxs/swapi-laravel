@@ -20,8 +20,20 @@
             </a>
 
             <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/home">Fetch Menu</a></li>
-                <li class="nav-item hover:underline text-sm"><a class="nav-link" href="/table">Tables Menu</a></li>
+                <li class="nav-item hover:underline text-sm">
+                    <a class="nav-link" href="/home">Fetch
+                    </a>
+                </li>
+
+                <li class="nav-item hover:underline text-sm">
+                    <a class="nav-link" href="/table">Tables
+                    </a>
+                </li>
+
+                <li class="nav-item hover:underline text-sm">
+                    <a class="nav-link" href="/dashboard">Dashboard
+                    </a>
+                </li>
             </ul>
 
             <ul class="header-nav ms-auto">

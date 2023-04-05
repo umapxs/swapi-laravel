@@ -84,7 +84,7 @@
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-bolt') }}"></use>
                         </svg> Fetch</a>
                     <ul class="nav-group-items">
-                        <li class="nav-item"><a class="nav-link" href="/home"><span class="nav-icon"></span> Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/home"><span class="nav-icon"></span> Fetch Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="/starships"><span class="nav-icon"></span> Starships</a></li>
                         <li class="nav-item"><a class="nav-link" href="/films"><span class="nav-icon"></span> Films</a></li>
                         <li class="nav-item"><a class="nav-link" href="/peoples"><span class="nav-icon"></span> Characters</a></li>
@@ -95,7 +95,7 @@
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-library') }}"></use>
                         </svg> Tables</a>
                     <ul class="nav-group-items">
-                        <li class="nav-item"><a class="nav-link" href="/table"><span class="nav-icon"></span>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/table"><span class="nav-icon"></span>Tables Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/starship"><span class="nav-icon"></span> Starships</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/film"><span class="nav-icon"></span> Films</a></li>
                         <li class="nav-item"><a class="nav-link" href="/table/people"><span class="nav-icon"></span> Characters</a></li>

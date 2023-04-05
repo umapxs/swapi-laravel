@@ -11,7 +11,7 @@
         }
 
     </style>
-    <div class="w-full pb-10 justify-center block lg:flex lg:space-x-8">
+    <div class="w-full mb-4 justify-center block lg:flex lg:space-x-8">
         <div class="mb-4 lg:w-3/6 lg:mx-1">
             <input wire:model="search" wire:model.debounce.300ms="search" type="search" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search starships...">
         </div>
@@ -42,11 +42,15 @@
         </div>
     </div>
 
+    <div>
+        <a href="{{ route('starships.export_view') }}" class="appearance-none bg-red-500 text-white rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 lg:mr-16 float-right hover:no-underline hover:scale-105 transition ease-in-out delay-100 mb-4">Export Excel</a>
+    </div>
+
     <div class="tableWrapper">
         <table class="table-auto w-full mb-6 mt-6">
             <thead>
                 <tr>
-                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">#</th>
                     <th class="px-4 py-2">Name</th>
                     <th class="px-4 py-2">Model</th>
                     <th class="px-4 py-2">Manufacturer</th>
