@@ -18,7 +18,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8 p-4">
 
-                    <div class="bg-black text-white p-6">
+                    <div class="bg-white text-black p-6 outline outline-1 outline-gray-200">
                         <h2 class="text-xl font-bold mb-4">Total Number of Starships</h2>
                         <p class="text-xl">{{ $totalStarships }}</p>
                     </div>
