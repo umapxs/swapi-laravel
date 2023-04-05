@@ -38,7 +38,7 @@
     </div>
 
     <div>
-        <a href="{{ route('films.export') }}" class="appearance-none bg-red-500 text-white rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 lg:mr-16 float-right hover:no-underline hover:scale-105 transition ease-in-out delay-100 mb-4">Export Excel</a>
+        <a href="{{ route('films.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight lg:mr-16 float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4">Export Excel</a>
     </div>
 
     <div class="tableWrapper">
