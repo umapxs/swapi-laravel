@@ -29,6 +29,10 @@ Route::get('/table', function () {
     return view('tables.menu');
 })->middleware(['auth', 'verified'])->name('table');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::middleware('auth')->group(function () {
 
     // profile related
@@ -53,5 +57,8 @@ Route::middleware('auth')->group(function () {
 
 });
 
+// Excel Routes
+Route::get('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
+Route::get('starships/export_view', [StarshipsController::class, 'export_view'])->name('starships.export_view');
 
 require __DIR__.'/auth.php';
