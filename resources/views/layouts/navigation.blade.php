@@ -14,24 +14,24 @@
                 </svg>
             </button>
 
-            <a class="header-brand d-md-none" href="/home">
+            <a class="header-brand d-md-none" href="/fetch">
                 <h1 class="flex justify-center font-bold text-blackflex justify-center font-bold text-black
     ">Star Wars API</h1>
             </a>
 
             <ul class="header-nav d-none d-md-flex">
                 <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/home">Fetch
+                    <a class="nav-link" href="/dashboard">Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item hover:underline text-sm">
+                    <a class="nav-link" href="/fetch">Fetch
                     </a>
                 </li>
 
                 <li class="nav-item hover:underline text-sm">
                     <a class="nav-link" href="/table">Tables
-                    </a>
-                </li>
-
-                <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/dashboard">Dashboard
                     </a>
                 </li>
             </ul>

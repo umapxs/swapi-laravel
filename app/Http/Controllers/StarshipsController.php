@@ -88,7 +88,7 @@ class StarshipsController extends Controller
             $page++;
         } while ($nextPage !== null);
 
-        return redirect('/home')->with('success', 'Starships added to the database');
+        return redirect('/fetch')->with('success', 'Starships added to the database');
     }
 
     public function show()

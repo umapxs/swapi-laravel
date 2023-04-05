@@ -21,9 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+Route::get('/fetch', function () {
+    return view('fetch');
+})->middleware(['auth', 'verified'])->name('fetch');
 
 Route::get('/table', function () {
     return view('tables.menu');

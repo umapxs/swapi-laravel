@@ -54,7 +54,7 @@ class FilmsController extends Controller
                 $newFilm->save();
             }
         }
-        return redirect('/home')->with('success', 'Films added to the database');
+        return redirect('/fetch')->with('success', 'Films added to the database');
     }
 
     public function show()

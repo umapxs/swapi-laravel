@@ -97,7 +97,7 @@ class PeoplesController extends Controller
             $page++;
         } while ($nextPage !== null);
 
-        return redirect('/home')->with('success', 'Characters added to the database');
+        return redirect('/fetch')->with('success', 'Characters added to the database');
     }
 
     public function show()
