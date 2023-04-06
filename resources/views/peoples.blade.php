@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center mt-8">
-                    <a href="/peoples/store" class="text-decoration-none text-white bg-gray-800 hover:bg-red-500 focus:outline-none font-medium rounded text-sm px-16 py-4 text-center mt-4">Fetch to Database</a>
+                    <a href="/peoples/store" class="text-decoration-none text-white bg-gray-800 hover:bg-red-500 focus:outline-none font-medium rounded text-sm px-16 py-4 text-center mt-4 lg:mb-12">Fetch to Database</a>
                 </div>
         </div>
     </div>
