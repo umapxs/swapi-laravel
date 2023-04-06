@@ -50,13 +50,19 @@
                 #hamburguer {
                     visibility: visible;
                 }
-            }
 
-            @media screen and (max-width: 768px) {
                 header, #locationHover, .c-main, footer  {
                     margin-left: 0px;
                 }
+
             }
+
+            @media (min-width: 768px) {
+                .footer {
+                    width: calc(100% - 250px);
+                }
+            }
+
 
         </style>
 
@@ -138,7 +144,7 @@
 
             </main>
         </div>
-        <footer class="footer bg-white px-12 fixed bottom-0" style="width: calc(100% - 250px);">
+        <footer class="footer bg-white px-12 lg:fixed lg:bottom-0">
             <div class="flex justify-center text-sm"><a href="https://coreui.io" class="text-sm">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
             <div class="flex justify-start text-sm">Powered by&nbsp;<a href="https://coreui.io/docs/" class="lg;text-sm">CoreUI UI Components</a></div>
         </footer>
