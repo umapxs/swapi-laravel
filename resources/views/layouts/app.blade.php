@@ -105,7 +105,7 @@
                 {{-- <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button> --}}
             </div>
         </div>
-        <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        <div class="wrapper d-flex flex-column min-vh-100">
             @include('layouts.navigation')
         </div>
         <div>
@@ -138,7 +138,7 @@
 
             </main>
         </div>
-        <footer class="footer bg-white px-12">
+        <footer class="footer bg-white px-12 fixed bottom-0" style="width: calc(100% - 250px);">
             <div class="flex justify-center text-sm"><a href="https://coreui.io" class="text-sm">CoreUI Bootstrap Admin Template</a> © 2023 creativeLabs.</div>
             <div class="flex justify-start text-sm">Powered by&nbsp;<a href="https://coreui.io/docs/" class="lg;text-sm">CoreUI UI Components</a></div>
         </footer>
