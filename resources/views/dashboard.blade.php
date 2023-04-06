@@ -33,6 +33,27 @@
                     </div>
 
                 </div>
+
+                <div class="card-body">
+                    <div class="table-responsive p-2">
+                        <h1 class="text-2xl font-bold mb-4 mt-4">Top 10 Oldest Characters</h1>
+                        <table class="table border">
+                            <tbody>
+                                @foreach ($oldestPeople as $people)
+                                    <tr class="align-middle">
+                                        <td>
+                                            <div>{{ $people['name'] }}</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $people['birth_year'] }}</div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

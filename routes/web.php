@@ -37,10 +37,22 @@ Route::get('/dashboard', function () {
     $totalFilms = Film::count();
     $totalPeoples = People::count();
 
+    $people = People::where('birth_year', '!=', 'unknown')->get()->toArray();
+
+    usort($people, function($a, $b) {
+        $a_num = (int) str_replace(['BBY', 'ABY'], '', $a['birth_year']);
+        $b_num = (int) str_replace(['BBY', 'ABY'], '', $b['birth_year']);
+        return $a_num - $b_num;
+
+    });
+
+    $oldestPeople = array_reverse(array_slice($people, -10));
+
     $data = [
         'totalStarships' => $totalStarships,
         'totalFilms' => $totalFilms,
         'totalPeoples' => $totalPeoples,
+        'oldestPeople' => $oldestPeople,
     ];
 
     return view('dashboard')->with($data);
@@ -48,22 +60,22 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    // profile related
+    // Profile related
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // starship related
+    // Starship related
     Route::get('/starships', [StarshipsController::class, 'index'])->name('starships.index');
     Route::get('/starships/store', [StarshipsController::class, 'store'])->name('starships.store');
     Route::get('/table/starship',[StarshipsController::class, 'show'])->name('starships.show');
 
-    // people related
+    // People related
     Route::get('/peoples', [PeoplesController::class, 'index'])->name('peoples.index');
     Route::get('/peoples/store', [PeoplesController::class, 'store'])->name('peoples.store');
     Route::get('/table/people',[PeoplesController::class, 'show'])->name('peoples.show');
 
-    // film  related
+    // Film  related
     Route::get('/films', [FilmsController::class, 'index'])->name('films.index');
     Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
     Route::get('/table/film',[FilmsController::class, 'show'])->name('films.show');
