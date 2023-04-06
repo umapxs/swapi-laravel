@@ -87,4 +87,7 @@ Route::get('starships/export', [StarshipsController::class, 'export'])->name('st
 Route::get('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
 Route::get('films/export', [FilmsController::class, 'export'])->name('films.export');
 
+Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete-registration');
+
+
 require __DIR__.'/auth.php';
