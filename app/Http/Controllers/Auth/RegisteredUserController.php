@@ -62,41 +62,36 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
     public function store(Request $request)
+{
+    $data = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
+
+    $google2fa = app('pragmarx.google2fa');
+
+    $registration_data = $request->all();
+
+    $registration_data["google2fa_secret"] = $google2fa->generateSecretKey();
+
+    $request->session()->put('registration_data', $registration_data);
+
+    $QR_Image = $google2fa->getQRCodeInline(
+        config('app.name'),
+        $registration_data['email'],
+        $registration_data['google2fa_secret']
+    );
+
+    $secret = $registration_data['google2fa_secret'];
+
+    return view('auth.google2fa.register', compact('data', 'QR_Image', 'secret'));
+}
+
+    public function completeRegistration(Request $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $registration_data = $request->session()->get('registration_data');
 
-        $google2fa = app('pragmarx.google2fa');
-
-        $registration_data = $request->all();
-
-        $registration_data["google2fa_secret"] = $google2fa->generateSecretKey();
-
-        $request->session()->put('registration_data', $registration_data);
-
-        $QR_Image = $google2fa->getQRCodeInline(
-            config('app.name'),
-            $registration_data['email'],
-            $registration_data['google2fa_secret']
-        );
-
-        return view('auth.google2fa.register', [
-            'QR_Image' => $QR_Image,
-            'secret' => $registration_data['google2fa_secret'],
-            'registration_data' => $registration_data,
-        ]);
-    }
-
-    /**
-     * Complete the registration process.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function completeRegistration(Request $request, $registration_data): RedirectResponse
-    {
         $user =  User::create([
             'name' => $registration_data['name'],
             'email' => $registration_data['email'],
@@ -109,11 +104,5 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
-
-
-        // $request->merge(session('registration_data'));
-
-        // return $this->registration($request);
     }
-
 }
