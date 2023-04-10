@@ -87,7 +87,38 @@ Route::get('starships/export', [StarshipsController::class, 'export'])->name('st
 Route::get('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
 Route::get('films/export', [FilmsController::class, 'export'])->name('films.export');
 
-Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete-registration');
+Route::middleware(['2fa'])->group(function () {
 
+    Route::get('/dashboard', function () {
+    $totalStarships = Starship::count();
+    $totalFilms = Film::count();
+    $totalPeoples = People::count();
+
+    $people = People::where('birth_year', '!=', 'unknown')->get()->toArray();
+
+    usort($people, function($a, $b) {
+        $a_num = (int) str_replace(['BBY', 'ABY'], '', $a['birth_year']);
+        $b_num = (int) str_replace(['BBY', 'ABY'], '', $b['birth_year']);
+        return $a_num - $b_num;
+
+    });
+
+    $oldestPeople = array_reverse(array_slice($people, -10));
+
+    $data = [
+        'totalStarships' => $totalStarships,
+        'totalFilms' => $totalFilms,
+        'totalPeoples' => $totalPeoples,
+        'oldestPeople' => $oldestPeople,
+    ];
+
+    return view('dashboard')->with($data);
+})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::post('/2fa', function () {
+        return redirect(route('home'));
+    })->name('2fa');
+});
+
+Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete-registration');
 
 require __DIR__.'/auth.php';

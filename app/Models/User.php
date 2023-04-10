@@ -16,7 +16,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
@@ -28,32 +28,21 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
         'remember_token',
-        'google2fa_secret',
     ];
 
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'google2fa_secret' => $data['google2fa_secret'],
-        ]);
-    }
 
     public function setGoogle2faSecretAttribute($value)
     {
@@ -62,6 +51,10 @@ class User extends Authenticatable
 
     public function getGoogle2faSecretAttribute($value)
     {
+        if ($value === null) {
+            return null;
+        }
+
         return decrypt($value);
     }
 }

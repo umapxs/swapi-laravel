@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,96 +18,102 @@ use PragmaRX\Google2FA\Google2FA;
 
 class RegisteredUserController extends Controller
 {
+
+    use RegistersUsers {
+        register as registration;
+    }
+
     /**
-     * Display the registration view.
+     * Where to redirect users after registration.
+     *
+     * @var string
      */
-    public function create(): View
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(Request $request)
     {
         return view('auth.register');
     }
 
     /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * Display the registration view.
      */
-    public function register(Request $request)
+    public function store(Request $request)
     {
-        // validate the request
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Initialise the 2FA class
         $google2fa = app('pragmarx.google2fa');
 
-        // Save the registration data in an array
-        $registrationData = $request->all();
+        $registration_data = $request->all();
 
-        // Add the secret key to the registration data
-        $registrationData["google2fa_secret"] = $google2fa->generateSecretKey();
+        $registration_data["google2fa_secret"] = $google2fa->generateSecretKey();
 
-        // Save the registration data to the user session for just the next request
-        $request->session()->flash('registrationData', $registrationData);
+        $request->session()->put('registration_data', $registration_data);
 
-        // Generate the QR image. This is the image the user will scan with their app
-        // to set up two factor authentication
         $QR_Image = $google2fa->getQRCodeInline(
             config('app.name'),
-            $registrationData['email'],
-            $registrationData['google2fa_secret']
+            $registration_data['email'],
+            $registration_data['google2fa_secret']
         );
 
-        // Pass the QR barcode image to our view
-        return view('auth.google2fa.register', ['QR_Image' => $QR_Image, 'secret' => $registrationData['google2fa_secret']]);
-
-
+        return view('auth.google2fa.register', [
+            'QR_Image' => $QR_Image,
+            'secret' => $registration_data['google2fa_secret'],
+            'registration_data' => $registration_data,
+        ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    /**
+     * Complete the registration process.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function completeRegistration(Request $request, $registration_data): RedirectResponse
     {
-        // validate the request
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        $user =  User::create([
+            'name' => $registration_data['name'],
+            'email' => $registration_data['email'],
+            'password' => Hash::make($registration_data['password']),
+            'google2fa_secret' => $registration_data['google2fa_secret'],
         ]);
 
-        // create the user
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        event(new Registered($user));
 
-        // generate a secret key for the user
-        $google2fa = app('pragmarx.google2fa');
-        $secret = $google2fa->generateSecretKey();
-
-        // save the secret key for the user
-        $user->google2fa_secret = $secret;
-        $user->save();
-
-        // enable two-factor authentication for the user
-        $user->google2fa_enable = true;
-        $user->save();
-
-        // log in the user
         Auth::login($user);
 
-        // redirect the user to the home page
         return redirect(RouteServiceProvider::HOME);
-    }
 
-    public function completeRegistration(Request $request)
-    {
-        // add the session data back to the request input
-        $request->merge(session('registrationData'));
 
-        // Call the default laravel authentication
-        return $this->store($request);
+        // $request->merge(session('registration_data'));
+
+        // return $this->registration($request);
     }
 
 }
