@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-200" style="margin-top: 50px;">
+            <div class="p-4 sm:p-8 bg-white sm:rounded-lg outline outline-1 outline-offset-4 outline-gray-200 mb-4" style="margin-top: 50px;">
                 <div class="max-w-xl">
                     @include('profile.partials.delete-user-form')
                 </div>

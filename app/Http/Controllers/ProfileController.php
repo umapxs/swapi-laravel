@@ -57,4 +57,18 @@ class ProfileController extends Controller
 
         return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }
+
+    public function destroy2fa(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Your account has been deleted successfully.');
+    }
 }

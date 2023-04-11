@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::delete('/2fa', [ProfileController::class, 'destroy2fa'])->name('profile.destroy.2fa');
 
     // Starship related
     Route::get('/starships', [StarshipsController::class, 'index'])->name('starships.index');
@@ -120,6 +121,15 @@ Route::middleware(['2fa'])->group(function () {
     })->name('2fa');
 });
 
-Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete-registration');
+Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserController::class, 'completeRegistration'])
+    ->name('complete-registration');
+
+/**
+ *  Send 2FA to users email
+ *
+ */
+Route::post('/google2fa/send-code', [App\Http\Controllers\RegisteredUserController::class, 'sendGoogle2FACode'])->middleware(['auth', '2fa'])->name('sendGoogle2FACode');
+
+
 
 require __DIR__.'/auth.php';

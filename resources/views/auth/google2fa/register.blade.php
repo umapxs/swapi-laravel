@@ -13,13 +13,15 @@
                         <p class="mb-8">
                             Alternatively, you can use the code <strong>{{ $secret }}</strong>
                         </p>
-
-                        <p>
-                            You must set up your Google Authenticator app before continuing. You will be unable to login otherwise
-                        </p>
                         <div class="mt-8">
                             <a class="inline-flex items-center px-4 py-2 hover:bg-red-500 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900" href="/complete-registration">
                                 {{ __('Complete Registration') }}
+                            </a>
+                            <p class="mt-4">
+                                or
+                            </p>
+                            <a href="/" class="mt-4 hover:underline no-underline hover:cursor-pointer">
+                                <u>Cancel Login</u>
                             </a>
                         </div>
                     </div>
