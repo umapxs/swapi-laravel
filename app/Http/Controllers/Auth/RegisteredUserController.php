@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Mailable;
+use App\Mail\Google2FACode;
 use Illuminate\View\View;
 use PragmaRX\Google2FA\Google2FA;
 

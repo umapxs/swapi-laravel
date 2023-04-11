@@ -26,7 +26,7 @@
                                     <button type="submit" class="inline-flex px-10 py-2 hover:bg-red-500 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900">
                                         Login
                                     </button>
-                                    <form method="POST" action="{{ route('sendGoogle2FACode') }}">
+                                    <form method="POST" action="{{ route('google2fa.token') }}">
                                         @csrf
                                         <button  class="mt-4 inline-flex px-4 py-2 hover:bg-red-500 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900" type="button" id="send-google-2fa-code">Resend Email</button>
                                     </form>

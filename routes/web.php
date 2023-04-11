@@ -128,7 +128,9 @@ Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisteredUserCo
  *  Send 2FA to users email
  *
  */
-Route::post('/google2fa/send-code', [App\Http\Controllers\RegisteredUserController::class, 'sendGoogle2FACode'])->middleware(['auth', '2fa'])->name('sendGoogle2FACode');
+Route::get('/google2fa/token', [RegisteredUserController::class, 'sendGoogle2FACode'])
+    ->middleware(['auth', '2fa'])
+    ->name('google2fa.token');
 
 
 
