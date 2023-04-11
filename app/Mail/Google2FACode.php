@@ -14,13 +14,13 @@ class Google2FACode extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $code;
+    // public $email2fa;
     /**
      * Create a new message instance.
      */
-    public function __construct(string $code)
+    public function __construct(private $email2fa) // string $email2fa
     {
-        $this->code = $code;
+        // $this->email2fa = $email2fa;
     }
 
     /**
@@ -29,18 +29,8 @@ class Google2FACode extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Google2 F A Code',
+            subject: 'swapiProject 2FA',
         );
-    }
-
-    /**
-     * Get structure.
-     */
-    public function build(): self
-    {
-        return $this->view('emails.google2fa_code')
-            ->subject('Your Google Authenticator Code')
-            ->with('code', $this->code);
     }
 
 
@@ -50,7 +40,8 @@ class Google2FACode extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.google2fa_code',
+            with: ['email2fa' => $this->email2fa],
         );
     }
 
@@ -59,8 +50,8 @@ class Google2FACode extends Mailable
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments(): array
-    {
-        return [];
-    }
+    // public function attachments(): array
+    // {
+    //     return [];
+    // }
 }

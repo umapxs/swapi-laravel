@@ -7,7 +7,7 @@
                     <div style="text-align: center;">
                         <p class="mb-4">Please enter the <strong>OTP</strong> generated on your Authenticator App</p>
                         <p class="mb-4">
-                            Alternatively, an email can be sent to you with the <strong>current OTP</strong>
+                            Alternatively, an email has been sent to you with the <strong>current OTP</strong>
                         </p>
 
                         <div class="panel-body">
@@ -27,9 +27,9 @@
                                     <button type="submit" class="inline-flex px-10 py-2 hover:bg-red-500 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900" id="sendConclusion">
                                         Login
                                     </button>
-                                    <form method="POST" action="{{ route('2fa.token') }}">
+                                    <form method="POST" action="{{ route('google2fa.token') }}">
                                         @csrf
-                                        <a  class="mt-4 inline-flex px-4 py-2 hover:bg-red-500 bg-gray-800 hover:cursor-pointer border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900" id="send-google-2fa-code">Resend Email</a>
+                                        <button  class="mt-4 inline-flex px-4 py-2 hover:bg-red-500 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:bg-gray-900 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition ease-in-out duration-150 hover:bg-gray-900" type="submit" id="send-google-2fa-code">Resend Email</button>
                                     </form>
                                 </div>
                             </form>

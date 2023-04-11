@@ -104,14 +104,14 @@ class RegisteredUserController extends Controller
     public function sendGoogle2FACode(Request $request): RedirectResponse
     {
         $registration_data = $request->session()->get('registration_data');
-        $secret = $request->session()->get('secret');
+        $secret = $registration_data['google2fa_secret'];
         $email = $registration_data['email'];
 
         $google2fa = new Google2FA();
-        $code = $google2fa->getCurrentOtp($secret);
-        // $code = $google2fa->getCurrentOtp($user->google2fa_secret);
+        $email2fa = $google2fa->getCurrentOtp($secret);
+        // $email2fa = $google2fa->getCurrentOtp($user->google2fa_secret);
 
-        Mail::to($email)->send(new Google2FACode($code));
+        Mail::to($email)->send(new Google2FACode($email2fa));
 
         return redirect()->route('google2fa.token');
     }

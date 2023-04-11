@@ -1,2 +1,3 @@
 <p>Your Google Authenticator code is:</p>
-<h2>{{ $code }}</h2>
+<h2>{{ $email2fa }}</h2>
+swapiProject
