@@ -43,10 +43,13 @@
     </div>
 
     <div>
-        <a href="{{ route('starships.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight lg:mr-16 float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4">Export Excel</a>
+        <a href="{{ route('starships.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4 lg:mr-16">Export Excel</a>
     </div>
     <div>
-        <a href="/starships/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight lg:ml-16 float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Fetch Data</a>
+        <a href="/starships/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4 lg:ml-16">Fetch Data</a>
+    </div>
+    <div>
+        <a href="#" class="bg-gray-900 text-white rounded py-3 px-4 lg:ml-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Insert</a>
     </div>
 
     <div class="tableWrapper">
@@ -69,7 +72,11 @@
                 @foreach($starships as $starship)
                     <tr>
                         <td class="border px-4 py-2">{{ $starship->id }}</td>
-                        <td class="border px-4 py-2">{{ $starship->name }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{{ route('starships.show', $starship->id) }}" class="underline text-blue-600 hover:text-blue-900">
+                                {{ $starship->name }}
+                            </a>
+                        </td>
                         <td class="border px-4 py-2">{{ $starship->model }}</td>
                         <td class="border px-4 py-2">{{ $starship->manufacturer }}</td>
                         <td class="border px-4 py-2">{{ $starship->max_atmosphering_speed }}</td>
@@ -78,6 +85,12 @@
                         <td class="border px-4 py-2">{{ $starship->starship_class }}</td>
                         <td class="border px-4 py-2">{{ str_replace('"', '', $starship->pilots); }}</td>
                         <td class="border px-4 py-2">{{ str_replace('"', '', $starship->films); }}</td>
+                        <td class="px-2">
+                            <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
+                        </td>
+                        <td class="px-2">
+                            <a href="#" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

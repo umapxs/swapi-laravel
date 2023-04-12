@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class FilmsController extends Controller
 {
-    public function index()
+    public function default()
     {
         $filmData = Cache::remember('films', now()->addDay(1), function () {
             return Http::get('https://swapi.dev/api/films/')->json();
@@ -59,10 +59,17 @@ class FilmsController extends Controller
         return redirect('/dashboard')->with('success', 'Films added to the database');
     }
 
-    public function show()
+    public function index()
     {
         return view('tables.film-table');
     }
+
+    public function show($id)
+    {
+        $film = Film::findOrFail($id);
+        return view('films.show', compact('film'));
+    }
+
 
     public function export()
     {

@@ -43,6 +43,9 @@
     <div>
         <a href="/peoples/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight lg:ml-16 float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Fetch Data</a>
     </div>
+    <div>
+        <a href="#" class="bg-gray-900 text-white rounded py-3 px-4 lg:ml-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Insert</a>
+    </div>
 
     <div class="tableWrapper">
         <table class="table-auto w-full mb-6 mt-6">
@@ -63,7 +66,11 @@
                 @foreach($peoples as $people)
                     <tr>
                         <td class="border px-4 py-2">{{ $people->id }}</td>
-                        <td class="border px-4 py-2">{{ $people->name }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{{ route('peoples.show', $people->id) }}" class="underline text-blue-600 hover:text-blue-900">
+                                {{ $people->name }}
+                            </a>
+                        </td>
                         <td class="border px-4 py-2">{{ $people->height }}</td>
                         <td class="border px-4 py-2">{{ $people->mass }}</td>
                         <td class="border px-4 py-2">{{ $people->hair_color }}</td>
@@ -71,8 +78,12 @@
                         <td class="border px-4 py-2">{{ $people->eye_color }}</td>
                         <td class="border px-4 py-2">{{ $people->birth_year }}</td>
                         <td class="border px-4 py-2">{{ $people->gender }}</td>
-                        {{-- <td class="border px-4 py-2">{{ str_replace('"', '', $people->pilots); }}</td>
-                        <td class="border px-4 py-2">{{ str_replace('"', '', $people->films); }}</td> --}}
+                        <td class="px-2">
+                            <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
+                        </td>
+                        <td class="px-2">
+                            <a href="#" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -12,7 +12,7 @@ use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
 {
-    public function index()
+    public function default()
     {
         $allStarshipData = cache()->remember('starships.all',now()->addDays(1), function() {
             return $this->getAllStarshipData();
@@ -90,9 +90,15 @@ class StarshipsController extends Controller
         return redirect('/dashboard')->with('success', 'Starships added to the database');
     }
 
-    public function show()
+    public function index()
     {
         return view('tables.starship-table');
+    }
+
+    public function show($id)
+    {
+        $starship = Starship::findOrFail($id);
+        return view('starships.show', compact('starship'));
     }
 
     private function getAllStarshipData()

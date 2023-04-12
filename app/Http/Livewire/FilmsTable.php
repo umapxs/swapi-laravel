@@ -15,12 +15,22 @@ class FilmsTable extends Component
     public $orderBy = 'id';
     public $orderAsc = true;
 
+    // public function render()
+    // {
+    //     return view('livewire.films-table', [
+    //         'films' => Film::search($this->search)
+    //             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+    //             ->simplePaginate($this->perPage),
+    //     ]);
+    // }
     public function render()
     {
-        return view('livewire.films-table', [
-            'films' => Film::search($this->search)
-                ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-                ->simplePaginate($this->perPage),
-        ]);
+        $films = Film::query()
+            ->when($this->search, function ($query, $search) {
+                return $query->where('title', 'like', '%' . $search . '%');
+            })
+            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
+        return view('livewire.films-table', compact('films'))->extends('layouts.app');
     }
 }

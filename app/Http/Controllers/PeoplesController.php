@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PeoplesController extends Controller
 {
-    public function index()
+    public function default()
     {
         $cacheKey = 'allPeopleData';
 
@@ -102,9 +102,15 @@ class PeoplesController extends Controller
         return redirect('/dashboard')->with('success', 'Characters added to the database');
     }
 
-    public function show()
+    public function index()
     {
         return view('tables.people-table');
+    }
+
+    public function show($id)
+    {
+        $people = People::findOrFail($id);
+        return view('peoples.show', compact('people'));
     }
 
     public function export()

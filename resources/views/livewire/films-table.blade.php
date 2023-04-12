@@ -18,7 +18,7 @@
                 <option value="episode_id">Episode</option>
                 <option value="director">Director</option>
                 <option value="producer">Producer</option>
-                <option value="release_date">Release Date</option>
+                <option value="release_date">Date</option>
             </select>
         </div>
         <div class="mb-4">
@@ -38,10 +38,13 @@
     </div>
 
     <div>
-        <a href="{{ route('films.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight lg:mr-16 float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4">Export Excel</a>
+        <a href="{{ route('films.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4 lg:mr-16">Export Excel</a>
     </div>
     <div>
-        <a href="/films/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight lg:ml-16 float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Fetch Data</a>
+        <a href="/films/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight  float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4 lg:ml-16">Fetch Data</a>
+    </div>
+    <div>
+        <a href="#" class="bg-gray-900 text-white rounded py-3 px-4 lg:ml-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Insert</a>
     </div>
 
     <div class="tableWrapper">
@@ -53,18 +56,28 @@
                     <th class="px-4 py-2">Episode</th>
                     <th class="px-4 py-2">Director/s</th>
                     <th class="px-4 py-2">Producer/s</th>
-                    <th class="px-4 py-2">Release Date</th>
+                    <th class="px-4 py-2">Date</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($films as $film)
                     <tr>
                         <td class="border px-4 py-2">{{ $film->id }}</td>
-                        <td class="border px-4 py-2">{{ $film->title }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{{ route('films.show', $film->id) }}" class="underline text-blue-600 hover:text-blue-900">
+                                {{ $film->title }}
+                            </a>
+                        </td>
                         <td class="border px-4 py-2">{{ $film->episode_id }}</td>
                         <td class="border px-4 py-2">{{ $film->director }}</td>
                         <td class="border px-4 py-2">{{ $film->producer }}</td>
                         <td class="border px-4 py-2">{{ $film->release_date }}</td>
+                        <td class="px-2">
+                            <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
+                        </td>
+                        <td class="px-2">
+                            <a href="#" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
