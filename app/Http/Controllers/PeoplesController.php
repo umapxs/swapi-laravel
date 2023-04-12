@@ -113,6 +113,14 @@ class PeoplesController extends Controller
         return view('peoples.show', compact('people'));
     }
 
+    public function destroy($id)
+    {
+        $people = People::findOrFail($id);
+        $people->delete();
+
+        return redirect()->route('peoples.index');
+    }
+
     public function export()
     {
         return Excel::download(new PeoplesExport, 'characters.xlsx');

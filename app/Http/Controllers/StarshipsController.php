@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use App\Models\Starship;
 use App\Exports\StarshipsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
@@ -99,6 +100,21 @@ class StarshipsController extends Controller
     {
         $starship = Starship::findOrFail($id);
         return view('starships.show', compact('starship'));
+    }
+
+    public function destroy($id)
+    {
+        $starship = Starship::findOrFail($id);
+
+        // Set the foreign key references to null
+        DB::table('people_starships_films')
+            ->where('starships_id', $id)
+            ->update(['starships_id' => null]);
+
+        // Delete the starship
+        $starship->delete();
+
+        return redirect()->route('starships.index');
     }
 
     private function getAllStarshipData()

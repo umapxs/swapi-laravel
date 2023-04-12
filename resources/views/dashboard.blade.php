@@ -42,7 +42,11 @@
                                 @foreach ($oldestPeople as $people)
                                     <tr class="align-middle">
                                         <td>
-                                            <div>{{ $people['name'] }}</div>
+                                            <div>
+                                                <a href="{{ route('peoples.show', $people['id']) }}">
+                                                    {{ $people['name'] }}
+                                                </a>
+                                            </div>
                                         </td>
                                         <td>
                                             <div>{{ $people['birth_year'] }}</div>

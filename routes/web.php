@@ -71,18 +71,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/starships/store', [StarshipsController::class, 'store'])->name('starships.store');
     Route::get('/table/starship',[StarshipsController::class, 'index'])->name('starships.index');
     Route::get('/starships/{starship:id}',[StarshipsController::class, 'show'])->name('starships.show');
+    Route::delete('/starships/{id}', [StarshipsController::class, 'destroy'])->name('starships.destroy');
 
     // People related
     Route::get('/peoples', [PeoplesController::class, 'default'])->name('peoples.default');
     Route::get('/peoples/store', [PeoplesController::class, 'store'])->name('peoples.store');
     Route::get('/table/people',[PeoplesController::class, 'index'])->name('peoples.index');
     Route::get('/peoples/{people:id}',[PeoplesController::class, 'show'])->name('peoples.show');
+    Route::delete('/peoples/{id}', [PeoplesController::class, 'destroy'])->name('peoples.destroy');
 
     // Film  related
     Route::get('/films', [FilmsController::class, 'default'])->name('films.default');
     Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
     Route::get('/table/film',[FilmsController::class, 'index'])->name('films.index');
     Route::get('/films/{film:id}',[FilmsController::class, 'show'])->name('films.show');
+    Route::delete('/films/{id}', [FilmsController::class, 'destroy'])->name('films.destroy');
 
 });
 

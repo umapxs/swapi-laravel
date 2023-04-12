@@ -69,7 +69,7 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $film->id }}</td>
                         <td class="border px-4 py-2">
-                            <a href="{{ route('films.show', $film->id) }}" class="underline text-blue-600 hover:text-blue-900">
+                            <a href="{{ route('films.show', $film->id) }}" class="hover:underline hover:text-red-600">
                                 {{ $film->title }}
                             </a>
                         </td>
@@ -81,7 +81,16 @@
                             <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
                         </td>
                         <td class="px-2">
-                            <a href="#" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Delete</a>
+                            <a href="{{ route('films.destroy', $film->id) }}"
+                                class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100"
+                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $film->id }}').submit();"
+                                >
+                                Delete
+                            </a>
+                            <form id="delete-form-{{ $film->id }}" action="{{ route('films.destroy', $film->id) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -70,6 +70,13 @@ class FilmsController extends Controller
         return view('films.show', compact('film'));
     }
 
+    public function destroy($id)
+    {
+        $film = Film::findOrFail($id);
+        $film->delete();
+
+        return redirect()->route('films.index');
+    }
 
     public function export()
     {
