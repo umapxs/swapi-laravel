@@ -81,12 +81,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
     Route::get('/table/film',[FilmsController::class, 'show'])->name('films.show');
 
+    // Excel Routes
+    Route::get('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
+    Route::get('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
+    Route::get('films/export', [FilmsController::class, 'export'])->name('films.export');
 });
 
-// Excel Routes
-Route::get('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
-Route::get('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
-Route::get('films/export', [FilmsController::class, 'export'])->name('films.export');
 
 Route::middleware(['2fa'])->group(function () {
 
