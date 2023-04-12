@@ -5,7 +5,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .tableWrapper {
-            overflow:hidden;
+            overflow-x:auto;
             overflow-x: scroll;
             width: 100%;
         }

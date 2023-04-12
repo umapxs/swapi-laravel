@@ -1,7 +1,7 @@
 <div>
     <style>
         .tableWrapper {
-            overflow:hidden;
+            overflow-x:auto;
             overflow-x: scroll;
             width: 100%;
         }
