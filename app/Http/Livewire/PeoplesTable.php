@@ -17,10 +17,12 @@ class PeoplesTable extends Component
 
     public function render()
     {
-        return view('livewire.peoples-table', [
-            'peoples' => People::search($this->search)
-                ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-                ->simplePaginate($this->perPage),
-        ]);
+        $peoples = People::query()
+            ->when($this->search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
+        return view('livewire.peoples-table', compact('peoples'))->extends('layouts.app');
     }
 }

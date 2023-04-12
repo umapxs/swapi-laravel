@@ -45,7 +45,6 @@
             </button>
         </form>
     </div>
-    </div>
     <div>
         <a href="/peoples/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight lg:ml-16 float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Fetch Data</a>
     </div>

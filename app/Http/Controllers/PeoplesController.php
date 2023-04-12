@@ -99,7 +99,7 @@ class PeoplesController extends Controller
             $page++;
         } while ($nextPage !== null);
 
-        return redirect('/dashboard')->with('success', 'Characters added to the database');
+        return redirect('/table/peoples')->with('success', 'Characters added to the database');
     }
 
     public function index()
