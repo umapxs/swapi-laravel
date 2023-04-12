@@ -38,7 +38,12 @@
     </div>
 
     <div>
-        <a href="{{ route('films.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4 lg:mr-16">Export Excel</a>
+        <form action="{{ route('films.export') }}" method="POST">
+            @csrf
+            <button type="submit" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4 lg:mr-16">
+                Export Excel
+            </button>
+        </form>
     </div>
     <div>
         <a href="/films/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight  float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4 lg:ml-16">Fetch Data</a>

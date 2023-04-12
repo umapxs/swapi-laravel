@@ -38,7 +38,13 @@
     </div>
 
     <div>
-        <a href="{{ route('peoples.export') }}" class="bg-red-500 text-white rounded py-3 px-4 leading-tight lg:mr-16 float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4">Export Excel</a>
+        <form action="{{ route('peoples.export') }}" method="POST">
+            @csrf
+            <button type="submit" class="bg-red-500 text-white rounded py-3 px-4 leading-tight float-right hover:no-underline hover:bg-red-400 transition ease-in-out delay-100 mb-4 lg:mr-16">
+                Export Excel
+            </button>
+        </form>
+    </div>
     </div>
     <div>
         <a href="/peoples/store" class="bg-gray-900 text-white rounded py-3 px-4 leading-tight lg:ml-16 float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Fetch Data</a>
