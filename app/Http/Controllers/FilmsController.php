@@ -77,6 +77,11 @@ class FilmsController extends Controller
         return view('films.create');
     }
 
+    public function edit()
+    {
+        return view('films.edit');
+    }
+
     public function storeCreate(Request $request)
     {
         // Validate the incoming data

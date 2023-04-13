@@ -117,7 +117,7 @@
                         <td class="border px-4 py-2">{{ $film->producer }}</td>
                         <td class="border px-4 py-2">{{ $film->release_date }}</td>
                         <td class="px-2">
-                            <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
+                            <a href="{{ route('films.edit', $film->id) }}" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
                         </td>
                         <td class="px-2">
                             <a href="{{ route('films.destroy', $film->id) }}"

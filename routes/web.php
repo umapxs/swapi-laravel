@@ -91,7 +91,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/table/film',[FilmsController::class, 'index'])->name('films.index');
     Route::get('/films/{film:id}',[FilmsController::class, 'show'])->name('films.show');
     Route::delete('/films/{id}', [FilmsController::class, 'destroy'])->name('films.destroy');
+    Route::patch('/films/storeCreate', [FilmsController::class, 'storeCreate'])->name('films.storeCreate');
     Route::post('/films/storeCreate', [FilmsController::class, 'storeCreate'])->name('films.storeCreate');
+    Route::get('/films/edit/{film:id}', [FilmsController::class, 'edit'])->name('films.edit');
 
 });
 
