@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 use App\Models\Starship;
+use App\Models\People;
+use App\Models\Film;
 use App\Exports\StarshipsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
@@ -100,6 +102,59 @@ class StarshipsController extends Controller
     {
         $starship = Starship::findOrFail($id);
         return view('starships.show', compact('starship'));
+    }
+
+    public function create()
+    {
+        $peoples = People::all('id', 'name');
+        $films = Film::all('id', 'title');
+
+        return view('starships.create', compact('peoples', 'films'));
+    }
+
+    public function storeCreate(Request $request)
+    {
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'model' => 'required|max:255',
+            'manufacturer' => 'required|max:255',
+            'max_atmosphering_speed' => 'required|integer|min:1',
+            'crew' => 'required|integer|min:1',
+            'passengers' => 'required|integer|min:1',
+            'starship_class' => 'required|max:255',
+            'pilots' => 'nullable|array',
+            'pilots.*' => 'integer|min:1',
+            'films' => 'nullable|array',
+            'films.*' => 'integer|min:1',
+        ]);
+
+        // Create a new Film model instance and fill it with the validated data
+        $starship = new Starship($validatedData);
+        $starship->name = $validatedData['name'];
+        $starship->model = $validatedData['model'];
+        $starship->manufacturer = $validatedData['manufacturer'];
+        $starship->max_atmosphering_speed = $validatedData['max_atmosphering_speed'];
+        $starship->crew = $validatedData['crew'];
+        $starship->passengers = $validatedData['passengers'];
+        $starship->starship_class = $validatedData['starship_class'];
+        $starship->pilots = json_encode($validatedData['pilots']);
+        $starship->films = json_encode($validatedData['films']);
+
+        // Save the new record to the database
+        $starship->save();
+
+        // Retrieve characters from the database
+        //$characters = DB::table('characters')->get();
+
+        // Retrieve films from the database
+        //$films = DB::table('films')->get();
+
+        // Redirect the user to a confirmation page or back to the list view
+        return redirect()->route('starships.index')
+            ->with('success', 'Starship created successfully');
+            //->with('characters', $characters)
+            //->with('films', $films);
     }
 
     public function destroy($id)

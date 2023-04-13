@@ -67,25 +67,31 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/2fa', [ProfileController::class, 'destroy2fa'])->name('profile.destroy.2fa');
 
     // Starship related
+    Route::get('/starships/create', [StarshipsController::class, 'create'])->name('starships.create');
     Route::get('/starships', [StarshipsController::class, 'default'])->name('starships.default');
     Route::get('/starships/store', [StarshipsController::class, 'store'])->name('starships.store');
     Route::get('/table/starship',[StarshipsController::class, 'index'])->name('starships.index');
     Route::get('/starships/{starship:id}',[StarshipsController::class, 'show'])->name('starships.show');
     Route::delete('/starships/{id}', [StarshipsController::class, 'destroy'])->name('starships.destroy');
+    Route::post('/starships/storeCreate', [StarshipsController::class, 'storeCreate'])->name('starships.storeCreate');
 
     // People related
+    Route::get('/peoples/create', [PeoplesController::class, 'create'])->name('peoples.create');
     Route::get('/peoples', [PeoplesController::class, 'default'])->name('peoples.default');
     Route::get('/peoples/store', [PeoplesController::class, 'store'])->name('peoples.store');
     Route::get('/table/people',[PeoplesController::class, 'index'])->name('peoples.index');
     Route::get('/peoples/{people:id}',[PeoplesController::class, 'show'])->name('peoples.show');
     Route::delete('/peoples/{id}', [PeoplesController::class, 'destroy'])->name('peoples.destroy');
+    Route::post('/peoples/storeCreate', [PeoplesController::class, 'storeCreate'])->name('peoples.storeCreate');
 
     // Film  related
+    Route::get('/films/create', [FilmsController::class, 'create'])->name('films.create');
     Route::get('/films', [FilmsController::class, 'default'])->name('films.default');
     Route::get('/films/store', [FilmsController::class, 'store'])->name('films.store');
     Route::get('/table/film',[FilmsController::class, 'index'])->name('films.index');
     Route::get('/films/{film:id}',[FilmsController::class, 'show'])->name('films.show');
     Route::delete('/films/{id}', [FilmsController::class, 'destroy'])->name('films.destroy');
+    Route::post('/films/storeCreate', [FilmsController::class, 'storeCreate'])->name('films.storeCreate');
 
 });
 

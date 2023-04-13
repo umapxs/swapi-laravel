@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('people_starships_films', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('people_id')->constrained();
+            //$table->foreignId('people_id')->constrained();
+            $table->unsignedBigInteger('people_id')->nullable();
             $table->foreignId('starships_id')->nullable()->constrained();
             $table->foreignId('films_id')->nullable()->constrained();
             $table->timestamps();

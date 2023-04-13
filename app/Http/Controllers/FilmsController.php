@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\Film;
 use App\Exports\FilmsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Validation\ValidationException;
+
 
 class FilmsController extends Controller
 {
@@ -68,6 +70,38 @@ class FilmsController extends Controller
     {
         $film = Film::findOrFail($id);
         return view('films.show', compact('film'));
+    }
+
+    public function create()
+    {
+        return view('films.create');
+    }
+
+    public function storeCreate(Request $request)
+    {
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'episode_id' => 'required|integer|min:1|unique:films',
+            'director' => 'required|max:255',
+            'producer' => 'required|max:255',
+            'release_date' => 'required|date|date_format:Y-m-d',
+        ]);
+
+        // Create a new Film model instance and fill it with the validated data
+        $film = new Film();
+        $film->title = $validatedData['title'];
+        $film->episode_id = $validatedData['episode_id'];
+        $film->director = $validatedData['director'];
+        $film->producer = $validatedData['producer'];
+        $film->release_date = $validatedData['release_date'];
+        $film->opening_crawl = '';
+
+        // Save the new record to the database
+        $film->save();
+
+        // Redirect the user to a confirmation page or back to the list view
+        return redirect()->route('films.index')->with('success', 'Film created successfully');
     }
 
     public function destroy($id)

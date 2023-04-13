@@ -9,6 +9,7 @@ use App\Models\Film;
 use App\Models\Starship;
 use App\Exports\PeoplesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class PeoplesController extends Controller
 {
@@ -62,12 +63,12 @@ class PeoplesController extends Controller
                     $newPeople->name = $people['name'];
                     $newPeople->height = $people['height'];
                     $newPeople->mass = $people['mass'];
-                    $newPeople->hair_color = $people['hair_color'];
-                    $newPeople->skin_color = $people['skin_color'];
-                    $newPeople->eye_color = $people['eye_color'];
+                    $newPeople->hair_color = ucwords($people['hair_color']);
+                    $newPeople->skin_color = ucwords($people['skin_color']);
+                    $newPeople->eye_color = ucwords($people['eye_color']);
                     $newPeople->birth_year = $people['birth_year'];
-                    $newPeople->gender = $people['gender'];
-                    $newPeople->homeworld = $people['homeworld'];
+                    $newPeople->gender = ucwords($people['gender']);
+                    $newPeople->homeworld = ucwords($people['homeworld']);
                     $newPeople->films = $filmsJson;
                     $newPeople->species = $speciesJson;
                     $newPeople->vehicles = $vehiclesJson;
@@ -113,9 +114,44 @@ class PeoplesController extends Controller
         return view('peoples.show', compact('people'));
     }
 
+    public function create()
+    {
+        return view('peoples.create');
+    }
+
+    public function storeCreate(Request $request)
+    {
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'height' => 'required|integer|min:1',
+            'mass' => 'required|integer|min:1',
+            'hair_color' => 'required|max:255',
+            'skin_color' => 'required|max:255',
+            'eye_color' => 'required|max:255',
+            'birth_year' => 'required|max:255',
+            'gender' => 'required|max:255',
+        ]);
+
+        // Create a new Film model instance and fill it with the validated data
+        $people = new People($validatedData);
+        $people->name = $validatedData['name'];
+
+        // Save the new record to the database
+        $people->save();
+
+        // Redirect the user to a confirmation page or back to the list view
+        return redirect()->route('peoples.index')->with('success', 'Character created successfully');
+    }
+
     public function destroy($id)
     {
         $people = People::findOrFail($id);
+
+        DB::table('people_starships_films')
+            ->where('people_id', $id)
+            ->update(['people_id' => null]);
+
         $people->delete();
 
         return redirect()->route('peoples.index');
