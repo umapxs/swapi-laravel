@@ -10,38 +10,39 @@
     <div class="container mx-auto">
         <div class="py-12">
             <div class="bg-white p-12 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
-                <form method="POST" action="{{ route('films.storeCreate') }}">
+                <form method="POST" action="{{ route('films.update', $film->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="lg:grid lg:grid-cols-2 lg:gap-4">
                         <div class="mb-4">
                             <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" placeholder="Enter the film title" value="{{ old('title') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" placeholder="Enter the film title" value="{{ $film->title }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="episode_id">
                                 Episode #:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="episode_id" name="episode_id" type="number" placeholder="Enter the episode number" value="{{ old('episode_id') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="episode_id" name="episode_id" type="number" placeholder="Enter the episode number" value="{{ $film->episode_id }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="director">
                                 Director:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="director" name="director" type="text" placeholder="Enter the director" value="{{ old('director') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="director" name="director" type="text" placeholder="Enter the director" value="{{ $film->director }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="producer">
                                 Producer:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="producer" name="producer" type="text" placeholder="Enter the producer" value="{{ old('producer') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="producer" name="producer" type="text" placeholder="Enter the producer" value="{{ $film->producer }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="datepicker">Release Date (YYYY-MM-DD):</label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="datepicker" name="release_date" placeholder="Enter the release date" value="{{ old('release_date') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="datepicker" name="release_date" placeholder="Enter the release date" value="{{ $film->release_date }}" required>
                         </div>
 
                         <div>

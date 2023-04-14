@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight ml-10">
-            {{ __('Add a new Starship') }}
+            {{ __('Edit Starship') }}
         </h2>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -10,54 +10,55 @@
     <div class="container mx-auto">
         <div class="py-12">
             <div class="bg-white p-12 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
-                <form method="POST" action="{{ route('starships.storeCreate') }}">
+                <form method="POST" action="{{ route('starships.update', $starship->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="lg:grid lg:grid-cols-2 lg:gap-4">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name" placeholder="Enter the starship's name" value="{{ old('name') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name" placeholder="Enter the starship's name" value="{{ $starship->name }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="model">
                                 Model:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="model" name="model" type="text" placeholder="Enter the starship's model" value="{{ old('model') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="model" name="model" type="text" placeholder="Enter the starship's model" value="{{ $starship->model }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="manufacturer">
                                 Manufacturer:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="manufacturer" name="manufacturer" type="text" placeholder="Enter the starship's manufacturer" value="{{ old('manufacturer') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="manufacturer" name="manufacturer" type="text" placeholder="Enter the starship's manufacturer" value="{{ $starship->manufacturer }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="max_atmosphering_speed">
                                 Max Speed:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="max_atmosphering_speed" name="max_atmosphering_speed" type="number" placeholder="Enter the starship's max atmosphering speed" value="{{ old('max_atmosphering_speed') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="max_atmosphering_speed" name="max_atmosphering_speed" type="number" placeholder="Enter the starship's max atmosphering speed" value="{{ $starship->max_atmosphering_speed }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="crew">
                                 Crew:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="crew" name="crew" type="number" placeholder="Enter the starship's crew size" value="{{ old('crew') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="crew" name="crew" type="number" placeholder="Enter the starship's crew size" value="{{ $starship->crew }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="passengers">
                                 Passengers:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passengers" name="passengers" type="number" placeholder="Enter the number of passengers" value="{{ old('passengers') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passengers" name="passengers" type="number" placeholder="Enter the number of passengers" value="{{ $starship->passengers }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="starship_class">
                                 Starship Class:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="starship_class" name="starship_class" type="text" placeholder="Enter the starship class" value="{{ old('starship_class') }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="starship_class" name="starship_class" type="text" placeholder="Enter the starship class" value="{{ $starship->starship_class }}" required>
                         </div>
 
                     <div>
@@ -74,9 +75,9 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div> --}}
+                    </div>
 
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="films">Films</label>
                         <select name="films[]" id="films" class="form-control" multiple>
                             @foreach($films as $film)

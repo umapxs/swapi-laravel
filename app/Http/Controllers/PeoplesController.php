@@ -60,7 +60,7 @@ class PeoplesController extends Controller
                     $starshipsJson = json_encode($people['starships']);
                     // save the character data to the database
                     $newPeople = new People;
-                    $newPeople->name = $people['name'];
+                    $newPeople->name = ucwords($people['name']);
                     $newPeople->height = $people['height'];
                     $newPeople->mass = $people['mass'];
                     $newPeople->hair_color = ucwords($people['hair_color']);
@@ -117,6 +117,28 @@ class PeoplesController extends Controller
     public function create()
     {
         return view('peoples.create');
+    }
+
+    public function edit($id)
+    {
+        $people = People::findOrFail($id);
+        return view('peoples.edit', compact('people'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $people = People::findOrFail($id);
+        $people->name = $request->input('name');
+        $people->height = $request->input('height');
+        $people->mass = $request->input('mass');
+        $people->hair_color = $request->input('hair_color');
+        $people->skin_color = $request->input('skin_color');
+        $people->eye_color = $request->input('eye_color');
+        $people->birth_year = $request->input('birth_year');
+        $people->gender = $request->input('gender');
+        $people->save();
+
+        return redirect('/table/people')->with('success', 'Character edited successfully');
     }
 
     public function storeCreate(Request $request)

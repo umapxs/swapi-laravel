@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/starships/{starship:id}',[StarshipsController::class, 'show'])->name('starships.show');
     Route::delete('/starships/{id}', [StarshipsController::class, 'destroy'])->name('starships.destroy');
     Route::post('/starships/storeCreate', [StarshipsController::class, 'storeCreate'])->name('starships.storeCreate');
+    Route::get('/starships/edit/{people:id}', [StarshipsController::class, 'edit'])->name('starships.edit');
+    Route::put('/starships/{id}', [StarshipsController::class, 'update'])->name('starships.update');
 
     // People related
     Route::get('/peoples/create', [PeoplesController::class, 'create'])->name('peoples.create');
@@ -83,6 +85,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/peoples/{people:id}',[PeoplesController::class, 'show'])->name('peoples.show');
     Route::delete('/peoples/{id}', [PeoplesController::class, 'destroy'])->name('peoples.destroy');
     Route::post('/peoples/storeCreate', [PeoplesController::class, 'storeCreate'])->name('peoples.storeCreate');
+    Route::get('/peoples/edit/{people:id}', [PeoplesController::class, 'edit'])->name('peoples.edit');
+    Route::put('/peoples/{id}', [PeoplesController::class, 'update'])->name('peoples.update');
 
     // Film  related
     Route::get('/films/create', [FilmsController::class, 'create'])->name('films.create');
@@ -94,6 +98,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/films/storeCreate', [FilmsController::class, 'storeCreate'])->name('films.storeCreate');
     Route::post('/films/storeCreate', [FilmsController::class, 'storeCreate'])->name('films.storeCreate');
     Route::get('/films/edit/{film:id}', [FilmsController::class, 'edit'])->name('films.edit');
+    Route::put('/films/{id}', [FilmsController::class, 'update'])->name('films.update');
 
 });
 

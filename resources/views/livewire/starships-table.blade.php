@@ -67,10 +67,10 @@
                     <th class="px-4 py-2">Manufacturer</th>
                     <th class="px-4 py-2">M. Speed</th>
                     <th class="px-4 py-2">Crew</th>
-                    <th class="px-4 py-2">Pasengers</th>
+                    <th class="px-4 py-2">Passengers</th>
                     <th class="px-4 py-2">Class</th>
-                    <th class="px-4 py-2">Pilots</th>
-                    <th class="px-4 py-2">Films</th>
+                    {{-- <th class="px-4 py-2">Pilots</th>
+                    <th class="px-4 py-2">Films</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -88,10 +88,10 @@
                         <td class="border px-4 py-2">{{ $starship->crew }}</td>
                         <td class="border px-4 py-2">{{ $starship->passengers }}</td>
                         <td class="border px-4 py-2">{{ $starship->starship_class }}</td>
-                        <td class="border px-4 py-2">{{ str_replace('"', '', $starship->pilots); }}</td>
-                        <td class="border px-4 py-2">{{ str_replace('"', '', $starship->films); }}</td>
+                        {{-- <td class="border px-4 py-2">{{ str_replace('"', '', $starship->pilots); }}</td>
+                        <td class="border px-4 py-2">{{ str_replace('"', '', $starship->films); }}</td> --}}
                         <td class="px-2">
-                            <a href="#" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
+                            <a href="{{ route('starships.edit', $starship->id) }}" class="bg-gray-900 text-white rounded py-3 px-8 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100">Edit</a>
                         </td>
                         <td class="px-2">
                             <a href="{{ route('starships.destroy', $starship->id) }}"

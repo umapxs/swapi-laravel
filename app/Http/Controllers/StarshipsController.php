@@ -63,19 +63,19 @@ class StarshipsController extends Controller
                     $filmsJson = json_encode($films);
                     // save the starship data to the database
                     $newStarship = new Starship;
-                    $newStarship->name = $starship['name'];
-                    $newStarship->model = $starship['model'];
-                    $newStarship->manufacturer = $starship['manufacturer'];
+                    $newStarship->name = ucwords($starship['name']);
+                    $newStarship->model = ucwords($starship['model']);
+                    $newStarship->manufacturer = ucwords($starship['manufacturer']);
                     $newStarship->cost_in_credits = $starship['cost_in_credits'];
                     $newStarship->length = $starship['length'];
-                    $newStarship->max_atmosphering_speed = $starship['max_atmosphering_speed'];
+                    $newStarship->max_atmosphering_speed = ucwords($starship['max_atmosphering_speed']);
                     $newStarship->crew = $starship['crew'];
                     $newStarship->passengers = $starship['passengers'];
                     $newStarship->cargo_capacity = $starship['cargo_capacity'];
                     $newStarship->consumables = $starship['consumables'];
                     $newStarship->hyperdrive_rating = $starship['hyperdrive_rating'];
                     $newStarship->MGLT = $starship['MGLT'];
-                    $newStarship->starship_class = $starship['starship_class'];
+                    $newStarship->starship_class = ucwords($starship['starship_class']);
                     $newStarship->pilots = $pilotsJson;
                     $newStarship->films = $filmsJson;
                     $newStarship->created = $starship['created'];
@@ -112,6 +112,31 @@ class StarshipsController extends Controller
         return view('starships.create', compact('peoples', 'films'));
     }
 
+    public function edit($id)
+    {
+        $starship = Starship::findOrFail($id);
+        $peoples = People::all('id', 'name');
+        $films = Film::all('id', 'title');
+        return view('starships.edit', compact('starship', 'peoples', 'films'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $starship = Starship::findOrFail($id);
+        $starship->name = $request->input('name');
+        $starship->model = $request->input('model');
+        $starship->manufacturer = $request->input('manufacturer');
+        $starship->max_atmosphering_speed = $request->input('max_atmosphering_speed');
+        $starship->crew = $request->input('crew');
+        $starship->passengers = $request->input('passengers');
+        $starship->starship_class = $request->input('starship_class');
+        $starship->pilots = $request->input('pilots');
+        $starship->films = $request->input('films');
+        $starship->save();
+
+        return redirect('/table/starship')->with('success', 'Starship edited successfully');
+    }
+
     public function storeCreate(Request $request)
     {
         // Validate the incoming data
@@ -138,8 +163,8 @@ class StarshipsController extends Controller
         $starship->crew = $validatedData['crew'];
         $starship->passengers = $validatedData['passengers'];
         $starship->starship_class = $validatedData['starship_class'];
-        $starship->pilots = json_encode($validatedData['pilots']);
-        $starship->films = json_encode($validatedData['films']);
+        // $starship->pilots = json_encode($validatedData['pilots']);
+        // $starship->films = json_encode($validatedData['films']);
 
         // Save the new record to the database
         $starship->save();

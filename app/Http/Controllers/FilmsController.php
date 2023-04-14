@@ -40,11 +40,11 @@ class FilmsController extends Controller
                 $speciesJson = json_encode($film['species']);
                 // save the starship data to the database
                 $newFilm = new Film;
-                $newFilm->title = $film['title'];
+                $newFilm->title = ucwords($film['title']);
                 $newFilm->episode_id = $film['episode_id'];
-                $newFilm->opening_crawl = $film['opening_crawl'];
-                $newFilm->director = $film['director'];
-                $newFilm->producer = $film['producer'];
+                $newFilm->opening_crawl = ucwords($film['opening_crawl']);
+                $newFilm->director = ucwords($film['director']);
+                $newFilm->producer = ucwords($film['producer']);
                 $newFilm->release_date = $film['release_date'];
                 $newFilm->characters = $charactersJson;
                 $newFilm->planets = $planetsJson;
@@ -77,9 +77,23 @@ class FilmsController extends Controller
         return view('films.create');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('films.edit');
+        $film = Film::findOrFail($id);
+        return view('films.edit', compact('film'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $film = Film::findOrFail($id);
+        $film->title = $request->input('title');
+        $film->episode_id = $request->input('episode_id');
+        $film->director = $request->input('director');
+        $film->producer = $request->input('producer');
+        $film->release_date = $request->input('release_date');
+        $film->save();
+
+        return redirect('/table/film')->with('success', 'Film edited successfully');
     }
 
     public function storeCreate(Request $request)
