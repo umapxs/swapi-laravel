@@ -102,7 +102,9 @@ class StarshipsController extends Controller
     public function show($id)
     {
         $starship = Starship::findOrFail($id);
-        return view('starships.show', compact('starship'));
+        $comments = $starship->comments;
+
+        return view('starships.show', compact('starship', 'comments'));
     }
 
     public function create()

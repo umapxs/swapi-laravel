@@ -6,8 +6,8 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="py-12">
-            <div class="bg-white p-12 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
-                <div class="mb-4">
+            <div class="bg-white py-12 px-6 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
+                <div class="mb-4 ml-4">
                     <h3 class="text-3xl font-bold text-gray-900">{{ $people->name }}</h3>
                     <a href="{{ route('peoples.exportPDF', ['id' => $people->id]) }}" class="align-text-middle hover:underline md:text-red-500">Export PDF</a>
                 </div>
@@ -20,6 +20,29 @@
                     <p><strong>Birth:</strong> {{ $people->birth_year}}</p>
                     <p><strong>Gender:</strong> {{ $people->gender }}</p>
                 </div>
+                <section class="flex justify-center mt-12">
+                    <form method="POST" action="/peoples/{{ $people->id }}/comments" class="lg:w-8/12 border border-gray-200 p-6">
+                        @csrf
+
+                            <h2>Add a quick note</h2>
+
+                            <div class="mt-6">
+                                <textarea
+                                    name="comment"
+                                    class="p-4 w-full border-gray-200 text-sm focus:outline-none focus:ring-black"
+                                    id="comment"
+                                    rows="5"
+                                    placeholder="What would you like to say?"></textarea>
+                            </div>
+
+                            <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
+                                <button type="submit"
+                                        class="bg-gray-900 text-white rounded py-3 px-4 leading-tight hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">
+                                    Post
+                                </button>
+                            </div>
+                    </form>
+                </section>
             </div>
         </div>
     </div>

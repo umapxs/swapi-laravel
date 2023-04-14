@@ -2,12 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StarshipsController;
-use App\Http\Controllers\PeoplesController;
-use App\Http\Controllers\FilmsController;
+
 use App\Models\Starship;
-use App\Models\Film;
+use App\Http\Controllers\StarshipsController;
+use App\Http\Controllers\StarshipsCommentsController;
+
 use App\Models\People;
+use App\Http\Controllers\PeoplesController;
+use App\Http\Controllers\PeoplesCommentsController;
+
+use App\Models\Film;
+use App\Http\Controllers\FilmsController;
+use App\Http\Controllers\FilmsCommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +107,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/films/{id}', [FilmsController::class, 'update'])->name('films.update');
 
 });
+
+/**
+ * Comments
+ *
+ **/
+Route::post('starships/{starships:id}/comments', [StarshipsCommentsController::class, 'store'])->name('starshipsComments.store');
+Route::post('peoples/{peoples:id}/comments', [PeoplesCommentsController::class, 'store'])->name('peoplesComments.store');
+Route::post('films/{films:id}/comments', [FilmsCommentsController::class, 'store'])->name('filmsComments.store');
+
 
 /**
  * Export Routes

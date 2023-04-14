@@ -70,7 +70,9 @@ class FilmsController extends Controller
     public function show($id)
     {
         $film = Film::findOrFail($id);
-        return view('films.show', compact('film'));
+        $comments = $film->comments;
+
+        return view('films.show', compact('film', 'comments'));
     }
 
     public function create()

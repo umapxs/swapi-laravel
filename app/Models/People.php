@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class People extends Model
 {
     use HasFactory;
+    /**
+     * Relationships
+     *
+     */
 
     public function films()
     {
@@ -17,6 +21,11 @@ class People extends Model
     public function starships()
     {
         return $this->belongsToMany(Starship::class, 'people_starships_films', 'people_id', 'starships_id');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     protected $fillable = [

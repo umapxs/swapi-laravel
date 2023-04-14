@@ -112,7 +112,9 @@ class PeoplesController extends Controller
     public function show($id)
     {
         $people = People::findOrFail($id);
-        return view('peoples.show', compact('people'));
+        $comments = $people->comments;
+
+        return view('peoples.show', compact('people', 'comments'));
     }
 
     public function create()
