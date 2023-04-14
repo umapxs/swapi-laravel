@@ -102,10 +102,20 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// Excel Routes
+/**
+ * Export Routes
+ *
+ **/
+
+// Excel
 Route::post('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
 Route::post('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
 Route::post('films/export', [FilmsController::class, 'export'])->name('films.export');
+
+// PDF
+Route::get('/starships/{id}/exportPDF', [StarshipsController::class, 'exportPDF'])->name('starships.exportPDF');
+Route::get('/films/{id}/exportPDF', [FilmsController::class, 'exportPDF'])->name('films.exportPDF');
+Route::get('/peoples/{id}/exportPDF', [PeoplesController::class, 'exportPDF'])->name('peoples.exportPDF');
 
 
 Route::middleware(['2fa'])->group(function () {

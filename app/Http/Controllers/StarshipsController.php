@@ -11,6 +11,7 @@ use App\Models\Film;
 use App\Exports\StarshipsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use PDF;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
@@ -219,5 +220,23 @@ class StarshipsController extends Controller
     public function export()
     {
         return Excel::download(new StarshipsExport, 'starships.xlsx');
+    }
+
+    public function exportPDF($id)
+    {
+        // Finds the starship
+        $starship = Starship::findOrFail($id);
+
+        // Shares the data to the view
+        view()->share('starship', $starship);
+
+        // Transforms into a PDF file
+        $pdf = PDF::loadView('pdf.starship', $starship->toArray());
+
+        // Gives it a name
+        $filename = str_replace(' ', '_', $starship->name) . '.pdf';
+
+        // Donwloads it
+        return $pdf->download($filename);
     }
 }

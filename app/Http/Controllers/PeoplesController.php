@@ -10,6 +10,7 @@ use App\Models\Starship;
 use App\Exports\PeoplesExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PeoplesController extends Controller
 {
@@ -182,5 +183,23 @@ class PeoplesController extends Controller
     public function export()
     {
         return Excel::download(new PeoplesExport, 'characters.xlsx');
+    }
+
+    public function exportPDF($id)
+    {
+        // Finds the film
+        $people = People::findOrFail($id);
+
+        // Shares the data to the view
+        view()->share('people', $people);
+
+        // Transforms into a PDF file
+        $pdf = PDF::loadView('pdf.people', $people->toArray());
+
+        // Gives it a name
+        $filename = str_replace(' ', '_', $people->name) . '.pdf';
+
+        // Donwloads it
+        return $pdf->download($filename);
     }
 }

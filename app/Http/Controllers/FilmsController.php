@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\Film;
 use App\Exports\FilmsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 use Illuminate\Validation\ValidationException;
 
 
@@ -134,5 +135,23 @@ class FilmsController extends Controller
     public function export()
     {
         return Excel::download(new FilmsExport, 'films.xlsx');
+    }
+
+    public function exportPDF($id)
+    {
+        // Finds the film
+        $film = Film::findOrFail($id);
+
+        // Shares the data to the view
+        view()->share('film', $film);
+
+        // Transforms into a PDF file
+        $pdf = PDF::loadView('pdf.film', $film->toArray());
+
+        // Gives it a name
+        $filename = str_replace(' ', '_', $film->title) . '.pdf';
+
+        // Donwloads it
+        return $pdf->download($filename);
     }
 }
