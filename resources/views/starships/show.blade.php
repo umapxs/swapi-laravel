@@ -24,7 +24,7 @@
                     <p><strong>Films:</strong> {{ str_replace('"', '', $starship->films); }}</p> --}}
                 </div>
                 <section class="flex justify-center mt-12">
-                    <form method="POST" action="/starships/{{ $starship->id }}/comments" class="lg:w-8/12 border border-gray-200 p-6">
+                    <form method="POST" action="/starships/{{ $starship->id }}/comments" class="w-full p-6">
                         @csrf
 
                             <h2>Add a quick note</h2>
@@ -46,11 +46,13 @@
                             </div>
                     </form>
                 </section>
-                <section>
+                <section class="mt-12">
                     @foreach ($comments as $comment)
-                        <div>
-                            <strong>{{ $comment->user->name }}</strong>:
-                            {{ $comment->comment }}
+                        <div class="border border-gray-200 p-6 my-6">
+                            <p class="text-gray-700">{{ $comment->user->name }} · {{ $comment->created_at->diffForHumans() }}</p>
+                            <div class="flex items-center mt-4">
+                                <p class="text-gray-600 px-2">{{ $comment->comment }}</p>
+                            </div>
                         </div>
                     @endforeach
                 </section>

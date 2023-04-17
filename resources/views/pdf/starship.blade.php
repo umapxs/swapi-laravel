@@ -12,7 +12,7 @@
                         <h1 class="font-bold text-blackflex text-l font-bold mb-4 mt-8">
                             Star Wars API
                         </h1>
-                        <h3 class="text-3xl font-bold text-gray-900">{{ $starship->name }}</h3>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-8">{{ $starship->name }}</h3>
                     </div>
                 </div>
                 <div class="mb-4 ml-4">

@@ -13,7 +13,7 @@
                             Star Wars API
                         </h1>
                     </div>
-                    <h3 class="text-3xl font-bold text-gray-900">{{ $people->name }}</h3>
+                    <h3 class="text-3xl font-bold text-gray-900 mt-8">{{ $people->name }}</h3>
                 </div>
                 <div class="mb-4 ml-4">
                     <p><strong>Height:</strong> {{ $people->height }}</p>
