@@ -20,6 +20,7 @@ class StarshipsCommentsController extends Controller
             'comment' => $request->input('comment'),
         ]);
 
-        return back();
+
+        return back()->with('success', 'Your note was posted successfully');
     }
 }

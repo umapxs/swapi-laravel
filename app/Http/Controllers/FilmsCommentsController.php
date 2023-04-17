@@ -20,6 +20,6 @@ class FilmsCommentsController extends Controller
             'comment' => $request->input('comment'),
         ]);
 
-        return back()->with('success', 'Your note was posted');
+        return back()->with('success', 'Your note was posted successfully');
     }
 }

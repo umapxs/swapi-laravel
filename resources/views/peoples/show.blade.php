@@ -44,7 +44,7 @@
                     </form>
                 </section>
                 <section class="mt-12">
-                    @foreach ($comments as $comment)
+                    @foreach ($comments->reverse() as $comment)
                         <div class="border border-gray-100 p-6 my-6">
                             <p class="text-gray-700">{{ $comment->user->name }} · {{ $comment->created_at->diffForHumans() }}</p>
                             <div class="flex items-center mt-4">
