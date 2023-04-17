@@ -179,7 +179,7 @@ class PeoplesController extends Controller
 
         $people->delete();
 
-        return redirect()->route('peoples.index');
+        return redirect()->route('peoples.index')->with('success', 'Character deleted successfully');
     }
 
     public function export()

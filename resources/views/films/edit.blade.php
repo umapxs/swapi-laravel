@@ -51,7 +51,7 @@
 
                         <div class="mb-16 mt-8 items-center flex">
                             <button class="bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4" type="submit">
-                                Create Film
+                                Done
                             </button>
                             <a href="{{ route('films.index') }}" class="ml-4 bg-red-500 text-white rounded py-3 px-4 mb-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Cancel</a>
                         </div>

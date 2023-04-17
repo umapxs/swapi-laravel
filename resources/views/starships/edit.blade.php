@@ -60,36 +60,10 @@
                             </label>
                             <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="starship_class" name="starship_class" type="text" placeholder="Enter the starship class" value="{{ $starship->starship_class }}" required>
                         </div>
-
                     <div>
-
                     </div>
-
-                    {{-- <div class="form-group">
-                        <label for="pilots">Pilots</label>
-                        <select name="pilots[]" id="pilots" class="form-control" multiple>
-                            @foreach($peoples as $people)
-                                <option value="{{ $people->id }}"
-                                    {{ in_array($people->id, $starship->pilots ?? []) ? 'selected' : '' }}>
-                                    {{ $people->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="films">Films</label>
-                        <select name="films[]" id="films" class="form-control" multiple>
-                            @foreach($films as $film)
-                                <option value="{{ $film->id }}"
-                                    {{ in_array($film->id, $starship->films ?? []) ? 'selected' : '' }}>
-                                    {{ $film->title }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div> --}}
                     <div class="mb-16 mt-8 items-center flex">
-                        <button type="submit" class="mr-4 bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Create Starship</button>
+                        <button type="submit" class="mr-4 bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Done</button>
                         <a href="{{ route('starships.index') }}" class=" bg-red-500 text-white rounded py-3 px-4 mb-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Cancel</a>
                     </div>
                 </div>

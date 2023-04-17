@@ -172,17 +172,9 @@ class StarshipsController extends Controller
         // Save the new record to the database
         $starship->save();
 
-        // Retrieve characters from the database
-        //$characters = DB::table('characters')->get();
-
-        // Retrieve films from the database
-        //$films = DB::table('films')->get();
-
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('starships.index')
             ->with('success', 'Starship created successfully');
-            //->with('characters', $characters)
-            //->with('films', $films);
     }
 
     public function destroy($id)
@@ -197,7 +189,7 @@ class StarshipsController extends Controller
         // Delete the starship
         $starship->delete();
 
-        return redirect()->route('starships.index');
+        return redirect()->route('starships.index')->with('success', 'Starship deleted successfully');
     }
 
     private function getAllStarshipData()
