@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -14,6 +15,9 @@ use App\Http\Controllers\PeoplesCommentsController;
 use App\Models\Film;
 use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\FilmsCommentsController;
+
+use App\Models\ActivityLog;
+use App\Http\Controllers\ActivityLogsController as LogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +129,7 @@ Route::post('films/{films:id}/comments', [FilmsCommentsController::class, 'store
 Route::post('starships/export', [StarshipsController::class, 'export'])->name('starships.export');
 Route::post('peoples/export', [PeoplesController::class, 'export'])->name('peoples.export');
 Route::post('films/export', [FilmsController::class, 'export'])->name('films.export');
+Route::post('logs/export', [ActivityLogsController::class, 'export'])->name('logs.export');
 
 // PDF
 Route::get('/starships/{id}/exportPDF', [StarshipsController::class, 'exportPDF'])->name('starships.exportPDF');
@@ -217,6 +222,9 @@ Route::middleware(['2fa'])->group(function () {
     Route::get('/starships/{id}/exportPDF', [StarshipsController::class, 'exportPDF'])->name('starships.exportPDF');
     Route::get('/films/{id}/exportPDF', [FilmsController::class, 'exportPDF'])->name('films.exportPDF');
     Route::get('/peoples/{id}/exportPDF', [PeoplesController::class, 'exportPDF'])->name('peoples.exportPDF');
+
+    // Logs
+    Route::get('/logs', [ActivityLogsController::class, 'index'])->name('activity_logs.index');
 
     Route::post('/2fa', function () {
         return redirect('dashboard');

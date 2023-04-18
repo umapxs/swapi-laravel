@@ -16,6 +16,13 @@ use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     public function default()
     {
         $allStarshipData = cache()->remember('starships.all',now()->addDays(1), function() {
@@ -91,6 +98,9 @@ class StarshipsController extends Controller
             $page++;
         } while ($nextPage !== null);
 
+        // log info
+        $this->activityLogsController->log('starships', 'store');
+
         return redirect('/table/starship')->with('success', 'Starships added to the database');
     }
 
@@ -104,6 +114,9 @@ class StarshipsController extends Controller
         $starship = Starship::findOrFail($id);
         $comments = $starship->comments;
 
+        // log info
+        $this->activityLogsController->log('starships', 'show');
+
         return view('starships.show', compact('starship', 'comments'));
     }
 
@@ -111,6 +124,9 @@ class StarshipsController extends Controller
     {
         $peoples = People::all('id', 'name');
         $films = Film::all('id', 'title');
+
+        // log info
+        $this->activityLogsController->log('starships', 'create');
 
         return view('starships.create', compact('peoples', 'films'));
     }
@@ -120,12 +136,17 @@ class StarshipsController extends Controller
         $starship = Starship::findOrFail($id);
         $peoples = People::all('id', 'name');
         $films = Film::all('id', 'title');
+
+        // log info
+        $this->activityLogsController->log('starships', 'edit');
+
         return view('starships.edit', compact('starship', 'peoples', 'films'));
     }
 
     public function update(Request $request, $id)
     {
         $starship = Starship::findOrFail($id);
+
         $starship->name = $request->input('name');
         $starship->model = $request->input('model');
         $starship->manufacturer = $request->input('manufacturer');
@@ -136,6 +157,9 @@ class StarshipsController extends Controller
         $starship->pilots = $request->input('pilots');
         $starship->films = $request->input('films');
         $starship->save();
+
+        // log info
+        $this->activityLogsController->log('starships', 'update');
 
         return redirect('/table/starship')->with('success', 'Starship edited successfully');
     }
@@ -172,6 +196,9 @@ class StarshipsController extends Controller
         // Save the new record to the database
         $starship->save();
 
+        // log info
+        $this->activityLogsController->log('starships', 'storeCreate');
+
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('starships.index')
             ->with('success', 'Starship created successfully');
@@ -188,6 +215,9 @@ class StarshipsController extends Controller
 
         // Delete the starship
         $starship->delete();
+
+        // log info
+        $this->activityLogsController->log('starships', 'destroy');
 
         return redirect()->route('starships.index')->with('success', 'Starship deleted successfully');
     }
@@ -213,6 +243,9 @@ class StarshipsController extends Controller
 
     public function export()
     {
+        // log info
+        $this->activityLogsController->log('starships', 'exportExcel');
+
         return Excel::download(new StarshipsExport, 'starships.xlsx');
     }
 
@@ -229,6 +262,9 @@ class StarshipsController extends Controller
 
         // Gives it a name
         $filename = str_replace(' ', '_', $starship->name) . '.pdf';
+
+        // log info
+        $this->activityLogsController->log('starships', 'exportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

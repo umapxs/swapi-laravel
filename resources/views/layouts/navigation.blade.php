@@ -26,6 +26,11 @@
                 </li>
 
                 <li class="nav-item hover:underline text-sm">
+                    <a class="nav-link" href="/logs">Logs
+                    </a>
+                </li>
+
+                <li class="nav-item hover:underline text-sm">
                     <a class="nav-link" href="/fetch">Fetch
                     </a>
                 </li>
