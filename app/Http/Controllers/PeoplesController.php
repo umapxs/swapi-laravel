@@ -14,6 +14,13 @@ use PDF;
 
 class PeoplesController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     public function default()
     {
         $cacheKey = 'allPeopleData';
@@ -39,6 +46,10 @@ class PeoplesController extends Controller
             // cache the data for 1 day
             cache()->put($cacheKey, $allPeopleData, now()->addDay(1));
         }
+
+        // log info
+        $this->activityLogsController->log('peoples', 'fetch');
+
         return view('peoples', ['allPeopleData' => $allPeopleData]);
     }
 
@@ -101,6 +112,9 @@ class PeoplesController extends Controller
             $page++;
         } while ($nextPage !== null);
 
+        // log info
+        $this->activityLogsController->log('peoples', 'store');
+
         return redirect('/table/people')->with('success', 'Characters added to the database');
     }
 
@@ -114,23 +128,34 @@ class PeoplesController extends Controller
         $people = People::findOrFail($id);
         $comments = $people->comments;
 
+        // log info
+        $this->activityLogsController->log('peoples', 'show');
+
         return view('peoples.show', compact('people', 'comments'));
     }
 
     public function create()
     {
+        // log info
+        $this->activityLogsController->log('peoples', 'create');
+
         return view('peoples.create');
     }
 
     public function edit($id)
     {
         $people = People::findOrFail($id);
+
+        // log info
+        $this->activityLogsController->log('peoples', 'edit');
+
         return view('peoples.edit', compact('people'));
     }
 
     public function update(Request $request, $id)
     {
         $people = People::findOrFail($id);
+
         $people->name = $request->input('name');
         $people->height = $request->input('height');
         $people->mass = $request->input('mass');
@@ -139,7 +164,11 @@ class PeoplesController extends Controller
         $people->eye_color = $request->input('eye_color');
         $people->birth_year = $request->input('birth_year');
         $people->gender = $request->input('gender');
+
         $people->save();
+
+        // log info
+        $this->activityLogsController->log('peoples', 'update');
 
         return redirect('/table/people')->with('success', 'Character edited successfully');
     }
@@ -165,6 +194,9 @@ class PeoplesController extends Controller
         // Save the new record to the database
         $people->save();
 
+        // log info
+        $this->activityLogsController->log('peoples', 'storeCreate');
+
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('peoples.index')->with('success', 'Character created successfully');
     }
@@ -179,11 +211,17 @@ class PeoplesController extends Controller
 
         $people->delete();
 
+        // log info
+        $this->activityLogsController->log('peoples', 'destroy');
+
         return redirect()->route('peoples.index')->with('success', 'Character deleted successfully');
     }
 
     public function export()
     {
+        // log info
+        $this->activityLogsController->log('peoples', 'exportExcel');
+
         return Excel::download(new PeoplesExport, 'characters.xlsx');
     }
 
@@ -200,6 +238,9 @@ class PeoplesController extends Controller
 
         // Gives it a name
         $filename = str_replace(' ', '_', $people->name) . '.pdf';
+
+        // log info
+        $this->activityLogsController->log('peoples', 'exportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

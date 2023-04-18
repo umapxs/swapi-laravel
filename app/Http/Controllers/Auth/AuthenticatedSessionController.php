@@ -6,12 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\ActivityLogsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     /**
      * Display the login view.
      */
@@ -37,6 +45,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // log info
+        $this->activityLogsController->log('profile', 'logout');
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

@@ -14,11 +14,21 @@ use Illuminate\Validation\ValidationException;
 
 class FilmsController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     public function default()
     {
         $filmData = Cache::remember('films', now()->addDay(1), function () {
             return Http::get('https://swapi.dev/api/films/')->json();
         });
+
+        // log info
+        $this->activityLogsController->log('films', 'fetch');
 
         return view('films', ['filmData' => $filmData]);
     }
@@ -59,6 +69,9 @@ class FilmsController extends Controller
                 $newFilm->save();
             }
         }
+        // log info
+        $this->activityLogsController->log('films', 'store');
+
         return redirect('/table/film')->with('success', 'Films added to the database');
     }
 
@@ -72,29 +85,43 @@ class FilmsController extends Controller
         $film = Film::findOrFail($id);
         $comments = $film->comments;
 
+        // log info
+        $this->activityLogsController->log('films', 'show');
+
         return view('films.show', compact('film', 'comments'));
     }
 
     public function create()
     {
+        // log info
+        $this->activityLogsController->log('films', 'create');
+
         return view('films.create');
     }
 
     public function edit($id)
     {
         $film = Film::findOrFail($id);
+
+        // log info
+        $this->activityLogsController->log('films', 'edit');
+
         return view('films.edit', compact('film'));
     }
 
     public function update(Request $request, $id)
     {
         $film = Film::findOrFail($id);
+
         $film->title = $request->input('title');
         $film->episode_id = $request->input('episode_id');
         $film->director = $request->input('director');
         $film->producer = $request->input('producer');
         $film->release_date = $request->input('release_date');
         $film->save();
+
+        // log info
+        $this->activityLogsController->log('films', 'update');
 
         return redirect('/table/film')->with('success', 'Film edited successfully');
     }
@@ -122,6 +149,9 @@ class FilmsController extends Controller
         // Save the new record to the database
         $film->save();
 
+        // log info
+        $this->activityLogsController->log('films', 'storeCreate');
+
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('films.index')->with('success', 'Film created successfully');
     }
@@ -131,11 +161,17 @@ class FilmsController extends Controller
         $film = Film::findOrFail($id);
         $film->delete();
 
+        // log info
+        $this->activityLogsController->log('films', 'destroy');
+
         return redirect()->route('films.index')->with('success', 'Film deleted successfully');
     }
 
     public function export()
     {
+        // log info
+        $this->activityLogsController->log('films', 'exportExcel');
+
         return Excel::download(new FilmsExport, 'films.xlsx');
     }
 
@@ -152,6 +188,9 @@ class FilmsController extends Controller
 
         // Gives it a name
         $filename = str_replace(' ', '_', $film->title) . '.pdf';
+
+        // log info
+        $this->activityLogsController->log('films', 'exportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

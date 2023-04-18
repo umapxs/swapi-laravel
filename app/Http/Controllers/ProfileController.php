@@ -11,11 +11,21 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
     {
+        // log info
+        $this->activityLogsController->log('profile', 'edit');
+
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -33,6 +43,9 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+
+        // log info
+        $this->activityLogsController->log('profile', 'update');
 
         return redirect('/profile')->with('success', 'Your profile has been updated successfully.');
     }
@@ -55,6 +68,9 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        // log info
+        $this->activityLogsController->log('profile', 'destroy');
+
         return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }
 
@@ -68,6 +84,9 @@ class ProfileController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        // log info
+        $this->activityLogsController->log('profile', 'destroy2fa');
 
         return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }

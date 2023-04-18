@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ActivityLogsController;
 use App\Mail\Mailable;
 use App\Mail\Google2FACode;
 use Illuminate\View\View;
@@ -21,7 +22,6 @@ use PragmaRX\Google2FA\Google2FA;
 
 class RegisteredUserController extends Controller
 {
-
     use RegistersUsers {
         register as registration;
     }
@@ -31,9 +31,12 @@ class RegisteredUserController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
     {
         $this->middleware('guest');
+        $this->activityLogsController = $activityLogsController;
     }
 
     /**
@@ -97,6 +100,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        // log info
+        $this->activityLogsController->log('profile', 'register');
 
         return redirect(RouteServiceProvider::HOME);
     }

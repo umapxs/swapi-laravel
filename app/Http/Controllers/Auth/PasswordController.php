@@ -7,9 +7,17 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Controllers\ActivityLogsController;
 
 class PasswordController extends Controller
 {
+    protected $activityLogsController;
+
+    public function __construct(ActivityLogsController $activityLogsController)
+    {
+        $this->activityLogsController = $activityLogsController;
+    }
+
     /**
      * Update the user's password.
      */
@@ -23,6 +31,9 @@ class PasswordController extends Controller
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
+
+        // log info
+        $this->activityLogsController->log('profile', 'passwordUpdate');
 
         return back()->with('status', 'password-updated');
     }

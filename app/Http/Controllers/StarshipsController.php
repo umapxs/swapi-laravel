@@ -29,6 +29,9 @@ class StarshipsController extends Controller
             return $this->getAllStarshipData();
         });
 
+        // log info
+        $this->activityLogsController->log('starships', 'fetch');
+
         return view('starships', ['allStarshipData' => $allStarshipData]);
     }
 
@@ -156,6 +159,7 @@ class StarshipsController extends Controller
         $starship->starship_class = $request->input('starship_class');
         $starship->pilots = $request->input('pilots');
         $starship->films = $request->input('films');
+
         $starship->save();
 
         // log info
