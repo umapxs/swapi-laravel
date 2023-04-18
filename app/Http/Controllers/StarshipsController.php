@@ -30,7 +30,7 @@ class StarshipsController extends Controller
         });
 
         // log info
-        $this->activityLogsController->log('starships', 'fetch');
+        $this->activityLogsController->log('Starships', 'Fetch');
 
         return view('starships', ['allStarshipData' => $allStarshipData]);
     }
@@ -102,7 +102,7 @@ class StarshipsController extends Controller
         } while ($nextPage !== null);
 
         // log info
-        $this->activityLogsController->log('starships', 'store');
+        $this->activityLogsController->log('Starships', 'Store');
 
         return redirect('/table/starship')->with('success', 'Starships added to the database');
     }
@@ -118,7 +118,7 @@ class StarshipsController extends Controller
         $comments = $starship->comments;
 
         // log info
-        $this->activityLogsController->log('starships', 'show');
+        $this->activityLogsController->log('Starships', 'Show');
 
         return view('starships.show', compact('starship', 'comments'));
     }
@@ -129,7 +129,7 @@ class StarshipsController extends Controller
         $films = Film::all('id', 'title');
 
         // log info
-        $this->activityLogsController->log('starships', 'create');
+        $this->activityLogsController->log('Starships', 'Create');
 
         return view('starships.create', compact('peoples', 'films'));
     }
@@ -141,7 +141,7 @@ class StarshipsController extends Controller
         $films = Film::all('id', 'title');
 
         // log info
-        $this->activityLogsController->log('starships', 'edit');
+        $this->activityLogsController->log('Starships', 'Edit');
 
         return view('starships.edit', compact('starship', 'peoples', 'films'));
     }
@@ -163,7 +163,7 @@ class StarshipsController extends Controller
         $starship->save();
 
         // log info
-        $this->activityLogsController->log('starships', 'update');
+        $this->activityLogsController->log('Starships', 'Update');
 
         return redirect('/table/starship')->with('success', 'Starship edited successfully');
     }
@@ -201,7 +201,7 @@ class StarshipsController extends Controller
         $starship->save();
 
         // log info
-        $this->activityLogsController->log('starships', 'storeCreate');
+        $this->activityLogsController->log('Starships', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('starships.index')
@@ -221,7 +221,7 @@ class StarshipsController extends Controller
         $starship->delete();
 
         // log info
-        $this->activityLogsController->log('starships', 'destroy');
+        $this->activityLogsController->log('Starships', 'Destroy');
 
         return redirect()->route('starships.index')->with('success', 'Starship deleted successfully');
     }
@@ -248,7 +248,7 @@ class StarshipsController extends Controller
     public function export()
     {
         // log info
-        $this->activityLogsController->log('starships', 'exportExcel');
+        $this->activityLogsController->log('Starships', 'ExportExcel');
 
         return Excel::download(new StarshipsExport, 'starships.xlsx');
     }
@@ -268,7 +268,7 @@ class StarshipsController extends Controller
         $filename = str_replace(' ', '_', $starship->name) . '.pdf';
 
         // log info
-        $this->activityLogsController->log('starships', 'exportPDF');
+        $this->activityLogsController->log('Starships', 'ExportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

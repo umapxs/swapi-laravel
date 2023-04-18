@@ -24,7 +24,7 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         // log info
-        $this->activityLogsController->log('profile', 'edit');
+        $this->activityLogsController->log('Profile', 'Edit');
 
         return view('profile.edit', [
             'user' => $request->user(),
@@ -45,7 +45,7 @@ class ProfileController extends Controller
         $request->user()->save();
 
         // log info
-        $this->activityLogsController->log('profile', 'update');
+        $this->activityLogsController->log('Profile', 'Update');
 
         return redirect('/profile')->with('success', 'Your profile has been updated successfully.');
     }
@@ -69,7 +69,7 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         // log info
-        $this->activityLogsController->log('profile', 'destroy');
+        $this->activityLogsController->log('Profile', 'Destroy');
 
         return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }
@@ -86,7 +86,7 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         // log info
-        $this->activityLogsController->log('profile', 'destroy2fa');
+        $this->activityLogsController->log('Profile', 'Destroy2fa');
 
         return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }

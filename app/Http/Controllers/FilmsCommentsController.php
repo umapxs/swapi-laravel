@@ -28,7 +28,7 @@ class FilmsCommentsController extends Controller
         ]);
 
         // log info
-        $this->activityLogsController->log('films', 'storeComment');
+        $this->activityLogsController->log('Films', 'StoreComment');
 
         return back()->with('success', 'Your note was posted successfully');
     }

@@ -34,13 +34,13 @@ class ActivityLogsController extends Controller
 
         switch (true) {
             case $agent->isDesktop():
-                return 'desktop';
+                return 'Desktop';
                 break;
             case $agent->isMobile():
-                return 'mobile';
+                return 'Mobile';
                 break;
             default:
-                return 'unknown';
+                return 'Unknown';
         }
     }
 

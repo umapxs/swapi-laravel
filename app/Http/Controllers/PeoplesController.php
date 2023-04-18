@@ -48,7 +48,7 @@ class PeoplesController extends Controller
         }
 
         // log info
-        $this->activityLogsController->log('peoples', 'fetch');
+        $this->activityLogsController->log('Peoples', 'Fetch');
 
         return view('peoples', ['allPeopleData' => $allPeopleData]);
     }
@@ -113,7 +113,7 @@ class PeoplesController extends Controller
         } while ($nextPage !== null);
 
         // log info
-        $this->activityLogsController->log('peoples', 'store');
+        $this->activityLogsController->log('Peoples', 'Store');
 
         return redirect('/table/people')->with('success', 'Characters added to the database');
     }
@@ -129,7 +129,7 @@ class PeoplesController extends Controller
         $comments = $people->comments;
 
         // log info
-        $this->activityLogsController->log('peoples', 'show');
+        $this->activityLogsController->log('Peoples', 'Show');
 
         return view('peoples.show', compact('people', 'comments'));
     }
@@ -137,7 +137,7 @@ class PeoplesController extends Controller
     public function create()
     {
         // log info
-        $this->activityLogsController->log('peoples', 'create');
+        $this->activityLogsController->log('Peoples', 'Create');
 
         return view('peoples.create');
     }
@@ -147,7 +147,7 @@ class PeoplesController extends Controller
         $people = People::findOrFail($id);
 
         // log info
-        $this->activityLogsController->log('peoples', 'edit');
+        $this->activityLogsController->log('Peoples', 'Edit');
 
         return view('peoples.edit', compact('people'));
     }
@@ -168,7 +168,7 @@ class PeoplesController extends Controller
         $people->save();
 
         // log info
-        $this->activityLogsController->log('peoples', 'update');
+        $this->activityLogsController->log('Peoples', 'Update');
 
         return redirect('/table/people')->with('success', 'Character edited successfully');
     }
@@ -195,7 +195,7 @@ class PeoplesController extends Controller
         $people->save();
 
         // log info
-        $this->activityLogsController->log('peoples', 'storeCreate');
+        $this->activityLogsController->log('Peoples', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('peoples.index')->with('success', 'Character created successfully');
@@ -212,7 +212,7 @@ class PeoplesController extends Controller
         $people->delete();
 
         // log info
-        $this->activityLogsController->log('peoples', 'destroy');
+        $this->activityLogsController->log('Peoples', 'Destroy');
 
         return redirect()->route('peoples.index')->with('success', 'Character deleted successfully');
     }
@@ -220,7 +220,7 @@ class PeoplesController extends Controller
     public function export()
     {
         // log info
-        $this->activityLogsController->log('peoples', 'exportExcel');
+        $this->activityLogsController->log('Peoples', 'ExportExcel');
 
         return Excel::download(new PeoplesExport, 'characters.xlsx');
     }
@@ -240,7 +240,7 @@ class PeoplesController extends Controller
         $filename = str_replace(' ', '_', $people->name) . '.pdf';
 
         // log info
-        $this->activityLogsController->log('peoples', 'exportPDF');
+        $this->activityLogsController->log('Peoples', 'ExportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

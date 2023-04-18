@@ -28,7 +28,7 @@ class StarshipsCommentsController extends Controller
         ]);
 
         // log info
-        $this->activityLogsController->log('starships', 'storeComment');
+        $this->activityLogsController->log('Starships', 'StoreComment');
 
         return back()->with('success', 'Your note was posted successfully');
     }

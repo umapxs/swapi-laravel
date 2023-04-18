@@ -9,6 +9,7 @@ use App\Models\Film;
 use App\Exports\FilmsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 
@@ -28,7 +29,7 @@ class FilmsController extends Controller
         });
 
         // log info
-        $this->activityLogsController->log('films', 'fetch');
+        $this->activityLogsController->log('Films', 'Fetch');
 
         return view('films', ['filmData' => $filmData]);
     }
@@ -70,7 +71,7 @@ class FilmsController extends Controller
             }
         }
         // log info
-        $this->activityLogsController->log('films', 'store');
+        $this->activityLogsController->log('Films', 'Store');
 
         return redirect('/table/film')->with('success', 'Films added to the database');
     }
@@ -86,7 +87,7 @@ class FilmsController extends Controller
         $comments = $film->comments;
 
         // log info
-        $this->activityLogsController->log('films', 'show');
+        $this->activityLogsController->log('Films', 'Show');
 
         return view('films.show', compact('film', 'comments'));
     }
@@ -94,7 +95,7 @@ class FilmsController extends Controller
     public function create()
     {
         // log info
-        $this->activityLogsController->log('films', 'create');
+        $this->activityLogsController->log('Films', 'Create');
 
         return view('films.create');
     }
@@ -104,7 +105,7 @@ class FilmsController extends Controller
         $film = Film::findOrFail($id);
 
         // log info
-        $this->activityLogsController->log('films', 'edit');
+        $this->activityLogsController->log('Films', 'Edit');
 
         return view('films.edit', compact('film'));
     }
@@ -121,7 +122,7 @@ class FilmsController extends Controller
         $film->save();
 
         // log info
-        $this->activityLogsController->log('films', 'update');
+        $this->activityLogsController->log('Films', 'Update');
 
         return redirect('/table/film')->with('success', 'Film edited successfully');
     }
@@ -150,7 +151,7 @@ class FilmsController extends Controller
         $film->save();
 
         // log info
-        $this->activityLogsController->log('films', 'storeCreate');
+        $this->activityLogsController->log('Films', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
         return redirect()->route('films.index')->with('success', 'Film created successfully');
@@ -159,10 +160,15 @@ class FilmsController extends Controller
     public function destroy($id)
     {
         $film = Film::findOrFail($id);
+        DB::table('people_starships_films')
+            ->where('films_id', $id)
+            ->update(['films_id' => null]);
+
+        // Delete the starship
         $film->delete();
 
-        // log info
-        $this->activityLogsController->log('films', 'destroy');
+        // Log info
+        $this->activityLogsController->log('Films', 'Destroy');
 
         return redirect()->route('films.index')->with('success', 'Film deleted successfully');
     }
@@ -170,7 +176,7 @@ class FilmsController extends Controller
     public function export()
     {
         // log info
-        $this->activityLogsController->log('films', 'exportExcel');
+        $this->activityLogsController->log('Films', 'ExportExcel');
 
         return Excel::download(new FilmsExport, 'films.xlsx');
     }
@@ -190,7 +196,7 @@ class FilmsController extends Controller
         $filename = str_replace(' ', '_', $film->title) . '.pdf';
 
         // log info
-        $this->activityLogsController->log('films', 'exportPDF');
+        $this->activityLogsController->log('Films', 'ExportPDF');
 
         // Donwloads it
         return $pdf->download($filename);

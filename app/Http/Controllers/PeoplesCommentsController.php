@@ -28,7 +28,7 @@ class PeoplesCommentsController extends Controller
         ]);
 
         // log info
-        $this->activityLogsController->log('peoples', 'storeComment');
+        $this->activityLogsController->log('Peoples', 'StoreComment');
 
         return back()->with('success', 'Your note was posted successfully');
     }
