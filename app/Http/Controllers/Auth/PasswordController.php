@@ -33,7 +33,7 @@ class PasswordController extends Controller
         ]);
 
         // log info
-        $this->activityLogsController->log('profile', 'passwordUpdate');
+        $this->activityLogsController->log('Profile', 'PasswordUpdate');
 
         return back()->with('status', 'password-updated');
     }

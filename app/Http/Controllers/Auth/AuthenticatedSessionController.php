@@ -46,7 +46,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         // log info
-        $this->activityLogsController->log('profile', 'logout');
+        $this->activityLogsController->log('Profile', 'Logout');
 
         Auth::guard('web')->logout();
 

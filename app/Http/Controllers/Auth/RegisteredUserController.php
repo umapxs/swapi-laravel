@@ -102,7 +102,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // log info
-        $this->activityLogsController->log('profile', 'register');
+        $this->activityLogsController->log('Profile', 'Register');
 
         return redirect(RouteServiceProvider::HOME);
     }
