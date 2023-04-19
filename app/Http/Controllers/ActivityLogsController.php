@@ -22,7 +22,7 @@ class ActivityLogsController extends Controller
         $log->user_id = auth()->id();
         $log->menu = $menu;
         $log->action = $action;
-        $log->browser = $_SERVER['HTTP_USER_AGENT'];
+        $log->browser = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown';
         $log->device = $this->getDeviceType();
 
         $log->save();
