@@ -37,21 +37,21 @@
                             <label class="block text-gray-700 font-bold mb-2" for="max_atmosphering_speed">
                                 Max Speed:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="max_atmosphering_speed" name="max_atmosphering_speed" type="number" placeholder="Enter the starship's max atmosphering speed" value="{{ $starship->max_atmosphering_speed }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="max_atmosphering_speed" name="max_atmosphering_speed" type="number" placeholder="Enter the starship's max atmosphering speed" value="{{ intval($starship->max_atmosphering_speed) }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="crew">
                                 Crew:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="crew" name="crew" type="number" placeholder="Enter the starship's crew size" value="{{ $starship->crew }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="crew" name="crew" type="number" placeholder="Enter the starship's crew size" value="{{ intval($starship->crew) }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="passengers">
                                 Passengers:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passengers" name="passengers" type="number" placeholder="Enter the number of passengers" value="{{ $starship->passengers }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passengers" name="passengers" type="number" placeholder="Enter the number of passengers" value="{{ intval($starship->passengers) }}" required>
                         </div>
 
                         <div class="mb-4">

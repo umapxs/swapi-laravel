@@ -84,7 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/starships/{starship:id}',[StarshipsController::class, 'show'])->name('starships.show');
     Route::delete('/starships/{id}', [StarshipsController::class, 'destroy'])->name('starships.destroy');
     Route::post('/starships/storeCreate', [StarshipsController::class, 'storeCreate'])->name('starships.storeCreate');
-    Route::get('/starships/edit/{people:id}', [StarshipsController::class, 'edit'])->name('starships.edit');
+    Route::get('/starships/edit/{starship:id}', [StarshipsController::class, 'edit'])->name('starships.edit');
     Route::put('/starships/{id}', [StarshipsController::class, 'update'])->name('starships.update');
 
     // People related

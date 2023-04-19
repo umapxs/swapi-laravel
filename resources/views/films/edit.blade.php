@@ -23,7 +23,7 @@
                             <label class="block text-gray-700 font-bold mb-2" for="episode_id">
                                 Episode #:
                             </label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="episode_id" name="episode_id" type="number" placeholder="Enter the episode number" value="{{ $film->episode_id }}" required>
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="episode_id" name="episode_id" type="number" placeholder="Enter the episode number" value="{{ intval($film->episode_id) }}" required>
                         </div>
 
                         <div class="mb-4">
