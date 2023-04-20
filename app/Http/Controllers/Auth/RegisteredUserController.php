@@ -100,7 +100,7 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         // log info
-        $this->activityLogsController->log('Profile', 'Register');
+        // $this->activityLogsController->log('Profile', 'Register');
 
         Auth::login($user);
 

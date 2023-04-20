@@ -6,32 +6,15 @@ use App\Models\User;
 
 uses(TestCase::class);
 
-// it('can fetch starship data', function () {
-//     // Make the test use an authenticated user
-//     $user = User::factory()->create();
-
-//     // Make the test use that sample user
-//     $this->actingAs($user);
-
-//     // Simulate a GET request to the /starships/store endpoint
-//     $response = $this->get('/starships/store');
-
-//     // Check if the response status code is 200 (OK)
-//     $response->assertStatus(302);
-
-//     // Check if the response contains the expected data (e.g. the name of the first starship)
-//     $response->assertJsonFragment(['name' => 'CR90 corvette']);
-
-// });
-
+beforeEach(function () {
+    // Create sample User
+    $this->user = User::factory()->create();
+});
 
 it('can create a new starship', function () {
 
-    // Create sample User
-    $user = User::factory()->create();
-
     // Make the test use that sample user
-    $this->actingAs($user);
+    $this->actingAs($this->user);
 
     // Create sample Starship
     $starshipData = Starship::factory()->make()->toArray();
@@ -53,11 +36,8 @@ it('can create a new starship', function () {
 
 it('can edit a starship', function () {
 
-    // Create sample User
-    $user = User::factory()->create();
-
     // Make the test use that sample user
-    $this->actingAs($user);
+    $this->actingAs($this->user);
 
     // Create a new Starship and store it in the database
     $starshipData = Starship::factory()->create();
@@ -112,11 +92,8 @@ it('can edit a starship', function () {
 
 it('can delete a starship', function () {
 
-    // Create sample User
-    $user = User::factory()->create();
-
     // Make the test use that sample user
-    $this->actingAs($user);
+    $this->actingAs($this->user);
 
     // Create a new Starship and store it in the database
     $starshipData = Starship::factory()->create();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->default('Unknown');
             $table->integer('episode_id')->default(0);
-            $table->mediumText('opening_crawl');
+            $table->mediumText('opening_crawl')->nullable();
             $table->string('director')->default('Unknown');
             $table->string('producer')->default('Unknown');
             $table->date('release_date')->default('1977-05-25');

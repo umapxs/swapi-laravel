@@ -13,8 +13,8 @@ class ActivityLogsController extends Controller
     public function log($menu, $action)
     {
         /**
-         * Information to Log
          *
+         * Information to Log
          *  */
 
         $log = new ActivityLog;
