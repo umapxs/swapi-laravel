@@ -4,6 +4,7 @@ use Tests\TestCase;
 use App\Models\Film;
 use App\Models\User;
 
+
 uses(TestCase::class);
 
 beforeEach(function () {
@@ -16,7 +17,7 @@ it('can create a new film', function () {
     // Make the test use that sample user
     $this->actingAs($this->user);
 
-    // Create sample Starship
+    // Create sample Film
     $filmData = Film::factory()->make()->toArray();
 
     // Check the post response using that same data
@@ -25,10 +26,10 @@ it('can create a new film', function () {
     // Check if the submit response is 302 (redirect)
     $response->assertStatus(302);
 
-    // Check if it redirects to /table/starship correctly
+    // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');
 
-    // Check if the Starship was actually created and store on the database
+    // Check if the Film  was actually created and store on the database
     $createdFilm = Film::where('title', $filmData['title'])->first();
     expect($createdFilm)->not->toBeNull();
 });
@@ -39,7 +40,7 @@ it('can edit a film', function () {
     // Make the test use that sample user
     $this->actingAs($this->user);
 
-    // Create a new Starship and store it in the database
+    // Create a new Film and store it in the database
     $filmData = Film::factory()->create();
 
     // Send a GET request to the edit endpoint
@@ -71,10 +72,10 @@ it('can edit a film', function () {
     // Check if the response is a 302 (redirect)
     $response->assertStatus(302);
 
-    // Check if it redirects to /table/starship correctly
+    // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');
 
-    // Check if the Starship was actually updated in the database
+    // Check if the Film was actually updated in the database
     $updatedFilm = Film::find($filmData->id);
     expect($updatedFilm->title)->toBe($updatedFilm['title']);
     expect(intval($updatedFilm->episode_id))->toBeInt(intval($updatedFilm['episode_id']));
@@ -89,7 +90,7 @@ it('can delete a film', function () {
     // Make the test use that sample user
     $this->actingAs($this->user);
 
-    // Create a new Starship and store it in the database
+    // Create a new Film and store it in the database
     $filmData = Film::factory()->create();
 
     // Send a DELETE request to the delete endpoint
@@ -98,10 +99,10 @@ it('can delete a film', function () {
     // Check if the response is a 302 (redirect)
     $response->assertStatus(302);
 
-    // Check if it redirects to /table/starship correctly
+    // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');
 
-    // Check if the Starship was actually deleted from the database
+    // Check if the Film was actually deleted from the database
     $deletedFilm = Film::find($filmData->id);
     expect($deletedFilm)->toBeNull();
 });

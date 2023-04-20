@@ -22,7 +22,7 @@ class FilmFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'episode_id' => $this->faker->unique()->numberBetween(1, 100),
+            'episode_id' => $this->faker->unique()->randomNumber(null, true),
             // 'opening_crawl' => $this->faker->paragraph(),
             'director' => $this->faker->name(),
             'producer' => $this->faker->name(),

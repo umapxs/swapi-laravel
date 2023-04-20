@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 /*
@@ -13,7 +15,8 @@ use Tests\TestCase;
 |
 */
 
-uses(TestCase::class)->in('Feature');
+uses(TestCase::class,  DatabaseTransactions::class)->in('Feature');
+uses(DatabaseTransactions::class)->in('Unit');
 
 /*
 |--------------------------------------------------------------------------
