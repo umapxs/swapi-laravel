@@ -16,6 +16,8 @@ test('new users can register', function () {
         'password_confirmation' => 'password',
     ]);
 
+    $response->assertStatus(200);
+
     $this->assertAuthenticated();
     $response->assertRedirect(RouteServiceProvider::HOME);
 });
