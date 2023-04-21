@@ -1,6 +1,17 @@
 <h1>Swapi Laravel</h1>
 
-<p>This is a simple Laravel project with a focus on <strong>learning</strong> about <strong> API consumption</strong> with a <a href="https://swapi.dev/">Star Wars API</a> called Swapi.
+<p>This is a simple Laravel project with a focus on <strong>learning</strong> more about <strong> API consumption</strong> and <strong>Laravel</strong> using a <a href="https://swapi.dev/">Star Wars API</a> called Swapi.</p>
+<p>This was also a good opportunity to learn about specific libraries and frameworks such as:</p>
+<ul>
+    <li><a href="https://github.com/Bacon/BaconQrCode"><strong>Bacon QrCode</strong></a></li>
+    <li><a href="https://github.com/barryvdh/laravel-dompdf"><strong>Laravel DOMPDF</strong></a></li>
+    <li><a href="https://github.com/guzzle/guzzle"><strong>Guzzle</strong></a></li>
+    <li><a href="https://github.com/livewire/livewire"><strong>Livewire</strong></a></li>
+    <li><a href="https://github.com/SpartnerNL/Laravel-Excel"><strong>Laravel Excel</strong></a></li>
+    <li><a href="https://github.com/antonioribeiro/google2fa-php"><strong>Google2FA-laravel</strong></a></li>
+    <li><a href="https://github.com/pestphp/pest"><strong>Pest Testing Framework</strong></a></li>
+    <li><a href="https://github.com/coreui/coreui-free-bootstrap-admin-template"><strong>CoreUI</strong></a></li>
+</ul>
 
 
 <h2>Installation</h2>
