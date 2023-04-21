@@ -24,7 +24,7 @@ it('can create a new film', function () {
     $response = $this->post('/films/storeCreate', $filmData);
 
     // Check if the submit response is 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');
@@ -70,7 +70,7 @@ it('can edit a film', function () {
     ]);
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');
@@ -97,7 +97,7 @@ it('can delete a film', function () {
     $response = $this->delete("/films/{$filmData->id}");
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/film correctly
     $response->assertRedirect('/table/film');

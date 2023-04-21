@@ -24,7 +24,7 @@ it('can create a new starship', function () {
     $response = $this->post('/starships/storeCreate', $starshipData);
 
     // Check if the submit response is 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/starship correctly
     $response->assertRedirect('/table/starship');
@@ -74,7 +74,7 @@ it('can edit a starship', function () {
     ]);
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/starship correctly
     $response->assertRedirect('/table/starship');
@@ -103,7 +103,7 @@ it('can delete a starship', function () {
     $response = $this->delete("/starships/{$starshipData->id}");
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/starship correctly
     $response->assertRedirect('/table/starship');

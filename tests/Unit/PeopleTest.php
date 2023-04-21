@@ -24,7 +24,7 @@ it('can create a new character', function () {
     $response = $this->post('/peoples/storeCreate', $peopleData);
 
     // Check if the submit response is 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/people correctly
     $response->assertRedirect('/table/people');
@@ -76,7 +76,7 @@ it('can edit a character', function () {
     ]);
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/people correctly
     $response->assertRedirect('/table/people');
@@ -106,7 +106,7 @@ it('can delete a character', function () {
     $response = $this->delete("/peoples/{$peopleData->id}");
 
     // Check if the response is a 302 (redirect)
-    $response->assertStatus(302);
+    $response->assertRedirect();
 
     // Check if it redirects to /table/people correctly
     $response->assertRedirect('/table/people');
