@@ -102,7 +102,7 @@ class StarshipsController extends Controller
         } while ($nextPage !== null);
 
         // log info
-        $this->activityLogsController->log('Starships', 'Store');
+        $this->activityLogsController->log('Starships', 'Fetch');
 
         return redirect('/table/starship')->with('success', 'Starships added to the database');
     }

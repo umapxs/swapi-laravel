@@ -71,7 +71,7 @@ class FilmsController extends Controller
             }
         }
         // log info
-        $this->activityLogsController->log('Films', 'Store');
+        $this->activityLogsController->log('Films', 'Fetch');
 
         return redirect('/table/film')->with('success', 'Films added to the database');
     }

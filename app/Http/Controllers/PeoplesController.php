@@ -113,7 +113,7 @@ class PeoplesController extends Controller
         } while ($nextPage !== null);
 
         // log info
-        $this->activityLogsController->log('Peoples', 'Store');
+        $this->activityLogsController->log('Peoples', 'Fetch');
 
         return redirect('/table/people')->with('success', 'Characters added to the database');
     }
