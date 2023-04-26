@@ -15,4 +15,4 @@ CHANGELOG.md export-ignore
 *.pug linguist-detectable=false
 *.scss linguist-detectable=false
 *.sh linguist-detectable=false
-*.dockerfile linguist-generated=true
+Dockerfile linguist-detectable=false
