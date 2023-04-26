@@ -11,7 +11,7 @@
     <li><a href="https://github.com/antonioribeiro/google2fa-php"><strong>Google2FA-laravel</strong></a></li>
     <li><a href="https://github.com/pestphp/pest"><strong>Pest Testing Framework</strong></a></li>
     <li><a href="https://github.com/coreui/coreui-free-bootstrap-admin-template"><strong>CoreUI</strong></a></li>
-    <li><a href="https://firebase.google.com/"><strong>Firebase</strong></a></li>
+    <li><a href="https://github.com/kreait/laravel-firebase"><strong>Firebase</strong></a></li>
 </ul>
 
 
