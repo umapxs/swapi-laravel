@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/x-icon" href="{{ config('app.favicon', '/images/star-wars2.png') }}">
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="manifest" href="manifest.json" />
+        <link rel="serviceworker" href="/public/worker.js" />
 
         <title>{{ config('app.name', 'swapiProject') }}</title>
 
@@ -14,6 +16,32 @@
 
     </head>
     <body>
+        <script>
+            if ('serviceWorker' in navigator) {
+                //if the browser supports serviceWorkers
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker
+                    //registers the worker.js file you just made
+                    .register('/public/worker.js')
+                    .then(
+                    function (registration) {
+                        console.log(
+                        'Worker registration successful',
+                        registration.scope
+                        );
+                    },
+                    function (err) {
+                        console.log('Worker registration failed', err);
+                    }
+                    )
+                    .catch(function (err) {
+                    console.log(err);
+                    });
+                });
+            } else {
+                console.log('Service Worker is not supported by browser.');
+            }
+        </script>
         <div class="min-h-full">
             <nav class="bg-white-800">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

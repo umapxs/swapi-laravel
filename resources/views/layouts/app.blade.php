@@ -66,9 +66,39 @@
 
         </style>
 
+        <link rel="manifest" href="manifest.json" />
+        <link rel="serviceworker" href="/public/worker.js" />
+
         @livewireStyles
     </head>
     <body class="c-app">
+        <script>
+            if ('serviceWorker' in navigator) {
+                //if the browser supports serviceWorkers
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker
+                    //registers the worker.js file you just made
+                    .register('/public/worker.js')
+                    .then(
+                    function (registration) {
+                        console.log(
+                        'Worker registration successful',
+                        registration.scope
+                        );
+                    },
+                    function (err) {
+                        console.log('Worker registration failed', err);
+                    }
+                    )
+                    .catch(function (err) {
+                    console.log(err);
+                    });
+                });
+            } else {
+                console.log('Service Worker is not supported by browser.');
+            }
+        </script>
+
         <div class="c-wrapper">
             <div class="sidebar sidebar-dark sidebar-fixed" style="background-color: black;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex">
