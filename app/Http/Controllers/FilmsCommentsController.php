@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use Illuminate\Database\Eloquent\Model;
+use Yoeunes\Toastr\Toastr;
 
 class FilmsCommentsController extends Controller
 {
@@ -30,6 +32,15 @@ class FilmsCommentsController extends Controller
         // log info
         $this->activityLogsController->log('Films', 'StoreComment');
 
-        return back()->with('success', 'Your note was posted successfully');
+        if($film instanceof Model) {
+            toastr()->success('Your note was posted successfully', 'Success');
+
+            return back();
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 }

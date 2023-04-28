@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Starship;
+use Illuminate\Database\Eloquent\Model;
+use Yoeunes\Toastr\Toastr;
 
 class StarshipsCommentsController extends Controller
 {
@@ -30,6 +32,15 @@ class StarshipsCommentsController extends Controller
         // log info
         $this->activityLogsController->log('Starships', 'StoreComment');
 
-        return back()->with('success', 'Your note was posted successfully');
+        if($starship instanceof Model) {
+            toastr()->success('Your note was posted successfully', 'Success');
+
+            return back();
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Film;
 use App\Exports\FilmsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Yoeunes\Toastr\Toastr;
 use PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -124,7 +126,16 @@ class FilmsController extends Controller
         // log info
         $this->activityLogsController->log('Films', 'Update');
 
-        return redirect('/table/film')->with('success', 'Film edited successfully');
+        if($film instanceof Model) {
+            toastr()->success('Film edited successfully', 'Success');
+
+            return redirect('/table/film');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function storeCreate(Request $request)
@@ -154,7 +165,15 @@ class FilmsController extends Controller
         $this->activityLogsController->log('Films', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
-        return redirect()->route('films.index')->with('success', 'Film created successfully');
+        if($film instanceof Model) {
+            toastr()->success('Film created successfully', 'Success');
+
+            return redirect()->route('films.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
     }
 
     public function destroy($id)
@@ -170,7 +189,16 @@ class FilmsController extends Controller
         // Log info
         $this->activityLogsController->log('Films', 'Destroy');
 
-        return redirect()->route('films.index')->with('success', 'Film deleted successfully');
+        if(!$film->exists) {
+            toastr()->success('Film deleted successfully', 'Success');
+
+            return redirect()->route('films.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function export()

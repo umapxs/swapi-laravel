@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\People;
+use Illuminate\Database\Eloquent\Model;
+use Yoeunes\Toastr\Toastr;
 
 class PeoplesCommentsController extends Controller
 {
@@ -30,6 +32,15 @@ class PeoplesCommentsController extends Controller
         // log info
         $this->activityLogsController->log('Peoples', 'StoreComment');
 
-        return back()->with('success', 'Your note was posted successfully');
+        if($people instanceof Model) {
+            toastr()->success('Your note was posted successfully', 'Success');
+
+            return back();
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 }

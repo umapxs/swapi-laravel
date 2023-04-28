@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Database\Eloquent\Model;
+use Yoeunes\Toastr\Toastr;
 
 class ProfileController extends Controller
 {
@@ -47,7 +49,16 @@ class ProfileController extends Controller
         // log info
         $this->activityLogsController->log('Profile', 'Update');
 
-        return redirect('/profile')->with('success', 'Your profile has been updated successfully.');
+        if($request->user()->wasChanged() || $request->user()->wasRecentlyCreated) {
+            toastr()->success('Your profile has been updated successfully', 'Success');
+
+            return redirect('/profile');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     /**
@@ -71,7 +82,16 @@ class ProfileController extends Controller
         // log info
         $this->activityLogsController->log('Profile', 'Destroy');
 
-        return redirect('/')->with('success', 'Your account has been deleted successfully.');
+        if(!$user->exists) {
+            toastr()->success('Your account has been deleted successfully', 'Success');
+
+            return redirect('/');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function destroy2fa(Request $request): RedirectResponse
@@ -88,6 +108,14 @@ class ProfileController extends Controller
         // log info
         $this->activityLogsController->log('Profile', 'Destroy2fa');
 
-        return redirect('/')->with('success', 'Your account has been deleted successfully.');
+        if(!$user->exists) {
+            toastr()->success('Your account has been deleted successfully', 'Success');
+
+            return redirect('/');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
     }
 }

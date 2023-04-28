@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 use App\Models\Starship;
@@ -10,6 +11,7 @@ use App\Models\People;
 use App\Models\Film;
 use App\Exports\StarshipsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
@@ -165,7 +167,16 @@ class StarshipsController extends Controller
         // log info
         $this->activityLogsController->log('Starships', 'Update');
 
-        return redirect('/table/starship')->with('success', 'Starship edited successfully');
+        if($starship instanceof Model) {
+            toastr()->success('Starship edited successfully', 'Success');
+
+            return redirect('/table/starship');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function storeCreate(Request $request)
@@ -204,8 +215,15 @@ class StarshipsController extends Controller
         $this->activityLogsController->log('Starships', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
-        return redirect()->route('starships.index')
-            ->with('success', 'Starship created successfully');
+        if($starship instanceof Model) {
+            toastr()->success('Starship created successfully', 'Success');
+
+            return redirect()->route('starships.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
     }
 
     public function destroy($id)
@@ -223,7 +241,16 @@ class StarshipsController extends Controller
         // log info
         $this->activityLogsController->log('Starships', 'Destroy');
 
-        return redirect()->route('starships.index')->with('success', 'Starship deleted successfully');
+        if(!$starship->exists) {
+            toastr()->success('Starship deleted successfully', 'Success');
+
+            return redirect()->route('starships.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     private function getAllStarshipData()

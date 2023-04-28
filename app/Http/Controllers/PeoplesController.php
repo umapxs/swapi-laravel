@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use App\Models\People;
 use App\Models\Film;
 use App\Models\Starship;
 use App\Exports\PeoplesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -170,7 +172,16 @@ class PeoplesController extends Controller
         // log info
         $this->activityLogsController->log('Peoples', 'Update');
 
-        return redirect('/table/people')->with('success', 'Character edited successfully');
+        if($people instanceof Model) {
+            toastr()->success('Character edited successfully', 'Success');
+
+            return redirect('/table/people');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function storeCreate(Request $request)
@@ -198,7 +209,17 @@ class PeoplesController extends Controller
         $this->activityLogsController->log('Peoples', 'StoreCreate');
 
         // Redirect the user to a confirmation page or back to the list view
-        return redirect()->route('peoples.index')->with('success', 'Character created successfully');
+
+        if($people instanceof Model) {
+            toastr()->success('Character created successfully', 'Success');
+
+            return redirect()->route('peoples.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function destroy($id)
@@ -214,7 +235,16 @@ class PeoplesController extends Controller
         // log info
         $this->activityLogsController->log('Peoples', 'Destroy');
 
-        return redirect()->route('peoples.index')->with('success', 'Character deleted successfully');
+        if(!$people->exists) {
+            toastr()->success('Character deleted successfully', 'Success');
+
+            return redirect()->route('peoples.index');
+        }
+
+        toastr()->error('Oops, something went wrong', 'Error');
+
+        return back();
+
     }
 
     public function export()
