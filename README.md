@@ -12,6 +12,8 @@
     <li><a href="https://github.com/pestphp/pest"><strong>Pest Testing Framework</strong></a></li>
     <li><a href="https://github.com/coreui/coreui-free-bootstrap-admin-template"><strong>CoreUI</strong></a></li>
     <li><a href="https://github.com/yoeunes/toastr"><strong>Toastr</strong></a></li>
+    <li><a href="https://github.com/kreait/laravel-firebase"><strong>Firebase</strong></a></li>
+    <li><a href="https://github.com/silviolleite/laravel-pwa"><strong>Laravel PWA</strong></a></li>
 </ul>
 
 
