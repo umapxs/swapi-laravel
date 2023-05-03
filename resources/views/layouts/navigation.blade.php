@@ -4,42 +4,42 @@
 
 
 
-<div class="c-wrapper c-fixed-components sticky top-0 z-50">
+<div class="c-wrapper c-fixed-components bg-gray-800 sticky top-0 z-50">
 
-    <header class="header header-sticky" style="background-color: #f8f9fa;">
+    <header class="header header-sticky bg-gray-800 ">
         <div class="container-fluid">
             <button id="hamburguer" class="header-toggler px-md-0 me-md-3"
                     type="button"
                     onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" data-cf-modified-aa23ac249e87884f28a6bec2-="">
 
-                <svg class="icon icon-lg">
+                <svg class="icon icon-lg text-white">
                     <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
                 </svg>
             </button>
 
             <a class="header-brand d-md-none" href="/dashboard">
-                <h1 class="flex justify-center font-bold text-blackflex justify-center font-bold text-black
+                <h1 class="flex justify-center font-bold text-blackflex justify-center font-bold text-white
     ">Star Wars API</h1>
             </a>
 
             <ul class="header-nav d-none d-md-flex">
                 <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/dashboard">Dashboard
+                    <a class="nav-link text-white" href="/dashboard">Dashboard
                     </a>
                 </li>
 
                 <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/logs">Logs
+                    <a class="nav-link text-white" href="/logs">Logs
                     </a>
                 </li>
 
                 <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/fetch">Fetch
+                    <a class="nav-link text-white" href="/fetch">Fetch
                     </a>
                 </li>
 
                 <li class="nav-item hover:underline text-sm">
-                    <a class="nav-link" href="/table">Tables
+                    <a class="nav-link text-white" href="/table">Tables
                     </a>
                 </li>
             </ul>
@@ -91,7 +91,7 @@
                 <div class="dropdown-header bg-light py-2">
                     <div class="fw-semibold">Settings</div>
                 </div>--}}
-                <a class="dropdown-item hover:bg-red-600 hover:text-white" href="/profile">
+                <a class="dropdown-item hover:bg-blue-100 hover:text-black" href="/profile">
                     <svg class="icon me-2">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                     </svg> Profile
@@ -100,7 +100,7 @@
 
                 <div class="dropdown-divider">
                 </div>
-                    <form method="POST" class="dropdown-item hover:bg-red-600 hover:text-white cursor-pointer" action="{{ route('logout') }}">
+                    <form method="POST" class="dropdown-item hover:bg-blue-100 hover:text-black cursor-pointer" action="{{ route('logout') }}">
                         @csrf
                         <svg class="icon me-2">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}">

@@ -72,7 +72,7 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $people->id }}</td>
                         <td class="border px-4 py-2">
-                            <a href="{{ route('peoples.show', $people->id) }}" class="hover:underline hover:text-red-600">
+                            <a href="{{ route('peoples.show', $people->id) }}" class="hover:underline hover:text-gray-800">
                                 {{ $people->name }}
                             </a>
                         </td>

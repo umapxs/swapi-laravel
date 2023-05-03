@@ -54,8 +54,16 @@
                 color: #121212;
             }
 
+            .sidebar-nav .nav-item .nav-link.active {
+                background-color: rgba(59, 130, 246, 0.1);
+            }
+
+            .sidebar-nav .show .nav-group {
+                background-color: rgba(59, 130, 246, 0.1);
+            }
+
             a:hover {
-                color: #DC2626;
+                color: rgb(31 41 55);
             }
 
             header, #locationHover, .c-main, footer  {
@@ -122,7 +130,7 @@
         <div class="c-wrapper">
             <div class="sidebar sidebar-fixed rounded-2xl shadow-xl my-4 py-4" style="background-color: white;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex pr-4 bg-white">
-                    <a href="/dashboard" class="text-black">
+                    <a href="/dashboard" class="text-black" style="text-decoration: none">
                         <img src="{{ config('app.favicon', '/images/star-wars2.png') }}" class="inline h-full max-w-full transition-all duration-200 dark:hidden ease-nav-brand max-h-8" alt="main_logo">
                         <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Star Wars API</span>
                     </a>
@@ -184,7 +192,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="c-main  mr-12">
+            <main class="c-main  lg:mr-12">
 
                 <div class="body flex-grow-1 px-3">
                     {{ $slot }}

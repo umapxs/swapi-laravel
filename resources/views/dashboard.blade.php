@@ -64,21 +64,21 @@
     <!-- cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8 p-4">
                 <div class="border-black/12.5 dark:bg-slate-850 dark:shadow-dark-xl shadow-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                    <div class="hover:text-white hover:bg-black p-6 transition ease-in-out duration-300 p-6 pl-8 rounded-2xl">
+                    <div class="hover:text-white hover:bg-gray-800 p-6 transition ease-in-out duration-300 p-6 pl-8 rounded-2xl">
                         <h2 class="text-xl font-bold mb-4">Number of Starships</h2>
                         <p class="text-xl">{{ $totalStarships }}</p>
                     </div>
                 </div>
 
                     <div class="border-black/12.5 dark:bg-slate-850 dark:shadow-dark-xl shadow-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                        <div class="hover:text-white hover:bg-black p-6 transition ease-in-out duration-300 rounded-2xl p-6 pl-8">
+                        <div class="hover:text-white hover:bg-gray-800 p-6 transition ease-in-out duration-300 rounded-2xl p-6 pl-8">
                             <h2 class="text-xl font-bold mb-4">Number of Films</h2>
                             <p class="text-xl">{{ $totalFilms }}</p>
                         </div>
                     </div>
 
                     <div class="border-black/12.5 dark:bg-slate-850 dark:shadow-dark-xl shadow-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                        <div class="hover:text-white hover:bg-black p-6 transition ease-in-out duration-300 p-6 pl-8 rounded-2xl ">
+                        <div class="hover:text-white hover:bg-gray-800 p-6 transition ease-in-out duration-300 p-6 pl-8 rounded-2xl ">
                             <h2 class="text-xl font-bold mb-4">Number of Characters</h2>
                             <p class="text-xl font-light">{{ $totalPeoples }}</p>
                         </div>
@@ -87,9 +87,10 @@
                 </div>
 
                 <!-- cards row 2 -->
-                <div class="flex flex-wrap mt-6 -mx-3">
+                <div class="flex flex-wrap mt-6 -mx-3 justify-center">
+
                     <div
-                        class="w-full max-w-full mx-4 px-3 mt-0 lg:w-12/12 lg:flex-none"
+                        class="w-full max-w-full mx-4 px-3 mt-0 lg:w-8/12 lg:flex-none"
                     >
                         <div
                             class="border-black/12.5 dark:bg-slate-850 dark:shadow-dark-xl shadow-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border"
@@ -138,9 +139,9 @@
 
                 <!-- cards row 3 -->
 
-                <div class="flex flex-wrap mt-6 -mx-3">
+                <div class="flex flex-wrap mt-6 -mx-3 justify-center">
                     <div
-                        class="w-full max-w-full px-3 mx-4 mb-8 mt-0 lg:w-12/12 lg:flex-none"
+                        class="w-full max-w-full px-3 mx-4 mb-8 mt-0 lg:w-8/12 lg:flex-none"
                     >
                         <div
                             class="border-black/12.5 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border"
@@ -158,19 +159,24 @@
                                         <div class="flex items-center">
                                             <div
                                                 class="inline-block w-8 h-8 mr-4 text-center text-black bg-center shadow-sm fill-current stroke-none rounded-xl
-                                                shadow-xl"
-                                                style="background-color: #f8f9fa"
+                                                shadow-xl hover:bg-gray-300
+                                                bg-gray-100"
                                             >
-                                            <svg class="icon text-black mt-1.5">
-                                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-airplane-mode') }}"></use>
-                                            </svg>
+                                            <a href="/table/starship">
+                                                <svg class="icon text-black mt-1.5">
+                                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-airplane-mode') }}"></use>
+                                                </svg>
+                                            </a>
                                             </div>
                                             <div class="flex flex-col">
-                                                <h6
-                                                    class="mb-1 text-sm leading-normal text-slate-700 dark:text-white"
-                                                >
-                                                    Starships
-                                                </h6>
+                                                <a href="/table/starship">
+                                                    <h6
+                                                        class="mb-1 text-sm leading-normal text-slate-700 dark:text-white
+                                                        hover:text-gray-800 cursor-pointer"
+                                                    >
+                                                        Starships
+                                                    </h6>
+                                                </a>
                                                 <span
                                                     class="text-xs leading-tight dark:text-white/80"
                                                     >{{ $totalStarships }} in
@@ -193,19 +199,24 @@
                                     >
                                         <div class="flex items-center">
                                             <div
-                                                class="inline-block w-8 h-8 mr-4 text-center text-black bg-center shadow-sm fill-current stroke-none rounded-xl"
-                                                style="background-color: #f8f9fa"
+                                                class="inline-block w-8 h-8 mr-4 text-center text-black bg-center shadow-sm fill-current stroke-none rounded-xl
+                                                hover:bg-gray-300 bg-gray-100"
                                             >
+                                            <a href="/table/film">
                                                 <svg class="icon text-black mt-1.5">
                                                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-movie') }}"></use>
+                                            </a>
                                             </svg>
                                             </div>
                                             <div class="flex flex-col">
-                                                <h6
-                                                    class="mb-1 text-sm leading-normal text-slate-700 dark:text-white"
-                                                >
-                                                    Films
-                                                </h6>
+                                                <a href="/table/film">
+                                                    <h6
+                                                        class="mb-1 text-sm leading-normal text-slate-700 dark:text-white
+                                                        hover:text-gray-800 cursor-pointer"
+                                                    >
+                                                        Films
+                                                    </h6>
+                                                </a>
                                                 <span
                                                     class="text-xs leading-tight dark:text-white/80"
                                                     >{{ $totalFilms }} in
@@ -228,19 +239,23 @@
                                     >
                                         <div class="flex items-center">
                                             <div
-                                                class="inline-block w-8 h-8 mr-4 text-center text-black bg-center shadow-sm fill-current stroke-none rounded-xl"
-                                                style="background-color: #f8f9fa;"
+                                                class="inline-block w-8 h-8 mr-4 text-center text-black bg-center shadow-sm fill-current stroke-none rounded-xl hover:bg-gray-300 bg-gray-100"
                                             >
+                                            <a href="/table/people">
                                                 <svg class="icon text-black mt-1.5">
                                                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-people') }}"></use>
+                                            </a>
                                             </svg>
                                             </div>
                                             <div class="flex flex-col">
-                                                <h6
-                                                    class="mb-1 text-sm leading-normal text-slate-700"
-                                                >
-                                                    Characters
-                                                </h6>
+                                                <a href="/table/people">
+                                                    <h6
+                                                        class="mb-1 text-sm leading-normal text-slate-700
+                                                        hover:text-gray-800cursor-pointer"
+                                                    >
+                                                        Characters
+                                                    </h6>
+                                                </a>
                                                 <span
                                                     class="text-xs leading-tight"
                                                     >{{ $totalPeoples }} in

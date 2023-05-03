@@ -9,7 +9,7 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="py-12">
-            <div class="bg-white p-12 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
+            <div class="bg-white p-12 mb-4 shadow-xl lg:mx-12">
                 <form method="POST" action="{{ route('peoples.storeCreate') }}">
                     @csrf
                     <div class="lg:grid lg:grid-cols-2 lg:gap-4">
@@ -72,7 +72,7 @@
                         </select>
                     </div>
                     <div class="mb-16 mt-8 items-center flex">
-                        <button type="submit" class="mr-4 bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Create Character</button>
+                        <button type="submit" class="mr-4 bg-gray-900 text-white rounded py-3 px-4 leading-tight float-left hover:no-underline hover:bg-gray-800 transition ease-in-out delay-100 mb-4">Create</button>
                         <a href="{{ route('peoples.index') }}" class=" bg-red-500 text-white rounded py-3 px-4 mb-4 leading-tight float-left hover:no-underline hover:bg-red-400 transition ease-in-out delay-100">Cancel</a>
                     </div>
                 </div>
