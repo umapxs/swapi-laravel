@@ -9,7 +9,7 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="py-12">
-            <div class="bg-white p-12 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
+            <div class="bg-white p-12 mb-4 shadow-xl lg:mx-12">
                 <form method="POST" action="{{ route('starships.update', $starship->id) }}">
                     @csrf
                     @method('PUT')
