@@ -11,6 +11,9 @@ use App\Exports\FilmsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Yoeunes\Toastr\Toastr;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FilmUpdated;
+use App\Events\RecordUpdated;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -129,8 +132,11 @@ class FilmsController extends Controller
         if($film instanceof Model) {
             toastr()->success('Film edited successfully', 'Success');
 
+            // Send an email notification
+            Mail::to('example@gmail.com')->send(new FilmUpdated($film));
+
             // Set the flash message for the session()
-            session()->flash('edit-film-global-success', 'Film #' . $id . 'has been recently updated.');
+            session()->flash('edit-film-global-success', 'Film #' . $id . ' has been recently updated.');
 
             return redirect('/table/film');
         }

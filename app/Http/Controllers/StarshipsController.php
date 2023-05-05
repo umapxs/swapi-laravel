@@ -14,6 +14,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StarshipUpdated;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
 
 class StarshipsController extends Controller
@@ -170,8 +172,15 @@ class StarshipsController extends Controller
         if($starship instanceof Model) {
             toastr()->success('Starship edited successfully', 'Success');
 
+            // Send an email notification
+            Mail::to('example@gmail.com')->send(new StarshipUpdated($starship));
+
             // Set the flash message for the session()
-            session()->flash('edit-starship-global-success', 'Starship #' . $id . 'has been recently updated.');
+            $message = 'Starship #' . $id . ' has been recently updated.';
+            session()->flash('edit-starship-global-success', $message);
+
+            // Send the message to all connected clients via WebSocket
+            /* broadcast(new RecordUpdated($message))->toOthers(); */
 
             return redirect('/table/starship');
         }

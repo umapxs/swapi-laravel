@@ -13,6 +13,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use Yoeunes\Toastr\Toastr;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PeopleUpdated;
+use App\Events\RecordUpdated;
 
 class PeoplesController extends Controller
 {
@@ -175,8 +178,11 @@ class PeoplesController extends Controller
         if($people instanceof Model) {
             toastr()->success('Character edited successfully', 'Success');
 
+            // Send an email notification
+            Mail::to('example@gmail.com')->send(new PeopleUpdated($people));
+
             // Set the flash message for the session()
-            session()->flash('edit-people-global-success', 'Character #' . $id . 'has been recently updated.');
+            session()->flash('edit-people-global-success', 'Character #' . $id . ' has been recently updated.');
 
             return redirect('/table/people');
         }

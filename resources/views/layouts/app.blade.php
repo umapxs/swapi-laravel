@@ -206,6 +206,7 @@
                 <div class="body flex-grow-1 px-3">
                     {{ $slot }}
                     <!-- Global notification (Edited Film) -->
+
                     @if (session()->has('edit-film-global-success'))
                         @foreach (\App\Models\User::all() as $user)
                             <div x-data="{ show: true }"
