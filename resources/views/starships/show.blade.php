@@ -6,7 +6,7 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="py-12">
-            <div class="bg-white py-12 px-6 mb-4 outline outline-1 outline-offset-4 outline-gray-200 lg:mx-12">
+            <div class="bg-white py-12 px-6 mb-4 shadow-xl lg:mx-12">
                 <div class="mb-4 ml-4">
                     <div>
                         <h3 class="text-3xl font-bold text-gray-900">{{ $starship->name }}</h3>

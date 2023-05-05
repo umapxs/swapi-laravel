@@ -16,6 +16,7 @@
         <!-- Scripts -->
         <link rel="manifest" href="manifest.json" />
         <link rel="serviceworker" href="/public/worker.js" />
+        <script src="/js/toastr-options.js"></script>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -92,6 +93,25 @@
             // Initialize Firebase
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
+
+            // Toastr config
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
         </script>
     </body>
 </html>
