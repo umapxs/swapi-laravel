@@ -169,13 +169,41 @@
 
                 <div class="body flex-grow-1 px-3">
                     {{ $slot }}
-                    @if (session('success'))
-                        <div x-data="{ show: true }"
-                            x-init="setTimeout(() => show = false, 4000)"
-                            x-show="show"
-                            class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
-                            <p>{{ session('success') }}</p>
-                        </div>
+                    <!-- Global notification (Edited Film) -->
+                    @if (session()->has('edit-film-global-success'))
+                        @foreach (\App\Models\User::all() as $user)
+                            <div x-data="{ show: true }"
+                                x-init="setTimeout(() => show = false, 4000)"
+                                x-show="show"
+                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
+                                <p>{{ session()->get('edit-film-global-success') }}</p>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <!-- Global notification (Edited Starship) -->
+                    @if (session()->has('edit-starship-global-success'))
+                        @foreach (\App\Models\User::all() as $user)
+                            <div x-data="{ show: true }"
+                                x-init="setTimeout(() => show = false, 4000)"
+                                x-show="show"
+                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
+                                <p>{{ session()->get('edit-starship-global-success') }}</p>
+                            </div>
+                        @endforeach
+                    @endif
+
+
+                    <!-- Global notification (Edited Character/People) -->
+                    @if (session()->has('edit-people-global-success'))
+                        @foreach (\App\Models\User::all() as $user)
+                            <div x-data="{ show: true }"
+                                x-init="setTimeout(() => show = false, 4000)"
+                                x-show="show"
+                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
+                                <p>{{ session()->get('edit-people-global-success') }}</p>
+                            </div>
+                        @endforeach
                     @endif
                 </div>
 

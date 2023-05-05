@@ -175,6 +175,9 @@ class PeoplesController extends Controller
         if($people instanceof Model) {
             toastr()->success('Character edited successfully', 'Success');
 
+            // Set the flash message for the session()
+            session()->flash('edit-people-global-success', 'Character #' . $id . 'has been recently updated.');
+
             return redirect('/table/people');
         }
 

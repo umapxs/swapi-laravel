@@ -129,6 +129,9 @@ class FilmsController extends Controller
         if($film instanceof Model) {
             toastr()->success('Film edited successfully', 'Success');
 
+            // Set the flash message for the session()
+            session()->flash('edit-film-global-success', 'Film #' . $id . 'has been recently updated.');
+
             return redirect('/table/film');
         }
 

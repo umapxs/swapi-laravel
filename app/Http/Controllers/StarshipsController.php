@@ -170,6 +170,9 @@ class StarshipsController extends Controller
         if($starship instanceof Model) {
             toastr()->success('Starship edited successfully', 'Success');
 
+            // Set the flash message for the session()
+            session()->flash('edit-starship-global-success', 'Starship #' . $id . 'has been recently updated.');
+
             return redirect('/table/starship');
         }
 
