@@ -176,8 +176,9 @@ class StarshipsController extends Controller
             Mail::to('example@gmail.com')->send(new StarshipUpdated($starship));
 
             // Set the flash message for the session()
-            $message = 'Starship #' . $id . ' has been recently updated.';
-            session()->flash('edit-starship-global-success', $message);
+            /* $message = 'Starship #' . $id . ' has been recently updated.'; */
+            /* session()->flash('edit-starship-global-success', $message); */
+            event(new StarshipUpdated($starship));
 
             // Send the message to all connected clients via WebSocket
             /* broadcast(new RecordUpdated($message))->toOthers(); */
