@@ -35,11 +35,11 @@ class StarshipUpdated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('popup_channel');
+        return new Channel('popup-channel' . $this->starship->id);
     }
 
     public function broadcastAs()
     {
-        return 'starship-updated';
+        return 'pusher:subscription_succeeded';
     }
 }

@@ -178,8 +178,8 @@ class StarshipsController extends Controller
             // Set the flash message for the session()
             /* $message = 'Starship #' . $id . ' has been recently updated.'; */
             /* session()->flash('edit-starship-global-success', $message); */
-            event(new StarshipUpdated($starship));
 
+            event(new StarshipUpdated($starship));
             // Send the message to all connected clients via WebSocket
             /* broadcast(new RecordUpdated($message))->toOthers(); */
 

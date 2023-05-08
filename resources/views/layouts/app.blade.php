@@ -214,18 +214,15 @@
                             forceTLS: true
                         });
 
-                        var channel = pusher.subscribe('popup_channel');
+                        var channel = pusher.subscribe('popup-channel');
 
-                        channel.bind('starship-updated', function(data) {
-                            /* toastr.warning(data.message); */
-                            toastr.info(data.name + ' has been updated')
+                        channel.bind('pusher:subscription_succeeded', function(data) {
+                            toastr.info('A Starship has been updated');
                         });
-
-                        console.log('channel.bind');
                     </script>
 
                     <!-- Global notification (Edited Film) -->
-                    @if (session()->has('edit-film-global-success'))
+                    {{-- @if (session()->has('edit-film-global-success'))
                         @foreach (\App\Models\User::all() as $user)
                             <div x-data="{ show: true }"
                                 x-init="setTimeout(() => show = false, 4000)"
@@ -259,7 +256,7 @@
                                 <p>{{ session()->get('edit-people-global-success') }}</p>
                             </div>
                         @endforeach
-                    @endif
+                    @endif --}}
                 </div>
             </main>
         </div>
