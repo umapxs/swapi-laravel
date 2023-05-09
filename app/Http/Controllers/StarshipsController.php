@@ -17,6 +17,14 @@ use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StarshipUpdated;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
+use Illuminate\Support\Facades\Log;
+use \Notion;
+use FiveamCode\LaravelNotionApi\Entities\Page;
+use FiveamCode\LaravelNotionApi\Entities\Database;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Title;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Text;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Number;
+use FiveamCode\LaravelNotionApi\Entities\PropertyItems\RichText;
 
 class StarshipsController extends Controller
 {
@@ -170,18 +178,35 @@ class StarshipsController extends Controller
         $this->activityLogsController->log('Starships', 'Update');
 
         if($starship instanceof Model) {
+            // Success flash message
             toastr()->success('Starship edited successfully', 'Success');
 
             // Send an email notification
-            Mail::to('example@gmail.com')->send(new StarshipUpdated($starship));
+            try {
+                Mail::to('example@gmail.com')->send(new StarshipUpdated($starship));
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+                toastr()->error('Failed to send email', 'Error');
+            }
 
-            // Set the flash message for the session()
-            /* $message = 'Starship #' . $id . ' has been recently updated.'; */
-            /* session()->flash('edit-starship-global-success', $message); */
-
+            // Call StarshipUpdated event (Send notification to all the users)
             event(new StarshipUpdated($starship));
-            // Send the message to all connected clients via WebSocket
-            /* broadcast(new RecordUpdated($message))->toOthers(); */
+
+            $databaseId = env('NOTION_DB_ID');
+            $pageId = 'a77f275b88f545f8a7fd20c6830bb614';
+
+            $page = new Page();
+            $page->set('ID', Number::value($starship->id));
+            $page->set('Name', Title::value($starship->name));
+            $page->set('Model', Text::value($starship->model));
+            $page->set('Manufacturer', Text::value($starship->manufacturer));
+            $page->set('M_Speed', Text::value($starship->max_atmosphering_speed));
+            $page->set('Crew', Text::value(strval($starship->crew)));
+            $page->set('Passengers', Text::value(strval($starship->passengers)));
+            $page->set('Class', Text::value($starship->starship_class));
+            $page->set('Type', Text::value('Starship'));
+
+            $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/starship');
         }

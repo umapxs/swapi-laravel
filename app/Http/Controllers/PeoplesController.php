@@ -16,6 +16,15 @@ use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PeopleUpdated;
 use App\Events\RecordUpdated;
+use Illuminate\Support\Facades\Log;
+use \Notion;
+use FiveamCode\LaravelNotionApi\Entities\Page;
+use FiveamCode\LaravelNotionApi\Entities\Database;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Title;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Text;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Number;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Date;
+use FiveamCode\LaravelNotionApi\Entities\PropertyItems\RichText;
 
 class PeoplesController extends Controller
 {
@@ -179,10 +188,32 @@ class PeoplesController extends Controller
             toastr()->success('Character edited successfully', 'Success');
 
             // Send an email notification
-            Mail::to('example@gmail.com')->send(new PeopleUpdated($people));
+            try {
+                Mail::to('example@gmail.com')->send(new PeopleUpdated($people));
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+                toastr()->error('Failed to send email', 'Error');
+            }
 
-            // Set the flash message for the session()
-            session()->flash('edit-people-global-success', 'Character #' . $id . ' has been recently updated.');
+            // Call PeopleUpdated event (Send notification to all the users)
+            event(new PeopleUpdated($people));
+
+            $databaseId = env('NOTION_DB_ID');
+            $pageId = '3935df3bd9bb42939dba0d688601ad38';
+
+            $page = new Page();
+            $page->set('ID', Number::value($people->id));
+            $page->set('Name', Title::value($people->name));
+            $page->set('Height', Text::value(strval($people->height)));
+            $page->set('Mass', Text::value(strval($people->mass)));
+            $page->set('Hair_Color', Text::value($people->hair_color));
+            $page->set('Skin_Color', Text::value($people->skin_color));
+            $page->set('Eye_Color', Text::value($people->eye_color));
+            $page->set('Birth_Year', Text::value($people->birth_year));
+            $page->set('Gender', Text::value($people->gender));
+            $page->set('Type', Text::value('Character'));
+
+            $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/people');
         }

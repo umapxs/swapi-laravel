@@ -11,6 +11,7 @@
         "php": "^8.1",
         "bacon/bacon-qr-code": "^2.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "fiveam-code/laravel-notion-api": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "jenssegers/agent": "^2.6",
         "kreait/firebase-php": "^7.2",

@@ -16,6 +16,15 @@ use App\Mail\FilmUpdated;
 use App\Events\RecordUpdated;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+use \Notion;
+use FiveamCode\LaravelNotionApi\Entities\Page;
+use FiveamCode\LaravelNotionApi\Entities\Database;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Title;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Text;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Number;
+use FiveamCode\LaravelNotionApi\Entities\Properties\Date;
+use FiveamCode\LaravelNotionApi\Entities\PropertyItems\RichText;
 
 
 class FilmsController extends Controller
@@ -130,13 +139,33 @@ class FilmsController extends Controller
         $this->activityLogsController->log('Films', 'Update');
 
         if($film instanceof Model) {
+            // Success flash message
             toastr()->success('Film edited successfully', 'Success');
 
             // Send an email notification
-            Mail::to('example@gmail.com')->send(new FilmUpdated($film));
+            try {
+                Mail::to('example@gmail.com')->send(new FilmUpdated($film));
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+                toastr()->error('Failed to send email', 'Error');
+            }
 
-            // Set the flash message for the session()
-            session()->flash('edit-film-global-success', 'Film #' . $id . ' has been recently updated.');
+            // Call FilmUpdated event (Send notification to all the users)
+            event(new FilmUpdated($film));
+
+            $databaseId = env('NOTION_DB_ID');
+            $pageId = '80235d83869648b59168135ebbe20bc3';
+
+            $page = new Page();
+            $page->set('ID', Number::value($film->id));
+            $page->set('Name', Title::value($film->title));
+            $page->set('Episode', Text::value(strval($film->episode_id)));
+            $page->set('Director', Text::value($film->director));
+            $page->set('Producer', Text::value($film->producer));
+            $page->set('Date', Text::value($film->release_date));
+            $page->set('Type', Text::value('Film'));
+
+            $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/film');
         }
