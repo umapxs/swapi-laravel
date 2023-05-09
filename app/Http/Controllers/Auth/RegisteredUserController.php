@@ -19,6 +19,7 @@ use App\Mail\Mailable;
 use App\Mail\Google2FACode;
 use Illuminate\View\View;
 use PragmaRX\Google2FA\Google2FA;
+use Pusher\Pusher;
 
 class RegisteredUserController extends Controller
 {
@@ -99,9 +100,26 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        // Log in the user
         Auth::login($user);
 
-        // log info
+        // Subscribe the user to the popup-channel
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'useTLS' => true,
+            ]
+        );
+
+        // Subscribe to the popup-channel
+        $channel = 'popup-channel';
+        $authUser = Auth::user();
+        $pusher->trigger($channel, 'subscribe', ['userId' => $authUser->id]);
+
+        // Log info
         $this->activityLogsController->log('Profile', 'Login');
         $this->activityLogsController->log('Profile', 'Register');
 

@@ -15,7 +15,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="/js/toastr-options.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
         <title>{{ config('app.name', 'swapiProject') }}</title>
         <!-- Fonts -->
         <link
@@ -137,6 +136,21 @@
             }
         </script>
 
+        <script>
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('70922c8e4fc649987520', {
+                cluster: 'eu'
+            });
+
+            var channel = pusher.subscribe('popup-channel');
+
+            channel.bind('starship-update', function(data) {
+                alert(JSON.stringify(data));
+                /* toastr.info('A Starship has been updated'); */
+            });
+        </script>
+
         <div class="c-wrapper">
             <div class="sidebar sidebar-fixed rounded-2xl shadow-xl my-4 py-4" style="background-color: white;" id="sidebar">
                 <div class="sidebar-brand d-none d-md-flex pr-4 bg-white">
@@ -206,57 +220,6 @@
 
                 <div class="body flex-grow-1 px-3">
                     {{ $slot }}
-                    <script>
-                        Pusher.logToConsole = true;
-
-                        var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-                            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-                            forceTLS: true
-                        });
-
-                        var channel = pusher.subscribe('popup-channel');
-
-                        channel.bind('pusher:subscription_succeeded', function(data) {
-                            toastr.info('A Starship has been updated');
-                        });
-                    </script>
-
-                    <!-- Global notification (Edited Film) -->
-                    {{-- @if (session()->has('edit-film-global-success'))
-                        @foreach (\App\Models\User::all() as $user)
-                            <div x-data="{ show: true }"
-                                x-init="setTimeout(() => show = false, 4000)"
-                                x-show="show"
-                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
-                                <p>{{ session()->get('edit-film-global-success') }}</p>
-                            </div>
-                        @endforeach
-                    @endif
-
-                    <!-- Global notification (Edited Starship) -->
-                    @if (session()->has('edit-starship-global-success'))
-                        @foreach (\App\Models\User::all() as $user)
-                            <div x-data="{ show: true }"
-                                x-init="setTimeout(() => show = false, 4000)"
-                                x-show="show"
-                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
-                                <p>{{ session()->get('edit-starship-global-success') }}</p>
-                            </div>
-                        @endforeach
-                    @endif
-
-
-                    <!-- Global notification (Edited Character/People) -->
-                    @if (session()->has('edit-people-global-success'))
-                        @foreach (\App\Models\User::all() as $user)
-                            <div x-data="{ show: true }"
-                                x-init="setTimeout(() => show = false, 4000)"
-                                x-show="show"
-                                class="fixed bg-red-500 rounded text-white py-2 px-2 text-sm bottom-0 right-0 mr-4 mt-8 mb-16 text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-400" style="margin-right: 1rem; display: flex; bottom: 0; margin-top: 50%;">
-                                <p>{{ session()->get('edit-people-global-success') }}</p>
-                            </div>
-                        @endforeach
-                    @endif --}}
                 </div>
             </main>
         </div>

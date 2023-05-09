@@ -23,7 +23,7 @@ class StarshipUpdated implements ShouldBroadcast
      * @param  Starship  $starship
      * @return void
      */
-    public function __construct(Starship $starship)
+    public function __construct($starship)
     {
         $this->starship = $starship;
     }
@@ -35,11 +35,11 @@ class StarshipUpdated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('popup-channel' . $this->starship->id);
+        return new Channel('popup-channel');
     }
 
     public function broadcastAs()
     {
-        return 'pusher:subscription_succeeded';
+        return 'starship-update';
     }
 }

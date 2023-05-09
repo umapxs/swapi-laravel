@@ -190,7 +190,8 @@ class StarshipsController extends Controller
             }
 
             // Call StarshipUpdated event (Send notification to all the users)
-            event(new StarshipUpdated($starship));
+            /* event(new StarshipUpdated($starship)); */
+            broadcast(new StarshipUpdated($starship))->toOthers();
 
             $databaseId = env('NOTION_DB_ID');
 
