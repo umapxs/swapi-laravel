@@ -154,7 +154,6 @@ class FilmsController extends Controller
             event(new FilmUpdated($film));
 
             $databaseId = env('NOTION_DB_ID');
-            $pageId = '80235d83869648b59168135ebbe20bc3';
 
             $page = new Page();
             $page->set('ID', Number::value($film->id));

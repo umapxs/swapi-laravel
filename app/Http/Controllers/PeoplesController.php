@@ -199,7 +199,6 @@ class PeoplesController extends Controller
             event(new PeopleUpdated($people));
 
             $databaseId = env('NOTION_DB_ID');
-            $pageId = '3935df3bd9bb42939dba0d688601ad38';
 
             $page = new Page();
             $page->set('ID', Number::value($people->id));

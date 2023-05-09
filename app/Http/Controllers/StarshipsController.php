@@ -193,7 +193,6 @@ class StarshipsController extends Controller
             event(new StarshipUpdated($starship));
 
             $databaseId = env('NOTION_DB_ID');
-            $pageId = 'a77f275b88f545f8a7fd20c6830bb614';
 
             $page = new Page();
             $page->set('ID', Number::value($starship->id));
