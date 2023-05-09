@@ -212,6 +212,7 @@ class PeoplesController extends Controller
             $page->set('Gender', Text::value($people->gender));
             $page->set('Type', Text::value('Character'));
 
+            // Create register
             $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/people');

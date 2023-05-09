@@ -164,6 +164,7 @@ class FilmsController extends Controller
             $page->set('Date', Text::value($film->release_date));
             $page->set('Type', Text::value('Film'));
 
+            // Create register
             $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/film');

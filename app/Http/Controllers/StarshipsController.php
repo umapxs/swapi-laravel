@@ -205,6 +205,7 @@ class StarshipsController extends Controller
             $page->set('Class', Text::value($starship->starship_class));
             $page->set('Type', Text::value('Starship'));
 
+            // Create register
             $response = Notion::pages()->createInDatabase($databaseId, $page);
 
             return redirect('/table/starship');
